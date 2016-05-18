@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-    cout<<"HItest Git\n";
+    cout<<"HI4u Git\n";
     return 0;
 }
