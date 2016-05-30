@@ -1,5 +1,5 @@
 all:
-	g++ -o ./bin/exe ./src/test.cpp
+	g++ -o ./bin/MPTree ./src/*.cpp 
 clean:
-	rm ./bin/*
+	rm ./bin/MPTree
 	rm ./src/*.o
