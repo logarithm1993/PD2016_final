@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+
+# log files
+evaluate/*
+log/*
+preplace/*
