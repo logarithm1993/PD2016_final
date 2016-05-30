@@ -14,6 +14,7 @@
 	d. private helper functions
 	   (2) simAnneal
 		   (a) cost computation //TODO
+
 -----------------------------------------------------------------
 2. Node ( Element.h ) 
    a. macro class
@@ -23,6 +24,7 @@
 	   (1) _name , _width , _height
 		(2) _initCord , _initOrt ( initial positions and orientaion from placer )
 		(3) _pinList ( pins on the macro )
+
 -----------------------------------------------------------------
 3. Pin ( Element.h ) 
    a. pin class ( connection points on a macro )
@@ -31,6 +33,7 @@
 	c. private data members
 	   (1) Node * _node ( ptr to the macro )
 		(2) offsetX,Y ( w.r.t. the center of the macro , orient = N )
+
 -----------------------------------------------------------------
 4. Net ( Element.h ) 
    a. net class
@@ -40,6 +43,7 @@
 	   (1) _name
 		(2) _pinList
 		(3) _termList
+
 -----------------------------------------------------------------
 5. Term ( Element.h ) 
    a. terminal class
