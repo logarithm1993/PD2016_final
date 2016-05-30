@@ -23,6 +23,7 @@
 	   (1) _name , _width , _height
 		(2) _initCord , _initOrt ( initial positions and orientaion from placer )
 		(3) _pinList ( pins on the macro )
+
 -----------------------------------------------------------------
 3. Pin ( Element.h ) 
    a. pin class ( connection points on a macro )
@@ -40,7 +41,6 @@
 	   (1) _name
 		(2) _pinList
 		(3) _termList
-
 -----------------------------------------------------------------
 5. Term ( Element.h ) 
    a. terminal class
