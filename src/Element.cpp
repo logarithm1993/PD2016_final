@@ -144,7 +144,7 @@ Net::computeHPWL() const
         if(p->y() > ymax) ymax = p->y();
         if(p->y() < ymin) ymin = p->y();
     }
-    for(size_t i = 0, tsize = _termList.size(); i < psize; ++i) {
+    for(size_t i = 0, tsize = _termList.size(); i < tsize; ++i) {
         Term* t = _termList[i];
         if(t->x() > xmax) xmax = t->x();
         if(t->x() < xmin) xmin = t->x();
