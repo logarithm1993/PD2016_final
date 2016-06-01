@@ -21,7 +21,10 @@
   - private data members
     + \_name 
     + \_width, \_height
-    + \_initCord , \_initOrt ( initial positions and orientaion from placer )
+    + *Coordinates and Orientations*
+      * \_initCord , \_initOrt ( initial positions from placer )
+      * \_curCord , \_curOrt   ( current positions )
+      * \_optCord , \_optOrt   ( optimal positions so far )
     + \_pinList ( pins on the macro )
 
 3. Pin ( Element.h ) 
@@ -30,7 +33,7 @@
     + [ ] `x() , y()` --> get the positions of the pin ( use \_node and offset to compute )
   - private data members
     + Node\* \_node ( ptr to the macro )
-    + offsetX,Y ( w.r.t. the center of the macro , orient = N )
+    + \_offsetX,Y ( w.r.t. the center of the macro , orient = N )
 
 4. Net ( Element.h ) 
   - net class
@@ -44,7 +47,7 @@
 5. Term ( Element.h ) 
  - terminal class
  - public member functions
-   + 
+   + x(), y() 
  - private data members
    + \_name
    + \_fixXY ( fixed positions ) 
