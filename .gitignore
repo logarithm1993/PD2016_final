@@ -28,8 +28,12 @@
 *.app
 bin/*
 
+# vim temp files
+*.swp
+
 # log files
 evaluate/*
 log/*
 preplace/*
-
+*.out
+*.result
