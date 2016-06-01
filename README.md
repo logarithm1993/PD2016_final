@@ -59,4 +59,5 @@
    + x(), y() 
  - private data members
    + \_name
-   + \_fixXY ( fixed positions ) 
+   + \_fixXY( fixed positions )
+
