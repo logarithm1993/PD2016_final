@@ -1,5 +1,11 @@
 # INPORTANT: 
-##ALWAYS DO `git pull` BEFORE STARTING YOUR WORK
+## ALWAYS DO `git pull` BEFORE STARTING YOUR WORK
+### Something to be deternimed
+- `class Coord`
+  + use `int` or `double` to represent a coordinate
+
+- simAnneal
+  + considering *congestion* in cost function
 
 ### Data Structure
 1. MPTreeMgr ( MPTreeMgr.h )
@@ -15,7 +21,7 @@
     + \_allTerm(terminals)
   - private helper functions 
     +   *simAnneal*
-      * [ ] cost computation
+      - [ ] cost computation
 
 2. Node ( Element.h ) 
   - macro class
@@ -25,9 +31,9 @@
     + \_name 
     + \_width, \_height
     + *Coordinates and Orientations*
-      * \_initCord , \_initOrt ( initial positions from placer )
-      * \_curCord , \_curOrt   ( current positions )
-      * \_optCord , \_optOrt   ( optimal positions so far )
+      - \_initCord , \_initOrt ( initial positions from placer )
+      - \_curCord , \_curOrt   ( current positions )
+      - \_optCord , \_optOrt   ( optimal positions so far )
     + \_pinList ( pins on the macro )
 
 3. Pin ( Element.h ) 
