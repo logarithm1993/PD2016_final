@@ -1,3 +1,4 @@
+# CAUTION: ALWAYS `git pull` BEFORE STARTING YOUR WORK
 ## Data Structure
 1. MPTreeMgr ( MPTreeMgr.h )
   - top manager
