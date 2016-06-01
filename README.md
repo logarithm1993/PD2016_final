@@ -1,6 +1,5 @@
-# Physical Design 2016 Final Project ReadmeFile
 
-## Data Structure
+# Data Structure
 1. MPTreeMgr ( MPTreeMgr.h )
   - top manager
   - public member functions
