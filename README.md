@@ -54,10 +54,10 @@
     + \_termList
 
 5. Term ( Element.h ) 
- - terminal class
- - public member functions
-   + x(), y() 
- - private data members
-   + \_name
-   + \_fixXY( fixed positions )
+  - terminal class
+  - public member functions
+    + x(), y() 
+  - private data members
+    + \_name
+    + \_fixXY( fixed positions )
 
