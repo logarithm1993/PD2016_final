@@ -1,13 +1,13 @@
-# Final Project MakeFile
+# PD Final Project MakeFile
 
 CXX      := g++
 CPPFLAGS := -c -os
 
-SOURCES  := $(addprefix src/,           \
-           main.cpp                     \
-           Element.cpp MPTreeSA.cpp     \
-           MPTreeMgr.cpp MPTreeIo.cpp   \
-           MPTreeTest.cpp utility.cpp   \
+SOURCES  := $(addprefix src/,                   \
+           main.cpp                             \
+           Element.cpp MPTreeSA.cpp             \
+           MPTreeMgr.cpp MPTreeIo.cpp           \
+           MPTreeTest.cpp utility.cpp           \
 			  Temp_OAO.cpp Temp_NZ.cpp Temp_4U.cpp )
 
 OBJECTS   := $(SOURCES:.cpp=.o)
@@ -17,7 +17,8 @@ EXECUTABLE:= ./bin/MPTree
 all : $(SOURCES) $(EXECUTABLE)
 	@echo -n ""
 
-# debug version     (REMEMBER TO make clean FIRST!!)
+# debug version     
+# (REMEMBER TO make clean FIRST!!)
 dbg : CPPFLAGS = -c -g -DEBUG_ON_
 dbg : $(SOURCES) $(EXECUTABLE)
 	@echo "[debug_mode is on]"
