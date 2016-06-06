@@ -8,7 +8,7 @@ SOURCES  := $(addprefix src/,                   \
            Element.cpp MPTreeSA.cpp             \
            MPTreeMgr.cpp MPTreeIo.cpp           \
            MPTreeTest.cpp utility.cpp           \
-			  Temp_OAO.cpp Temp_NZ.cpp Temp_4U.cpp )
+			  MPTreeOp.cpp MPTreePack.cpp)
 
 OBJECTS   := $(SOURCES:.cpp=.o)
 EXECUTABLE:= ./bin/MPTree

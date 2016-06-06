@@ -124,13 +124,23 @@ class MPTreeMgr
 		void     updateCurSol        ();
       void     updateTempSolByOpt  ();
 		*/
-		// MP trees operation helper
-		/*
-		void     packBSTree          ();
-		void     packBSTree_rec      ( const Block* );
-      void     moveBSTree          ( Block** , Block** , Block** , bool& , bool&, int );
-      void     undoBSTree          ( Block** , Block** , Block** , bool& , bool&, int );
-		void     rotateBlock         ( Block** );
+		
+      // MP trees packing helper
+		// XXX
+      // remember to define class Contour!
+      void     packMPTree          ();
+		void     packMPTree_rec      ( const Node* );
+      
+      // MP trees operation helper
+      void     perturbMPTree       ( Node** , Node** , Node** , bool& , bool&, int ); // modify arguments
+      // XXX
+      // op1: rotate, flip <8 types>
+      // op2: swap node
+      // op3: delete insert node
+      // op4: swap subTrees
+      
+      /*
+      void     rotateBlock         ( Block** );
       void     swapBlock           ( Block** , Block** );
       void     swapBlock_int       ( Block* , Block* );
       void     changeNbrPtr        ( Block* , Block* );
@@ -141,12 +151,10 @@ class MPTreeMgr
       void     delInsBlock         ( Block** , bool& , Block** , bool& );
       void     getDelInsPair       ( int& , int& ) const;
       void     delInsBlock_int     ( Block* , bool , Block* , bool );
-		void     printBSTree         () const;
-		void     printBSTree_rec     ( const Block* , int ) const;
-      void     indent              ( int ) const;
 		*/
+		
 		// simulated annealing helper	
-      /*
+      /* XXX uncomment these function when needed
 		void     greedyRun           ();
 		void     simAnneal_int       ();
 	   void     initSol             ();

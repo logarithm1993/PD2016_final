@@ -101,6 +101,7 @@ class Node
 		Orient      _initOrt;  // from placer
 		Orient      _curOrt;
 		Orient      _optOrt;
+     // Tree structure 
 };
 
 class Pin
