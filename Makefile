@@ -13,7 +13,7 @@ SOURCES  := $(addprefix src/,                   \
 OBJECTS   := $(SOURCES:.cpp=.o)
 EXECUTABLE:= ./bin/MPTree
 
-# optimized version (DEFAULT)
+# optimized version <DEFAULT>
 all : $(SOURCES) $(EXECUTABLE)
 	@echo -n ""
 
