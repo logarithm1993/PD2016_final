@@ -52,7 +52,7 @@ Node::centerX() const
     if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
         return _curCord._x + _width/2;
     else
-    return _curCord._x + _height/2;
+        return _curCord._x + _height/2;
     return -1;
 }
 
@@ -83,18 +83,20 @@ double
 Pin::x() const
 {
     //TODO -> done 4U
-    double x = (double)_node->_curCord._x;
-    double w = (double)_node->_width;
-    double h = (double)_node->_height;
+    double x  = (double)_node->_curCord._x;
+    double w  = (double)_node->_width;
+    double w2 = (double)_node->_width/2;
+    double h  = (double)_node->_height;
+    double h2 = (double)_node->_height/2;
     switch(_node->_curOrt) {
-        case N :  return x + _offsetX; 
-        case W :  return x + h - _offsetY;
-        case S :  return x + w - _offsetX;
-        case E :  return x + _offsetY;
-        case FN:  return x + w - _offsetX;
-        case FW:  return x + h - _offsetY;
-        case FS:  return x + _offsetX;
-        case FE:  return x + _offsetY;
+        case N :  return x + w2 + _offsetX; 
+        case W :  return x + h - h2 - _offsetY;
+        case S :  return x + w - w2 - _offsetX;
+        case E :  return x + h2 + _offsetY;
+        case FN:  return x + w - w2 - _offsetX;
+        case FW:  return x + h - h2 - _offsetY;
+        case FS:  return x + w2 + _offsetX;
+        case FE:  return x + h2 + _offsetY;
     }
 }
 
@@ -102,18 +104,20 @@ double
 Pin::y() const
 {
     //TODO -> done 4U
-    double y = (double)_node->_curCord._y;  
-    double w = (double)_node->_width;
-    double h = (double)_node->_height;
+    double y  = (double)_node->_curCord._y;  
+    double w  = (double)_node->_width;
+    double w2 = (double)_node->_width/2;
+    double h  = (double)_node->_height;
+    double h2 = (double)_node->_height/2;
     switch(_node->_curOrt) {
-        case N :  return y + _offsetX; 
-        case W :  return y + _offsetX;
-        case S :  return y + h - _offsetY;
-        case E :  return y + w - _offsetX;
-        case FN:  return y +  _offsetY;
-        case FW:  return y + w - _offsetX;
-        case FS:  return y + h - _offsetY;
-        case FE:  return y + _offsetX;
+        case N :  return y + h2 + _offsetX; 
+        case W :  return y + w2 + _offsetX;
+        case S :  return y + h - h2 - _offsetY;
+        case E :  return y + w - w2 - _offsetX;
+        case FN:  return y + h2 + _offsetY;
+        case FW:  return y + w - w2 - _offsetX;
+        case FS:  return y + h - h2 - _offsetY;
+        case FE:  return y + w2 + _offsetX;
     }
 }
 
