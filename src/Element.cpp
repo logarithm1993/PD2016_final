@@ -48,7 +48,7 @@
 int
 Node::centerX() const
 {
-    //TODO -> done 4U
+    // done 4U
     if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
         return _curCord._x + _width/2;
     else
@@ -59,7 +59,7 @@ Node::centerX() const
 int
 Node::centerY() const
 {
-    //TODO -> done 4U
+    // done 4U
     if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
         return _curCord._y + _height/2;
     else
@@ -82,12 +82,12 @@ Node::centerY() const
 double
 Pin::x() const
 {
-    //TODO -> done 4U
+    // done 4U
     double x  = (double)_node->_curCord._x;
     double w  = (double)_node->_width;
-    double w2 = (double)_node->_width/2;
+    double w2 = (double)(_node->_width/2);
     double h  = (double)_node->_height;
-    double h2 = (double)_node->_height/2;
+    double h2 = (double)(_node->_height/2);
     switch(_node->_curOrt) {
         case N :  return x + w2 + _offsetX; 
         case W :  return x + h - h2 - _offsetY;
@@ -103,12 +103,12 @@ Pin::x() const
 double
 Pin::y() const
 {
-    //TODO -> done 4U
+    // done 4U
     double y  = (double)_node->_curCord._y;  
     double w  = (double)_node->_width;
-    double w2 = (double)_node->_width/2;
+    double w2 = (double)(_node->_width/2);
     double h  = (double)_node->_height;
-    double h2 = (double)_node->_height/2;
+    double h2 = (double)(_node->_height/2);
     switch(_node->_curOrt) {
         case N :  return y + h2 + _offsetX; 
         case W :  return y + w2 + _offsetX;
@@ -136,7 +136,7 @@ Pin::y() const
 double
 Net::computeHPWL() const
 {
-    //TODO -> 4U done
+    // 4U done
     double xmax = DBL_MIN;
     double xmin = DBL_MAX;
     double ymax = DBL_MIN;

@@ -50,11 +50,10 @@ extern string  Nz_Orient2Str     ( const Orient & );
 ///                         BASIC TYPES                              ///
 ////////////////////////////////////////////////////////////////////////
 
-/*
 class TriPtr
 {
-	friend class BstMgr;
-	friend class Block;
+	friend class MPTreeMgr;
+	friend class Node;
 	friend class Term;
 	friend class Net;
 	public:
@@ -70,15 +69,13 @@ class TriPtr
 			swap        = *this;
 			*this       = temp;
 		}
-		void resetPtr();
+		void resetPtr() { _p = _left = _right = NULL; }
 	private:
 		// data members
-		Block * _p;
-		Block * _left;
-		Block * _right;
-
+		Node * _p;
+		Node * _left;
+		Node * _right;
 };
-*/
 
 /*
 class Contour
