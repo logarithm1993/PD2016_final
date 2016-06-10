@@ -110,17 +110,16 @@ class MPTreeMgr
 		void     printContour        () const;
 		*/
 		// cost computation helper
-      /*
+      
 		void     initCost            ();
       double   computeCost         ();
-      double   computeAWCost       () const;
       double   computeArea         ();
-      double   computeWireL        () const;
-      double   computeShapeCost    () const;
-		void     updateOptSol        ();
-		void     updateCurSol        ();
-      void     updateTempSolByOpt  ();
-		*/
+      double   computeWL           () const;
+      double   computeDisp         () const;
+		//void     updateOptSol        ();
+		//void     updateCurSol        ();
+      //void     updateTempSolByOpt  ();
+		
 		
       // MP trees packing helper
 		// XXX
@@ -192,6 +191,11 @@ class MPTreeMgr
       NodeList           _treeRoot;
       int                _chipWidth;
       int                _chipHeight;
+
+      // SA parameters
+      double             _initArea;
+      double             _initWL;
+      double             _initDisp;
 };
 
 ////////////////////////////////////////////////////////////////////////
