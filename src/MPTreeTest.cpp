@@ -49,7 +49,14 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-   printMPTree();
+   /*printMPTree();
+   swapSubTree_int( 2 , 3 );
+   swapSubTree_int( 3 , 2 );
+   swapSubTree_int( 0 , 3 );
+   swapSubTree_int( 3 , 0 );
+   swapSubTree_int( 1 , 2 );
+   swapSubTree_int( 2 , 1 );
+   printMPTree();*/
 	//writeAllNode( cout );
 	//writeAllTerm( cout );
 	//writeAllNet ( cout );

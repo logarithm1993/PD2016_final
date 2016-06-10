@@ -45,6 +45,8 @@ extern void    Nz_ParseToken     ( const string & , Token & );
 extern void    Nz_PrintToken     ( const Token & );
 extern Orient  Nz_Str2Orient     ( const string & );
 extern string  Nz_Orient2Str     ( const Orient & );
+extern Orient  Nz_Int2Orient     ( const int & );
+extern int     Nz_Orient2Int     ( const Orient & );
 
 ////////////////////////////////////////////////////////////////////////
 ///                         BASIC TYPES                              ///
