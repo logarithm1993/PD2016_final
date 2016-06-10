@@ -130,6 +130,10 @@ class MPTreeMgr
       // MP trees operation helper
       void     perturbMPTree       ( Node** , Node** , int* , int* , int );
       void     undoMPTree          ( Node** , Node** , int* , int* , int );
+      void     rotateNode          ( Node** , int* );
+      void     delInsNode          ( Node** , int* , Node** , int* );
+      void     swapNode            ( Node** , Node** );
+      void     swapSubTree         ( int* , int* );
       // XXX
       // op1: rotate, flip <8 types>
       // op2: swap node
