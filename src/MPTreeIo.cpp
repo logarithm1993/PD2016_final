@@ -597,15 +597,15 @@ MPTreeMgr::buildInitMPTree()
       nodeX = pNode->centerX();
       nodeY = pNode->centerY();
       if ( nodeX <= centerX ) { // left
-         if ( nodeY <= centerY ) // bottom
+         if ( nodeY <= centerY ) // BL
             node[0].push_back( pNode );
-         else // top
+         else // TL
             node[2].push_back( pNode );
       }
       else { // right
-         if ( nodeY <= centerY ) // bottom
+         if ( nodeY <= centerY ) // BR
             node[1].push_back( pNode );
-         else // top
+         else // TR
             node[3].push_back( pNode );
       }
    }
@@ -632,7 +632,6 @@ void
 MPTreeMgr::initMPTreeRoot()
 {
    Node * pNode;
-   string str;
    int i , n;
 
    for ( i = 0 ; i < 3 ; ++i ) _treeRoot.push_back( new Node );
@@ -672,6 +671,18 @@ MPTreeMgr::buildRegionTree( NodeList & node )
    }
    return true;
 }
+
+/**Function*************************************************************
+
+  Synopsis    [print MP tree]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
 
 void
 MPTreeMgr::printMPTree() const

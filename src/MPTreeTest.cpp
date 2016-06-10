@@ -49,8 +49,8 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-   /*printMPTree();
-   swapSubTree_int( 2 , 3 );
+   printMPTree();
+   /*swapSubTree_int( 2 , 3 );
    swapSubTree_int( 3 , 2 );
    swapSubTree_int( 0 , 3 );
    swapSubTree_int( 3 , 0 );
