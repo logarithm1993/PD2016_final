@@ -111,7 +111,7 @@ class MPTreeMgr
 		*/
 		// cost computation helper
       
-		void     initCost            ();
+		void     initCost            (); // TODO
       double   computeCost         ();
       double   computeArea         ();
       double   computeWL           () const;
@@ -155,18 +155,17 @@ class MPTreeMgr
 		*/
 		
 		// simulated annealing helper	
-      /* XXX uncomment these function when needed
-		void     greedyRun           ();
+      //  uncomment these function when needed
+		//void     greedyRun           ();
 		void     simAnneal_int       ();
-	   void     initSol             ();
-	   void     setSAPar            ();
-	   void     setTemp             ();
-      double   getInitTemp         ();
-      int      selectMove          () const;
-		bool     acceptSol           ( double , int& ) const;
-		double   randProb            () const;
-		bool     simAnnealStop       ();
-		*/
+	   //void     setSAPar            ();
+	   void     setTemp             (double &, double &);
+      //double   getInitTemp         ();
+      //int      selectMove          () const;
+		//bool     acceptSol           ( double , int& ) const;
+		//double   randProb            () const;
+		//bool     simAnnealStop       ();
+		
 		// writeOutput() helper
 		void     writeNodePosition   ( ostream& ) const;
 		void     writeAllNode        ( ostream& ) const;
@@ -201,6 +200,7 @@ class MPTreeMgr
       double             _initArea;
       double             _initWL;
       double             _initDisp;
+      double             _optCost;
 };
 
 ////////////////////////////////////////////////////////////////////////

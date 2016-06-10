@@ -163,7 +163,7 @@ class Net
 	friend class Term;
    public:
 		Net() : _name("") {};
-		double computeHPWL() const;
+		double HPWL() const;
 	private:
 		string       _name;
 		PinList      _pinList;

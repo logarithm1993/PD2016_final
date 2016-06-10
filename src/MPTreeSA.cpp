@@ -19,9 +19,9 @@
 ////////////////////////////////////////////////////////////////////////
 ///                          INCLUDES                                ///
 ////////////////////////////////////////////////////////////////////////
-
 #include "MPTreeMgr.h"
 #include <cmath>
+#include <cfloat>
 
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
@@ -31,15 +31,15 @@
 ///                     FUNCTION DEFINITIONS                         ///
 ////////////////////////////////////////////////////////////////////////
 
-/**Function*************************************************************
+/**function*************************************************************
 
-  Synopsis    [Simulated annealing (interface)]
+  synopsis    [simulated annealing (interface)]
 
-  Description []
+  description []
                
-  SideEffects []
+  sideeffects []
 
-  SeeAlso     []
+  seealso     []
 
 ***********************************************************************/
 
@@ -48,7 +48,76 @@ MPTreeMgr::simAnneal()
 {
    // compute initial MPTree;
    // compute initial cost func parameters
+   // do sa
+   simAnneal_int();
+}
+
+/**function*************************************************************
+
+  synopsis    [simulated annealing (Real)]
+
+  description []
+               
+  sideeffects []
+
+  seealso     []
+
+***********************************************************************/
+void
+MPTreeMgr::simAnneal_int()
+{
+   double cost, cosePrev, deltaCost;
+   double T_start, T_end;
    
+   setTemp(T_start, T_end);
+   cost = computeCost();
+
+   unsigned repeat = 20;
+   double   T      = T_start;
+   double   r      = 0.97;
+   while (T > T_end){
+      for(unsigned i = 0; i < repeat; ++i){
+      
+      }
+      T *= r;
+   }
+    
+}
+
+/**Function*************************************************************
+
+  Synopsis    [initialize SA parameters]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+void
+MPTreeMgr::initCost()
+{
+  _initWL   = 0.0; 
+  _initArea = 0.0;
+  _initDisp = 0.0;
+  _optCost  = DBL_MAX;
+  // computeWL
+  for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
+     _initWL += _allNet[i]->HPWL();
+  // computeArea TODO
+  
+  // computeDisp
+  for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+     _initDisp += _allNode[i]->displacement();
+}
+
+void
+MPTreeMgr::setTemp(double & T0, double & Tx)
+{
+   // TODO
+   T0 = 9999.999;
+   Tx = 0.0001;
 }
 
 /**Function*************************************************************
@@ -101,7 +170,7 @@ MPTreeMgr::computeWL() const
 {
    double sum = 0.0;
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i){
-      sum += _allNet[i]->computeHPWL();
+      sum += _allNet[i]->HPWL();
    }
    return sum / _initWL;
 }

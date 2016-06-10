@@ -188,7 +188,7 @@ Pin::y() const
 ***********************************************************************/
 
 double
-Net::computeHPWL() const
+Net::HPWL() const
 {
     // 4U done
     double xmax = DBL_MIN;
