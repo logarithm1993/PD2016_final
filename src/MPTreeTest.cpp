@@ -49,7 +49,21 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-   printMPTree();
+   cout << " >  testing MPTree : \n";
+   Node * pNd1 , * pNd2;
+   int arg1 , arg2;
+
+   pNd1 = pNd2 = NULL;
+   arg1 = arg2 = -1;
+   /*cout << "rotate a node : \n";
+   perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , 0 );
+   cout << "node name = " << pNd1->_name 
+        << " old Ort = "   << arg1 
+        << " new Ort =  "  << Nz_Orient2Int( pNd1->_curOrt ) << endl;
+   cout << "undo: \n" << endl;
+   perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , 0 );
+   cout << "node name = " << pNd1->_name << " ort =  " << Nz_Orient2Int( pNd1->_curOrt ) << endl;*/
+   //printMPTree();
    /*swapSubTree_int( 2 , 3 );
    swapSubTree_int( 3 , 2 );
    swapSubTree_int( 0 , 3 );

@@ -292,7 +292,7 @@ MPTreeMgr::readNet( const char * file )
 
 	readNetHeader    ( input );
 	readNetList      ( input );
-	
+
 	input.close();
 	cout << " >  readNet() : reading net success!\n";
 	return true;
