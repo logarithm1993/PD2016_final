@@ -111,7 +111,7 @@ class MPTreeMgr
 		*/
 		// cost computation helper
       
-		void     initCost            (); // TODO
+		void     initCost            ();
       double   computeCost         ();
       double   computeArea         ();
       double   computeWL           () const;
@@ -160,10 +160,6 @@ class MPTreeMgr
 		void     simAnneal_int       ();
 	   //void     setSAPar            ();
 	   void     setTemp             (double &, double &);
-      //double   getInitTemp         ();
-      //int      selectMove          () const;
-		//bool     acceptSol           ( double , int& ) const;
-		//double   randProb            () const;
 		//bool     simAnnealStop       ();
 		
 		// writeOutput() helper

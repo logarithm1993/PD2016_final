@@ -131,18 +131,21 @@ MPTreeMgr::simAnneal_int()
 void
 MPTreeMgr::initCost()
 {
-  _initWL   = 0.0; 
-  _initArea = 0.0;
-  _initDisp = 0.0;
-  _optCost  = DBL_MAX;
-  // computeWL
-  for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
+   _initWL   = 0.0; 
+   _initArea = 0.0;
+   _initDisp = 0.0;
+   _optCost  = DBL_MAX;
+   // computeWL
+   for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
      _initWL += _allNet[i]->HPWL();
-  // computeArea TODO
+   // computeArea TODO
   
-  // computeDisp
-  for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+   // computeDisp
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
+
+   _optCost = computeCost();
+   updateOptSol();
 }
 
 void
