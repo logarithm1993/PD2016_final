@@ -7,7 +7,6 @@
 
 - simAnneal
   + considering *congestion* in cost function
-    - `| x - x0 | + | y - y0 |`
 
 ### Data Structure
 1. MPTreeMgr ( MPTreeMgr.h )
@@ -28,8 +27,11 @@
     +   *simAnneal*
       - [ ] cost computation (50% done)
       - [ ] set temperature
-      - [x] perturb / undo MPT
-        + 4 operations
+      - [ ] perturb / undo MPT (50% done)
+        + [x] rotate
+        + [x] swap
+        + [ ]change subTree
+        + [ ]delete insert node
       
 2. Node ( Element.h ) 
   - macro class
