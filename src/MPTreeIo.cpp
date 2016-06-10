@@ -199,6 +199,9 @@ MPTreeMgr::readPosition( const char * file )
 	
 	input.close();
 	cout << " >  readPosition() : reading position success!\n";
+	cout << " >  initial chip boundary : \n";
+   cout << " >    Width  = " << _chipWidth  << endl;
+   cout << " >    Height = " << _chipHeight << endl;
 	return true;
 }
 
@@ -242,6 +245,9 @@ MPTreeMgr::setNodeInitPos( Node * pNode , const Token & token )
 	pNode->_initCord._x = atoi( token[1].c_str() );
 	pNode->_initCord._y = atoi( token[2].c_str() );
 	pNode->_initOrt     = Nz_Str2Orient( token[4] );
+
+   if ( pNode->_initCord._x > _chipWidth  ) _chipWidth  = pNode->_initCord._x;
+   if ( pNode->_initCord._y > _chipHeight ) _chipHeight = pNode->_initCord._y;
 }
 
 void
@@ -253,6 +259,9 @@ MPTreeMgr::setTermPos( Term * pTerm , const Token & token )
 	}
 	pTerm->_fixXY._x = atoi( token[1].c_str() );
 	pTerm->_fixXY._y = atoi( token[2].c_str() );
+   
+   if ( pTerm->_fixXY._x > _chipWidth  ) _chipWidth  = pTerm->_fixXY._x;
+   if ( pTerm->_fixXY._y > _chipHeight ) _chipHeight = pTerm->_fixXY._y;
 }
 
 /**Function*************************************************************

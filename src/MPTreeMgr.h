@@ -191,6 +191,8 @@ class MPTreeMgr
 		TermList           _allTerm;
 		NodeNameMap        _nodeNameMap;
 		TermNameMap        _termNameMap;
+      int                _chipWidth;
+      int                _chipHeight;
 };
 
 ////////////////////////////////////////////////////////////////////////

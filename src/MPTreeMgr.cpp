@@ -49,6 +49,9 @@ MPTreeMgr::MPTreeMgr()
    _allNode.reserve  ( 1024 );
    _allNet.reserve   ( 1024 );
    _allTerm.reserve  ( 1024 );
+   
+   _chipWidth  = 0;
+   _chipHeight = 0;
 }
 
 /**Function*************************************************************
