@@ -3,9 +3,11 @@
 ### Something to be deternimed
 - `class Coord`
   + use `int` or `double` to represent a coordinate
+    - use `int`
 
 - simAnneal
   + considering *congestion* in cost function
+    - `| x - x0 | + | y - y0 |`
 
 ### Data Structure
 1. MPTreeMgr ( MPTreeMgr.h )
@@ -19,14 +21,25 @@
     + \_allNode(macros) 
     + \_allNet(nets) 
     + \_allTerm(terminals)
+    + \_chipWidth/Height
+    + \_initArea/WL/Disp
+    + \_optCost
   - private helper functions 
     +   *simAnneal*
-      - [ ] cost computation
-
+      - [ ] cost computation (50% done)
+      - [ ] set temperature
+      - [x] perturb / undo MPT
+        + 4 operations
+      
 2. Node ( Element.h ) 
   - macro class
   - public member functions 
-    + [x] `centerX,Y()` --> return the center of the macro
+    + [x] `centerX,Y()`    --> return the center of the macro
+    + [x] `right, top()`
+    + [x] `width(), height()`
+    + [x] `displacement()`
+    + [x] `updateOpt/Cur()`
+    
   - private data members
     + \_name 
     + \_width, \_height
@@ -35,6 +48,9 @@
       - \_curCord , \_curOrt   ( current positions )
       - \_optCord , \_optOrt   ( optimal positions so far )
     + \_pinList ( pins on the macro )
+    + *Tree Structure*
+      - \_curPtr
+      _ \_optPtr
 
 3. Pin ( Element.h ) 
   - pin class ( connection points on a macro )
@@ -47,7 +63,7 @@
 4. Net ( Element.h ) 
   - net class
   - public member functions
-    + [x] `computeHPWL()`
+    + [x] `HPWL()`
   - private data members
     + \_name
     + \_pinList
