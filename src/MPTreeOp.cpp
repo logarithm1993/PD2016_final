@@ -101,7 +101,6 @@ MPTreeMgr::undoMPTree( Node ** pNd1 , Node ** pNd2 ,
 void
 MPTreeMgr::rotateNode( Node ** pNode , int * ort )
 {
-   // TODO
    int newOrt;
    if ( *pNode ) { // undo
       if ( *ort < 0 || *ort > 7 ) { 
@@ -172,7 +171,66 @@ MPTreeMgr::swapNode( Node ** pNd1 , Node ** pNd2 )
 void
 MPTreeMgr::swapSubTree( int * sub1 , int * sub2 )
 {
-   // TODO
+   if ( *sub1 != -1 && *sub2 != -1 ) // undo
+      swapSubTree_int( *sub1 , *sub2 );
+   else { // swap two subtrees
+      *sub1 = rand() % 4;
+      *sub2 = rand() % 4;
+      while ( *sub1 == *sub2 ) *sub2 = rand() % 4;
+      swapSubTree_int( *sub1 , *sub2 );
+   }
+}
+
+void
+MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
+{
+   if ( sub1 == sub2 ) {
+      cout << "[Warning] swapSubTree() : same subtree index!\n";
+      return;
+   }
+   if ( sub1 < 0 || sub1 > 3 ) {
+      cout << "[Error] swapSubTree() : wrong subtree index (sub1)!\n";
+      assert(0);
+   }
+   if ( sub2 < 0 || sub2 > 3 ) {
+      cout << "[Error] swapSubTree() : wrong subtree index (sub2)!\n";
+      assert(0);
+   }
+   Node * pNd1 , * pNd2 , * pTemp;
+   
+   pNd1 = getSubTreeRoot( sub1 );
+   pNd2 = getSubTreeRoot( sub2 );
+   
+   // swap children of treeRoot
+   if ( sub1 == 3 ) {
+      pTemp                          = _treeRoot[2]->_curPtr._right;
+      _treeRoot[2]->_curPtr._right   = _treeRoot[sub2]->_curPtr._left;
+      _treeRoot[sub2]->_curPtr._left = pTemp;
+   }
+   else if ( sub2 == 3 ) {
+      pTemp                          = _treeRoot[2]->_curPtr._right;
+      _treeRoot[2]->_curPtr._right   = _treeRoot[sub1]->_curPtr._left;
+      _treeRoot[sub1]->_curPtr._left = pTemp;
+   }
+   else {
+      pTemp                          = _treeRoot[sub1]->_curPtr._left;
+      _treeRoot[sub1]->_curPtr._left = _treeRoot[sub2]->_curPtr._left;
+      _treeRoot[sub2]->_curPtr._left = pTemp;
+   }
+   
+   // swap parents of pNd
+   pTemp            = pNd1->_curPtr._p;
+   pNd1->_curPtr._p = pNd2->_curPtr._p;
+   pNd2->_curPtr._p = pTemp;
+}
+
+Node*
+MPTreeMgr::getSubTreeRoot( int sub )
+{
+   if ( sub == 0 ) return _treeRoot[0]->_curPtr._left;
+   if ( sub == 1 ) return _treeRoot[1]->_curPtr._left;
+   if ( sub == 2 ) return _treeRoot[2]->_curPtr._left;
+   if ( sub == 3 ) return _treeRoot[2]->_curPtr._right;
 }
 
 ////////////////////////////////////////////////////////////////////////

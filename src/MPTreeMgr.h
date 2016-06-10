@@ -134,6 +134,8 @@ class MPTreeMgr
       void     delInsNode          ( Node** , int* , Node** , int* );
       void     swapNode            ( Node** , Node** );
       void     swapSubTree         ( int* , int* );
+      void     swapSubTree_int     ( int  , int  );
+      Node*    getSubTreeRoot      ( int );
       // XXX
       // op1: rotate, flip <8 types>
       // op2: swap node
