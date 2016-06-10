@@ -98,6 +98,9 @@ class MPTreeMgr
 		// buildInitMPTree() helper
       void     initMPTreeRoot     ();
       bool     buildRegionTree    ( NodeList& );
+      void     printMPTree        () const;
+      void     printMPTree_rec    ( const Node* , int ) const;
+      void     indent             ( int ) const;
       // contour operating helper
 		/*
 		void     initContour         ();

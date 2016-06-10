@@ -671,6 +671,36 @@ MPTreeMgr::buildRegionTree( NodeList & node )
    return true;
 }
 
+void
+MPTreeMgr::printMPTree() const
+{
+	printMPTree_rec( _treeRoot[0] , 0 );
+}
+
+void
+MPTreeMgr::printMPTree_rec( const Node * pNode , int d ) const
+{
+	indent(d);
+	cout << "Node name : " << pNode->_name << endl;
+	if ( (pNode->_curPtr)._left ) {
+	   indent(d);
+	   cout << "Left child:\n";
+		printMPTree_rec( (pNode->_curPtr)._left , d+1 );
+	}
+	if ( (pNode->_curPtr)._right ) {
+	   indent(d);
+	   cout << "Right child:\n";
+		printMPTree_rec( (pNode->_curPtr)._right , d+1 );
+	}
+}
+
+void
+MPTreeMgr::indent( int d ) const
+{
+	int i;
+	for ( i = 0 ; i < d ; ++i ) cout << "    ";
+}
+
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///
 ////////////////////////////////////////////////////////////////////////

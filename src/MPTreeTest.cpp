@@ -49,7 +49,8 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-	writeAllNode( cout );
+   printMPTree();
+	//writeAllNode( cout );
 	//writeAllTerm( cout );
 	//writeAllNet ( cout );
 }
