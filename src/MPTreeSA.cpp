@@ -26,11 +26,11 @@
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
-int    chooseMove()
+static int    chooseMove()
        { return rand() % 4; }
-double prob()
+static double prob()
        { return (double)rand() / RAND_MAX; }
-bool   isAccepted(const double &C, const double &T)
+static bool   isAccepted(const double &C, const double &T)
        { return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
