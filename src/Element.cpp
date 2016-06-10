@@ -24,6 +24,7 @@
 #include "Element.h"
 #include "utility.h"
 #include <cfloat>
+#include <cmath>
 
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
@@ -111,6 +112,15 @@ Node::height() const
     return -1;
 }
 
+int
+Node::displacement() const
+{
+   //done OAO
+   int dx = _curCord._x - _initCord._x;
+   int dy = _curCord._y - _initCord._y;
+   
+   return abs(dx) + abs(dy);
+}
 /**Pin Function*********************************************************
  
   Synopsis    []

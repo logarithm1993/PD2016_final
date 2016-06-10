@@ -116,12 +116,13 @@ class Node
 	public:
 		Node() : _name("") , _width(0) , _height(0) {};
 		Node( string name , int width , int height ) :  _name(name) , _width(width) , _height(height) {}
-		int centerX() const;
-		int centerY() const;
-		int right()   const;
-		int top()     const;
-		int width()   const;
-		int height()  const;
+		int centerX()      const;
+		int centerY()      const;
+		int right()        const;
+		int top()          const;
+		int width()        const;
+		int height()       const;
+      int displacement() const;
 	private:
 		string      _name;
 		int         _width;

@@ -78,7 +78,7 @@ MPTreeMgr::computeCost()
   Synopsis    [cost computing function (inner)]
 
   Description [
-                 Area: chip outline area
+                 Area: contour area(like Riemann sum)
                  WL  : HPWL
                  Disp: Node displacement
               ]
@@ -91,7 +91,9 @@ MPTreeMgr::computeCost()
 double
 MPTreeMgr::computeArea()
 {
-   return 0.0;
+   double sum = 0.0;
+   // TODO :  Riemann sum
+   return sum / _initArea;
 }
 
 double
@@ -99,6 +101,7 @@ MPTreeMgr::computeWL() const
 {
    double sum = 0.0;
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i){
+      sum += _allNet[i]->computeHPWL();
    }
    return sum / _initWL;
 }
@@ -106,7 +109,11 @@ MPTreeMgr::computeWL() const
 double
 MPTreeMgr::computeDisp() const
 {
-   return 0.0;
+   double sum = 0.0;
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i){
+      sum += _allNode[i]->displacement();
+   }
+   return sum / _initDisp;
 }
 
 ////////////////////////////////////////////////////////////////////////
