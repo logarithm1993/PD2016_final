@@ -54,6 +54,8 @@ MPTreeMgr::readInput( const char * node , const char * pl , const char * net )
 	if ( !readPosition ( pl   )   )      return false;
 	if ( !readNet      ( net  )   )      return false;
    buildInitMPTree();
+   // packingMPTree();
+   // initCost();
 	return true;
 }
 

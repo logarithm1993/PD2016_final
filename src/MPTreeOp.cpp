@@ -8,17 +8,17 @@
 
   Synopsis    [functions under works]
 
-  Author      [TBD]
+  Author      [Nian-Ze Lee]
   
   Affiliation [NTU]
 
-  Date        [Jun 1, 2016]
+  Date        [June 10, 2016]
 
 ***********************************************************************/
+
 #include "MPTreeMgr.h"
 #include "Element.h"
 #include "utility.h"
-
 
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
@@ -30,7 +30,7 @@
 
 /**Function*************************************************************
 
-  Synopsis    [read input data : nodes , pl(positions) , nets ]
+  Synopsis    [perturb/undo MP tree : SA interface]
 
   Description []
                
@@ -39,11 +39,51 @@
   SeeAlso     []
 
 ***********************************************************************/
-void
-MPTreeMgr::perturbMPTree( Node** a, Node** b, Node** c, bool& x, bool& y , int i) 
-// modify arguments
-{
 
+void
+MPTreeMgr::perturbMPTree( Node ** pNd1 , Node ** pNd2 , 
+                          int * arg1   , int * arg2   , 
+                          int type )
+{
+   switch ( type )
+   {
+      case 0:
+         rotateNode( pNd1 , arg1 );
+         break;
+      case 1:
+         delInsNode( pNd1 , arg1 , pNd2 , arg2 );
+         break;
+      case 2:
+         swapNode( pNd1 , pNd2 );
+         break;
+      case 3:
+         swapSubTree( arg1 , arg2 );
+         break;
+   }
 }
 
+void
+MPTreeMgr::undoMPTree( Node ** pNd1 , Node ** pNd2 , 
+                       int * arg1   , int * arg2   , 
+                       int type )
+{
+   switch ( type )
+   {
+      case 0:
+         rotateNode( pNd1 , arg1 );
+         break;
+      case 1:
+         delInsNode( pNd2 , arg2 , pNd1 , arg1 );
+         break;
+      case 2:
+         swapNode( pNd1 , pNd2 );
+         break;
+      case 3:
+         swapSubTree( arg1 , arg2 );
+         break;
+   }
+}
 
+////////////////////////////////////////////////////////////////////////
+///                       END OF FILE                                ///
+////////////////////////////////////////////////////////////////////////

@@ -129,7 +129,8 @@ class MPTreeMgr
 		void     packMPTree_rec      ( const Node* );
       
       // MP trees operation helper
-      void     perturbMPTree       ( Node** , Node** , Node** , bool& , bool&, int ); // modify arguments
+      void     perturbMPTree       ( Node** , Node** , int* , int* , int );
+      void     undoMPTree          ( Node** , Node** , int* , int* , int );
       // XXX
       // op1: rotate, flip <8 types>
       // op2: swap node
