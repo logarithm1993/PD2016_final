@@ -115,11 +115,29 @@ Node::height() const
 int
 Node::displacement() const
 {
-   //done OAO
+   // done OAO
    int dx = _curCord._x - _initCord._x;
    int dy = _curCord._y - _initCord._y;
    
    return abs(dx) + abs(dy);
+}
+
+void
+Node::updateOpt()
+{
+   // done OAO
+   _optCord  = _curCord;
+   _optOrt   = _curOrt;
+   _optPtr   = _curPtr;
+}
+
+void
+Node::updateCur()
+{
+   // done OAO
+   _curCord = _optCord;
+   _curOrt  = _optOrt;
+   _curPtr  = _optPtr;
 }
 /**Pin Function*********************************************************
  

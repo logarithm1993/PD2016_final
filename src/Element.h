@@ -123,6 +123,8 @@ class Node
 		int width()        const;
 		int height()       const;
       int displacement() const;
+      void updateOpt();
+      void updateCur();
 	private:
 		string      _name;
 		int         _width;
@@ -135,7 +137,8 @@ class Node
 		Orient      _curOrt;
 		Orient      _optOrt;
       // Tree structure
-      TriPtr      _curPtr;  
+      TriPtr      _curPtr;
+      TriPtr      _optPtr;
 };
 
 class Pin

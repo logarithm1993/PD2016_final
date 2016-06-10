@@ -22,10 +22,16 @@
 #include "MPTreeMgr.h"
 #include <cmath>
 #include <cfloat>
-
+#include <cstdlib>
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
+int    chooseMove()
+       { return rand() % 4; }
+double prob()
+       { return (double)rand() / RAND_MAX; }
+bool   isAccepted(const double &C, const double &T)
+       { return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
@@ -66,7 +72,7 @@ MPTreeMgr::simAnneal()
 void
 MPTreeMgr::simAnneal_int()
 {
-   double cost, cosePrev, deltaCost;
+   double cost, costPrev, deltaCost;
    double T_start, T_end;
    
    setTemp(T_start, T_end);
@@ -77,11 +83,38 @@ MPTreeMgr::simAnneal_int()
    double   r      = 0.97;
    while (T > T_end){
       for(unsigned i = 0; i < repeat; ++i){
-      
+         Node* obj1 = NULL;
+         Node* obj2 = NULL;
+         int   arg1 = -1;
+         int   arg2 = -1;
+         int   move = chooseMove();
+         perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         while (!packMPTree()){
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+            obj1 = obj2 = NULL;
+            arg1 = arg2 = -1;
+            move = chooseMove(); // TBD: choose another?
+            perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         }
+         costPrev = cost;
+         cost = computeCost();
+         deltaCost = cost - costPrev;
+         if (deltaCost < 0){
+            if(cost < _optCost){
+               _optCost = cost;
+               updateOptSol();
+            }
+            continue;
+         }
+         else if(isAccepted(deltaCost, T))
+            continue;
+         else
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
       }
       T *= r;
    }
-    
+   // restore opt-info
+   updateCurSol();
 }
 
 /**Function*************************************************************
@@ -183,6 +216,31 @@ MPTreeMgr::computeDisp() const
       sum += _allNode[i]->displacement();
    }
    return sum / _initDisp;
+}
+
+/**Function*************************************************************
+
+  Synopsis    [update Node info]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+void
+MPTreeMgr::updateOptSol()
+{
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+      _allNode[i]->updateOpt();
+}
+
+void
+MPTreeMgr::updateCurSol()
+{
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+      _allNode[i]->updateCur();
 }
 
 ////////////////////////////////////////////////////////////////////////

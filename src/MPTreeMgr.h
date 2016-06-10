@@ -116,15 +116,15 @@ class MPTreeMgr
       double   computeArea         ();
       double   computeWL           () const;
       double   computeDisp         () const;
-		//void     updateOptSol        ();
-		//void     updateCurSol        ();
+		void     updateOptSol        ();
+		void     updateCurSol        ();
       //void     updateTempSolByOpt  ();
 		
 		
       // MP trees packing helper
 		// XXX
       // remember to define class Contour!
-      void     packMPTree          ();
+      bool     packMPTree          ();
 		void     packMPTree_rec      ( const Node* );
       
       // MP trees operation helper
