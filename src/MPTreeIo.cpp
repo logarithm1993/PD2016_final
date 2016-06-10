@@ -674,6 +674,7 @@ MPTreeMgr::buildRegionTree( NodeList & node )
 void
 MPTreeMgr::printMPTree() const
 {
+   cout << " >  printMPTree():\n\n";
 	printMPTree_rec( _treeRoot[0] , 0 );
 }
 
@@ -681,7 +682,7 @@ void
 MPTreeMgr::printMPTree_rec( const Node * pNode , int d ) const
 {
 	indent(d);
-	cout << "Node name : " << pNode->_name << endl;
+	cout << pNode->_name << endl;
 	if ( (pNode->_curPtr)._left ) {
 	   indent(d);
 	   cout << "Left child:\n";
