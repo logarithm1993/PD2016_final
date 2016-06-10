@@ -84,6 +84,79 @@ MPTreeMgr::undoMPTree( Node ** pNd1 , Node ** pNd2 ,
    }
 }
 
+/**Function*************************************************************
+
+  Synopsis    [Operation 1 : rotate a node]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+MPTreeMgr::rotateNode( Node ** pNode , int * ort )
+{
+   // TODO
+}
+
+/**Function*************************************************************
+
+  Synopsis    [Operation 2 : delete and insert a node]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+MPTreeMgr::delInsNode( Node ** pNd1 , int * right1 , 
+                       Node ** pNd2 , int * right2 )
+{
+   // TODO
+}
+
+/**Function*************************************************************
+
+  Synopsis    [Operation 3 : swap two nodes]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+MPTreeMgr::swapNode( Node ** pNd1 , Node ** pNd2 )
+{
+   // TODO
+}
+
+/**Function*************************************************************
+
+  Synopsis    [Operation 4 : swap two subtrees]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+MPTreeMgr::swapSubTree( int * sub1 , int * sub2 )
+{
+   // TODO
+}
+
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///
 ////////////////////////////////////////////////////////////////////////
