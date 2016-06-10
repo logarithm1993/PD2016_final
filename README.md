@@ -52,7 +52,7 @@
     + \_pinList ( pins on the macro )
     + *Tree Structure*
       - \_curPtr
-      _ \_optPtr
+      - \_optPtr
 
 3. Pin ( Element.h ) 
   - pin class ( connection points on a macro )
