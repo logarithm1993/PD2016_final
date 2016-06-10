@@ -16,6 +16,8 @@
 
 ***********************************************************************/
 
+#include <cstdlib>
+#include <cassert>
 #include "MPTreeMgr.h"
 #include "Element.h"
 #include "utility.h"
@@ -100,6 +102,22 @@ void
 MPTreeMgr::rotateNode( Node ** pNode , int * ort )
 {
    // TODO
+   int newOrt;
+   if ( *pNode ) { // undo
+      if ( *ort < 0 || *ort > 7 ) { 
+         cout << "[Error] rotateNode() : invalid ort!\n";
+         assert(0);
+      }
+      (*pNode)->_curOrt = Nz_Int2Orient( *ort );
+   }
+   else { // rotate
+      *pNode = _allNode[ rand() % _allNode.size() ];
+      if ( *ort != -1 ) cout << "[Warning] rotateNode() : ort not clear!\n";
+      *ort   = Nz_Orient2Int( (*pNode)->_curOrt );
+      newOrt = rand() % 8;
+      while ( newOrt == *ort ) newOrt = rand() % 8;
+      (*pNode)->_curOrt = Nz_Int2Orient( newOrt );
+   }
 }
 
 /**Function*************************************************************

@@ -112,6 +112,44 @@ Nz_Orient2Str( const Orient & ort )
 	if ( ort == FE )  return "FE";
 }
 
+/**Function*************************************************************
+
+  Synopsis    [int v.s. Orient conversion]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+Orient
+Nz_Int2Orient( const int & i )
+{
+	if ( i == 0 ) return N;
+	if ( i == 1 ) return W;
+	if ( i == 2 ) return S;
+	if ( i == 3 ) return E;
+	if ( i == 4 ) return FN;
+	if ( i == 5 ) return FW;
+	if ( i == 6 ) return FS;
+	if ( i == 7 ) return FE;
+}
+
+int
+Nz_Orient2Int( const Orient & ort )
+{
+	if ( ort == N  )  return 0;
+	if ( ort == W  )  return 1;
+	if ( ort == S  )  return 2;
+	if ( ort == E  )  return 3;
+	if ( ort == FN )  return 4;
+	if ( ort == FW )  return 5;
+	if ( ort == FS )  return 6;
+	if ( ort == FE )  return 7;
+}
+
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///
 ////////////////////////////////////////////////////////////////////////
