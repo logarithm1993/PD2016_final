@@ -49,6 +49,7 @@ MPTreeMgr::MPTreeMgr()
    _allNode.reserve  ( 1024 );
    _allNet.reserve   ( 1024 );
    _allTerm.reserve  ( 1024 );
+   _treeRoot.reserve ( 16 );
    
    _chipWidth  = 0;
    _chipHeight = 0;
@@ -86,6 +87,13 @@ MPTreeMgr::freeNode()
 			}
 		}
 	}
+   
+   for ( i = 0 , n = _treeRoot.size() ; i < n ; ++i ) {
+      if ( _treeRoot[i] ) {
+         delete _treeRoot[i];
+         _treeRoot[i] = NULL;
+      }
+   }
 }
 
 void

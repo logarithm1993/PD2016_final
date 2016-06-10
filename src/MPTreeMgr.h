@@ -76,6 +76,7 @@ class MPTreeMgr
 		bool     readNode           ( const char * );
 		bool     readPosition       ( const char * );
 		bool     readNet            ( const char * );
+      void     buildInitMPTree    ();
 		// readNode() helper
       void     readNodeHeader     ( ifstream& );
       void     readNodeList       ( ifstream& );
@@ -94,17 +95,9 @@ class MPTreeMgr
 		void     setNetPin          ( Node* , Net* , const Token& );
 		void     setNetTerm         ( Term* , Net* , const Token& );
 		Pin*     nodeFindPin        ( Node* , double , double );
-      /*void     readTermList        ( ifstream& );
-      void     readOneTerm         ( ifstream& , int );
-		void     initPacking         ();
-		*/
-		// readNet() helper
-      /*
-		void     readNetNum          ( ifstream& );
-      void     readNetList         ( ifstream& );
-      void     readOneNet          ( ifstream& , int );
-		*/
-		// contour operating helper
+		// buildInitMPTree() helper
+      void     initMPTreeRoot     ();
+      // contour operating helper
 		/*
 		void     initContour         ();
 		void     deleteContour       ();
@@ -191,6 +184,7 @@ class MPTreeMgr
 		TermList           _allTerm;
 		NodeNameMap        _nodeNameMap;
 		TermNameMap        _termNameMap;
+      NodeList           _treeRoot;
       int                _chipWidth;
       int                _chipHeight;
 };

@@ -40,6 +40,7 @@ class Pin;
 class Net;
 class Term;
 class Coord;
+class TriPtr;
 
 ////////////////////////////////////////////////////////////////////////
 ///                         PARAMETERS                               ///
@@ -79,6 +80,33 @@ class Coord
 		int _y;
 };
 
+class TriPtr
+{
+	friend class MPTreeMgr;
+	friend class Node;
+	friend class Term;
+	friend class Net;
+	public:
+	   TriPtr() { _p = _left = _right = NULL; }
+		TriPtr& operator=( const TriPtr & rhs ) { 
+			_p     = rhs._p; 
+			_left  = rhs._left;
+			_right = rhs._right;
+		   return *this;
+		}
+		void swapTriPtr( TriPtr & swap ) {
+		   TriPtr temp = swap;
+			swap        = *this;
+			*this       = temp;
+		}
+		void resetPtr() { _p = _left = _right = NULL; }
+	private:
+		// data members
+		Node * _p;
+		Node * _left;
+		Node * _right;
+};
+
 class Node
 {
 	friend class MPTreeMgr;
@@ -101,7 +129,8 @@ class Node
 		Orient      _initOrt;  // from placer
 		Orient      _curOrt;
 		Orient      _optOrt;
-     // Tree structure 
+      // Tree structure
+      TriPtr      _curPtr;  
 };
 
 class Pin

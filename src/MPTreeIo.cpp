@@ -53,6 +53,7 @@ MPTreeMgr::readInput( const char * node , const char * pl , const char * net )
 	if ( !readNode     ( node )   )      return false;
 	if ( !readPosition ( pl   )   )      return false;
 	if ( !readNet      ( net  )   )      return false;
+   buildInitMPTree();
 	return true;
 }
 
@@ -242,9 +243,9 @@ MPTreeMgr::setNodeInitPos( Node * pNode , const Token & token )
 	   cout << "[Error] node " << pNode->_name << " lacks of position info\n";
 		assert(0);
 	}
-	pNode->_initCord._x = atoi( token[1].c_str() );
-	pNode->_initCord._y = atoi( token[2].c_str() );
-	pNode->_initOrt     = Nz_Str2Orient( token[4] );
+	pNode->_curCord._x = pNode->_initCord._x = atoi( token[1].c_str() );
+	pNode->_curCord._y = pNode->_initCord._y = atoi( token[2].c_str() );
+	pNode->_curOrt     = pNode->_initOrt     = Nz_Str2Orient( token[4] );
 
    if ( pNode->_initCord._x > _chipWidth  ) _chipWidth  = pNode->_initCord._x;
    if ( pNode->_initCord._y > _chipHeight ) _chipHeight = pNode->_initCord._y;
@@ -551,6 +552,58 @@ MPTreeMgr::printNetTerm( ostream & out , Net * pNet ) const
 			 << " x = " << pTerm->x() << " ;"
 			 << " y = " << pTerm->y() << endl;
 	}
+}
+
+/**Function*************************************************************
+
+  Synopsis    [build initial MP trees based on initial positions]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+MPTreeMgr::buildInitMPTree()
+{
+   NodeList nodeBL , nodeBR , nodeTL , nodeTR;
+   Node * pNode;
+   int centerX , centerY , nodeX , nodeY , i , n;
+
+   centerX = _chipWidth  / 2;
+   centerY = _chipHeight / 2;
+   
+   for ( i = 0 , n = _allNode.size() ; i < n ; ++i ) {
+      pNode = _allNode[i];
+      nodeX = pNode->centerX();
+      nodeY = pNode->centerY();
+      if ( nodeX <= centerX ) { // left
+         if ( nodeY <= centerY ) // bottom
+            nodeBL.push_back( pNode );
+         else // top
+            nodeTL.push_back( pNode );
+      }
+      else { // right
+         if ( nodeY <= centerY ) // bottom
+            nodeBR.push_back( pNode );
+         else // top
+            nodeTR.push_back( pNode );
+      }
+   }
+   
+   initMPTreeRoot();
+}
+
+void
+MPTreeMgr::initMPTreeRoot()
+{
+   int i , n;
+
+   for ( i = 0 , n = _treeRoot.size()-1 ; i < n ; ++i )
+      _treeRoot[i]->_curPtr._right = _treeRoot[i+1];
 }
 
 ////////////////////////////////////////////////////////////////////////
