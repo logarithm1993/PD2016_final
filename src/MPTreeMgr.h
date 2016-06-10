@@ -116,15 +116,15 @@ class MPTreeMgr
       double   computeArea         ();
       double   computeWL           () const;
       double   computeDisp         () const;
-		//void     updateOptSol        ();
-		//void     updateCurSol        ();
+		void     updateOptSol        ();
+		void     updateCurSol        ();
       //void     updateTempSolByOpt  ();
 		
 		
       // MP trees packing helper
 		// XXX
       // remember to define class Contour!
-      void     packMPTree          ();
+      bool     packMPTree          ();
 		void     packMPTree_rec      ( const Node* );
       
       // MP trees operation helper
@@ -157,18 +157,13 @@ class MPTreeMgr
 		*/
 		
 		// simulated annealing helper	
-      /* XXX uncomment these function when needed
-		void     greedyRun           ();
+      //  uncomment these function when needed
+		//void     greedyRun           ();
 		void     simAnneal_int       ();
-	   void     initSol             ();
-	   void     setSAPar            ();
-	   void     setTemp             ();
-      double   getInitTemp         ();
-      int      selectMove          () const;
-		bool     acceptSol           ( double , int& ) const;
-		double   randProb            () const;
-		bool     simAnnealStop       ();
-		*/
+	   //void     setSAPar            ();
+	   void     setTemp             (double &, double &);
+		//bool     simAnnealStop       ();
+		
 		// writeOutput() helper
 		void     writeNodePosition   ( ostream& ) const;
 		void     writeAllNode        ( ostream& ) const;
@@ -203,6 +198,7 @@ class MPTreeMgr
       double             _initArea;
       double             _initWL;
       double             _initDisp;
+      double             _optCost;
 };
 
 ////////////////////////////////////////////////////////////////////////

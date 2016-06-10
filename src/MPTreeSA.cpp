@@ -19,27 +19,33 @@
 ////////////////////////////////////////////////////////////////////////
 ///                          INCLUDES                                ///
 ////////////////////////////////////////////////////////////////////////
-
 #include "MPTreeMgr.h"
 #include <cmath>
-
+#include <cfloat>
+#include <cstdlib>
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
+int    chooseMove()
+       { return rand() % 4; }
+double prob()
+       { return (double)rand() / RAND_MAX; }
+bool   isAccepted(const double &C, const double &T)
+       { return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
 ////////////////////////////////////////////////////////////////////////
 
-/**Function*************************************************************
+/**function*************************************************************
 
-  Synopsis    [Simulated annealing (interface)]
+  synopsis    [simulated annealing (interface)]
 
-  Description []
+  description []
                
-  SideEffects []
+  sideeffects []
 
-  SeeAlso     []
+  seealso     []
 
 ***********************************************************************/
 
@@ -48,7 +54,106 @@ MPTreeMgr::simAnneal()
 {
    // compute initial MPTree;
    // compute initial cost func parameters
+   // do sa
+   simAnneal_int();
+}
+
+/**function*************************************************************
+
+  synopsis    [simulated annealing (Real)]
+
+  description []
+               
+  sideeffects []
+
+  seealso     []
+
+***********************************************************************/
+void
+MPTreeMgr::simAnneal_int()
+{
+   double cost, costPrev, deltaCost;
+   double T_start, T_end;
    
+   setTemp(T_start, T_end);
+   cost = computeCost();
+
+   unsigned repeat = 20;
+   double   T      = T_start;
+   double   r      = 0.97;
+   while (T > T_end){
+      for(unsigned i = 0; i < repeat; ++i){
+         Node* obj1 = NULL;
+         Node* obj2 = NULL;
+         int   arg1 = -1;
+         int   arg2 = -1;
+         int   move = chooseMove();
+         perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         while (!packMPTree()){
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+            obj1 = obj2 = NULL;
+            arg1 = arg2 = -1;
+            move = chooseMove(); // TBD: choose another?
+            perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         }
+         costPrev = cost;
+         cost = computeCost();
+         deltaCost = cost - costPrev;
+         if (deltaCost < 0){
+            if(cost < _optCost){
+               _optCost = cost;
+               updateOptSol();
+            }
+            continue;
+         }
+         else if(isAccepted(deltaCost, T))
+            continue;
+         else
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+      }
+      T *= r;
+   }
+   // restore opt-info
+   updateCurSol();
+}
+
+/**Function*************************************************************
+
+  Synopsis    [initialize SA parameters]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+void
+MPTreeMgr::initCost()
+{
+   _initWL   = 0.0; 
+   _initArea = 0.0;
+   _initDisp = 0.0;
+   _optCost  = DBL_MAX;
+   // computeWL
+   for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
+     _initWL += _allNet[i]->HPWL();
+   // computeArea TODO
+  
+   // computeDisp
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+     _initDisp += _allNode[i]->displacement();
+
+   _optCost = computeCost();
+   updateOptSol();
+}
+
+void
+MPTreeMgr::setTemp(double & T0, double & Tx)
+{
+   // TODO
+   T0 = 9999.999;
+   Tx = 0.0001;
 }
 
 /**Function*************************************************************
@@ -101,7 +206,7 @@ MPTreeMgr::computeWL() const
 {
    double sum = 0.0;
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i){
-      sum += _allNet[i]->computeHPWL();
+      sum += _allNet[i]->HPWL();
    }
    return sum / _initWL;
 }
@@ -114,6 +219,31 @@ MPTreeMgr::computeDisp() const
       sum += _allNode[i]->displacement();
    }
    return sum / _initDisp;
+}
+
+/**Function*************************************************************
+
+  Synopsis    [update Node info]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+void
+MPTreeMgr::updateOptSol()
+{
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+      _allNode[i]->updateOpt();
+}
+
+void
+MPTreeMgr::updateCurSol()
+{
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
+      _allNode[i]->updateCur();
 }
 
 ////////////////////////////////////////////////////////////////////////
