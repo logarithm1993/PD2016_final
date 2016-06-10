@@ -67,6 +67,50 @@ Node::centerY() const
     return -1;
 }
 
+int
+Node::right() const
+{
+    // done NZ
+    if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
+        return _curCord._x + _width;
+    else
+        return _curCord._x + _height;
+    return -1;
+}
+
+int
+Node::top() const
+{
+    // done NZ
+    if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
+        return _curCord._y + _height;
+    else
+        return _curCord._y + _width;
+    return -1;
+}
+
+int
+Node::width() const
+{
+    // done NZ
+    if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
+        return _width;
+    else
+        return _height;
+    return -1;
+}
+
+int
+Node::height() const
+{
+    // done NZ
+    if(_curOrt == N || _curOrt == S || _curOrt == FN || _curOrt == FS)
+        return _height;
+    else
+        return _width;
+    return -1;
+}
+
 /**Pin Function*********************************************************
  
   Synopsis    []

@@ -466,13 +466,14 @@ MPTreeMgr::writeAllNode( ostream & out ) const
 void
 MPTreeMgr::printNode( ostream & out , Node * pNode ) const
 {
-   out << "   >  Name = " << pNode->_name << " ;"
-		 << " width = "  << pNode->_width  << " ;"
-		 << " height = " << pNode->_height << " ;"
-		 << " init x = " << pNode->_initCord._x << " ;"
-		 << " init y = " << pNode->_initCord._y << endl;
+   out << "   >  Name   = "  << pNode->_name << " ;";
+   printNodePtr( out , pNode );
+		 //<< " width = "  << pNode->_width  << " ;"
+		 //<< " height = " << pNode->_height << " ;"
+		 //<< " init x = " << pNode->_initCord._x << " ;"
+		 //<< " init y = " << pNode->_initCord._y << endl;
 	
-	printNodePin( out , pNode );
+	//printNodePin( out , pNode );
 }
 
 void
@@ -486,6 +487,19 @@ MPTreeMgr::printNodePin( ostream & out , Node * pNode ) const
 			 << " offsetX = " << pPin->_offsetX << " ;"
 			 << " offsetY = " << pPin->_offsetY << endl;
 	}
+}
+
+void
+MPTreeMgr::printNodePtr( ostream & out , Node * pNode ) const
+{
+   Node * p , * left , * right;
+   p     = pNode->_curPtr._p;
+   left  = pNode->_curPtr._left;
+   right = pNode->_curPtr._right;
+
+   out << " parent : " << ( p     ? p->_name     : "none" ) << " ;"
+       << " left   : " << ( left  ? left->_name  : "none" ) << " ;"
+       << " right  : " << ( right ? right->_name : "none" ) << endl;
 }
 
 void
@@ -569,7 +583,7 @@ MPTreeMgr::printNetTerm( ostream & out , Net * pNet ) const
 void
 MPTreeMgr::buildInitMPTree()
 {
-   NodeList nodeBL , nodeBR , nodeTL , nodeTR;
+   vector<NodeList> node(4); // 0: BL; 1: BR; 2: TL;3: TR
    Node * pNode;
    int centerX , centerY , nodeX , nodeY , i , n;
 
@@ -582,28 +596,79 @@ MPTreeMgr::buildInitMPTree()
       nodeY = pNode->centerY();
       if ( nodeX <= centerX ) { // left
          if ( nodeY <= centerY ) // bottom
-            nodeBL.push_back( pNode );
+            node[0].push_back( pNode );
          else // top
-            nodeTL.push_back( pNode );
+            node[2].push_back( pNode );
       }
       else { // right
          if ( nodeY <= centerY ) // bottom
-            nodeBR.push_back( pNode );
+            node[1].push_back( pNode );
          else // top
-            nodeTR.push_back( pNode );
+            node[3].push_back( pNode );
       }
    }
    
    initMPTreeRoot();
+
+   for ( i = 0 ; i < 4 ; ++i ) {
+      if ( !buildRegionTree( node[i] ) ) {
+         cout << "[Warning] Empty region! i =  " << i << endl;
+         continue;
+      }
+      if ( i == 3 ) {
+         node[i][0]->_curPtr._p = _treeRoot[i-1];
+         _treeRoot[i-1]->_curPtr._right = node[i][0];
+      }
+      else {
+         node[i][0]->_curPtr._p = _treeRoot[i];
+         _treeRoot[i]->_curPtr._left = node[i][0];
+      }
+   }
 }
 
 void
 MPTreeMgr::initMPTreeRoot()
 {
+   Node * pNode;
+   string str;
    int i , n;
 
+   for ( i = 0 ; i < 3 ; ++i ) _treeRoot.push_back( new Node );
+   _treeRoot[0]->_name = "root-0";
+   _treeRoot[1]->_name = "root-1";
+   _treeRoot[2]->_name = "root-2";
    for ( i = 0 , n = _treeRoot.size()-1 ; i < n ; ++i )
       _treeRoot[i]->_curPtr._right = _treeRoot[i+1];
+}
+
+bool
+MPTreeMgr::buildRegionTree( NodeList & node )
+{
+   if ( node.empty() ) return false;
+
+   Node * pNode , * pPrev , * pBottom;
+   int bound , curX , i , n;
+   
+   pBottom = pPrev = node[0];
+   bound   = _chipWidth / 2;
+   curX    = node[0]->width();
+
+   for ( i = 1 , n = node.size() ; i < n ; ++i ) {
+      pNode = node[i];
+      if ( curX >= bound ) {
+         pBottom->_curPtr._right = pNode;
+         pNode->_curPtr._p       = pBottom;
+         pBottom                 = pNode;
+         curX                    = pNode->width();
+      }
+      else {
+         pPrev->_curPtr._left = pNode;
+         pNode->_curPtr._p    = pPrev;
+         curX += pNode->width();
+      }
+      pPrev = pNode;
+   }
+   return true;
 }
 
 ////////////////////////////////////////////////////////////////////////

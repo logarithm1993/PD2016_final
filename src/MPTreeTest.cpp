@@ -50,8 +50,8 @@ void
 MPTreeMgr::test()
 {
 	writeAllNode( cout );
-	writeAllTerm( cout );
-	writeAllNet ( cout );
+	//writeAllTerm( cout );
+	//writeAllNet ( cout );
 }
 
 ////////////////////////////////////////////////////////////////////////

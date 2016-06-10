@@ -97,6 +97,7 @@ class MPTreeMgr
 		Pin*     nodeFindPin        ( Node* , double , double );
 		// buildInitMPTree() helper
       void     initMPTreeRoot     ();
+      bool     buildRegionTree    ( NodeList& );
       // contour operating helper
 		/*
 		void     initContour         ();
@@ -166,6 +167,7 @@ class MPTreeMgr
 		void     writeAllNet         ( ostream& ) const;
 		void     printNode           ( ostream& , Node* ) const;
 		void     printNodePin        ( ostream& , Node* ) const;
+		void     printNodePtr        ( ostream& , Node* ) const;
 		void     printTerm           ( ostream& , Term* ) const;
 		void     printNet            ( ostream& , Net*  ) const;
       void     printNetPin         ( ostream& , Net*  ) const;
