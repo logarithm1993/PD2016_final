@@ -30,8 +30,8 @@
       - [ ] perturb / undo MPT (50% done)
         + [x] rotate
         + [x] swap
-        + [ ]change subTree
-        + [ ]delete insert node
+        + [ ] change subTree
+        + [ ] delete insert node
       
 2. Node ( Element.h ) 
   - macro class
