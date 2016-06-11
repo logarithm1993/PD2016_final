@@ -52,9 +52,7 @@ static bool   isAccepted(const double &C, const double &T)
 void
 MPTreeMgr::simAnneal()
 {
-   // compute initial MPTree;
-   // compute initial cost func parameters
-   // do sa
+   // TBD: sa_schedule
    simAnneal_int();
 }
 
@@ -77,10 +75,12 @@ MPTreeMgr::simAnneal_int()
    
    setTemp(T_start, T_end);
    cost = computeCost();
-
+   
+   // TBD
    unsigned repeat = 20;
    double   T      = T_start;
    double   r      = 0.97;
+   
    while (T > T_end){
       for(unsigned i = 0; i < repeat; ++i){
          Node* obj1 = NULL;
@@ -151,9 +151,45 @@ MPTreeMgr::initCost()
 void
 MPTreeMgr::setTemp(double & T0, double & Tx)
 {
-   // TODO
-   T0 = 9999.999;
-   Tx = 0.0001;
+   // TBD
+   double initAcceptRate  = 0.999;
+   double finalAcceptRate = 0.010;
+   unsigned repeat        = 20;
+   double   deltaSum      = 0.0;
+   
+   double cost, costPrev, deltaCost;
+   cost = computeCost();
+   // greedy approach
+   for(unsigned i = 0; i < repeat; ++i){
+         Node* obj1 = NULL;
+         Node* obj2 = NULL;
+         int   arg1 = -1;
+         int   arg2 = -1;
+         int   move = chooseMove();
+         perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         while (!packMPTree()){
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+            obj1 = obj2 = NULL;
+            arg1 = arg2 = -1;
+            move = chooseMove(); // TBD: choose another?
+            perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         }
+         costPrev = cost;
+         cost = computeCost();
+         deltaCost = cost - costPrev;
+         deltaSum += abs(deltaCost);
+         if (deltaCost < 0){
+            if(cost < _optCost){
+               _optCost = cost;
+               updateOptSol();
+            }
+         }
+         else
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+   }
+   updateCurSol();   
+   T0 = abs( deltaSum / repeat / log(initAcceptRate) );
+   Tx = abs( deltaSum / repeat / log(finalAcceptRate));
 }
 
 /**Function*************************************************************
