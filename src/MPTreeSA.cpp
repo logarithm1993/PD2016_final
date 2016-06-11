@@ -72,8 +72,10 @@ MPTreeMgr::simAnneal_int()
 {
    double cost, costPrev, deltaCost;
    double T_start, T_end;
-   
+  
+   printMPTree();
    setTemp(T_start, T_end);
+   printMPTree();
    cost = computeCost();
    
    // TBD
@@ -282,6 +284,8 @@ MPTreeMgr::updateOptSol()
    cout << "updateOptSol() : find better sol!\n";
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
       _allNode[i]->updateOpt();
+   for ( unsigned i = 0 , n = _treeRoot.size() ; i < n ; ++i )
+      _treeRoot[i]->updateOpt();
 }
 
 void
@@ -289,6 +293,8 @@ MPTreeMgr::updateCurSol()
 {
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
       _allNode[i]->updateCur();
+   for ( unsigned i = 0 , n = _treeRoot.size() ; i < n ; ++i )
+      _treeRoot[i]->updateCur();
 }
 
 ////////////////////////////////////////////////////////////////////////
