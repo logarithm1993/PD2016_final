@@ -20,6 +20,7 @@
 ///                          INCLUDES                                ///
 ////////////////////////////////////////////////////////////////////////
 
+#include <cstdlib>
 #include <iostream>
 #include <cassert>
 #include "MPTreeMgr.h"
@@ -53,16 +54,18 @@ MPTreeMgr::test()
 #if 1
    cout << " >  testing MPTree operations: \n";
    Node * pNd1 , * pNd2 , * pNd3;
-   int arg1 , arg2 , i , n;
+   int move , arg1 , arg2 , i , n;
 
    pNd1 = pNd2 = NULL;
    arg1 = arg2 = -1;
 
    printMPTree();
-   for ( i = 0 , n = 1000 ; i < n ; ++i ) {
-      perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , 2 );
-      undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , 2 );
+   for ( i = 0 , n = 100000 ; i < n ; ++i ) {
+      move = rand() % 4;
+      perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
+      undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
       pNd1 = pNd2 = NULL;
+      arg1 = arg2 = -1;
    }
    printMPTree();
 #endif

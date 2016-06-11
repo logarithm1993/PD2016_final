@@ -137,7 +137,60 @@ void
 MPTreeMgr::delInsNode( Node ** pNd1 , int * right1 , 
                        Node ** pNd2 , int * right2 )
 {
-   // TODO
+	Node * pNd;
+	int index1 , index2;
+	if ( *pNd1 && *pNd2 )
+		delInsNode_int( *pNd1 , *right1 , *pNd2 , *right2 ); // undo
+	else {
+	   getDelInsPair( index1 , index2 );
+		pNd     = _allNode[index1];
+		*pNd1   = pNd->_curPtr._p;
+	   *right1 = (int)pLRChild( pNd );
+		*pNd2   = _allNode[index2];
+		if ( !((*pNd2)->_curPtr._left) ) *right2 = 0;
+		else *right2 = 1;
+		assert( !(pNd->_curPtr._left) && !(pNd->_curPtr._right) );
+		assert( !((*pNd2)->_curPtr._left) || !((*pNd2)->_curPtr._right) );
+		delInsNode_int( *pNd1 , *right1 , *pNd2 , *right2 );
+	}
+}
+
+void
+MPTreeMgr::getDelInsPair( int & index1 , int & index2 ) const
+{
+	Node * pNd1 , * pNd2;
+
+	// get index1 , must be a leaf node
+	index1 = rand() % _allNode.size();
+   pNd1   = _allNode[index1];
+	while ( pNd1->_curPtr._left || pNd1->_curPtr._right ) {
+	   index1 = rand() % _allNode.size();
+      pNd1   = _allNode[index1];
+	}
+	// get index2 , must not be full , id1 != id2
+	index2 = rand() % _allNode.size();
+   pNd2   = _allNode[index2];
+	while ( (index2 == index1) || (pNd2->_curPtr._left && pNd2->_curPtr._right) ) {
+	   index2 = rand() % _allNode.size();
+      pNd2   = _allNode[index2];
+	}
+}
+
+void
+MPTreeMgr::delInsNode_int( Node * pNd1 , int right1 , 
+		                     Node * pNd2 , int right2 )
+{
+   Node * pNd;
+
+	pNd = ( !right1 ) ? pNd1->_curPtr._left : pNd1->_curPtr._right;
+	
+	/*cout << "Delete " << pBk1->_name << ( right1 ? " right " : " left " )
+		  << pBk->_name << " insert to " << pBk2->_name 
+		  << ( right2 ? " right " : " left " ) << endl;
+	*/
+	pNd1->setChild  ( NULL , right1 );
+	pNd ->setParent ( pNd2 );
+	pNd2->setChild  ( pNd  , right2 );
 }
 
 /**Function*************************************************************
@@ -280,9 +333,6 @@ MPTreeMgr::swapSubTree( int * sub1 , int * sub2 )
    if ( *sub1 != -1 && *sub2 != -1 ) // undo
       swapSubTree_int( *sub1 , *sub2 );
    else { // swap two subtrees
-      //*sub1 = rand() % 4;
-      //*sub2 = rand() % 4;
-      //while ( *sub1 == *sub2 ) *sub2 = rand() % 4;
       getTwoRandNum( 4 , sub1 , sub2 ); // choose from 4 subtrees
       swapSubTree_int( *sub1 , *sub2 );
    }

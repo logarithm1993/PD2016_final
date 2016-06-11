@@ -134,6 +134,8 @@ class MPTreeMgr
       void     rotateNode          ( Node** , int* );
       // op2 : delete and insert
       void     delInsNode          ( Node** , int* , Node** , int* );
+      void     getDelInsPair       ( int& , int& ) const;
+      void     delInsNode_int      ( Node* , int , Node* , int );
       // op3 : swap nodes
       void     swapNode            ( Node** , Node** );
       void     swapNode_int        ( Node*  , Node* );
@@ -147,16 +149,6 @@ class MPTreeMgr
       void     swapSubTree         ( int* , int* );
       void     swapSubTree_int     ( int  , int  );
       Node*    getSubTreeRoot      ( int );
-      
-      /*
-      void     rotateBlock         ( Block** );
-      void     swapBlock           ( Block** , Block** );
-      void     swapBlock_int       ( Block* , Block* );
-      void     getTwoRandId        ( int& , int& ) const;
-      void     delInsBlock         ( Block** , bool& , Block** , bool& );
-      void     getDelInsPair       ( int& , int& ) const;
-      void     delInsBlock_int     ( Block* , bool , Block* , bool );
-		*/
 		
 		// simulated annealing helper	
       //  uncomment these function when needed
