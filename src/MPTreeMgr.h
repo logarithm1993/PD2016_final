@@ -116,6 +116,7 @@ class MPTreeMgr
       double   computeArea         ();
       double   computeWL           () const;
       double   computeDisp         () const;
+      double   computeCongest      () const;
 		void     updateOptSol        ();
 		void     updateCurSol        ();
       //void     updateTempSolByOpt  ();
