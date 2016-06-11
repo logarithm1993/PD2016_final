@@ -32,7 +32,7 @@ bin/*
 *.swp
 
 # log files
-evaluate/*
+evaluate/*Eval*
 log/*
 preplace/*
 *.out
