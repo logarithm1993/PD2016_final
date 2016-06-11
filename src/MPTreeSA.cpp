@@ -213,6 +213,7 @@ MPTreeMgr::computeCost()
    double c2 = 1.0 * computeWL();
    double c3 = 1.0 * computeDisp();
    double c4 = 1.0 * computeCongest();
+   cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
    return c1 + c2 + c3 + c4;
 }
 
@@ -236,7 +237,8 @@ MPTreeMgr::computeArea()
 {
    double sum = 0.0;
    // TODO :  Riemann sum
-   return sum / _initArea;
+   //return sum / _initArea;
+   return 0.0;
 }
 
 double
@@ -277,6 +279,7 @@ MPTreeMgr::computeCongest() const
 void
 MPTreeMgr::updateOptSol()
 {
+   cout << "updateOptSol() : find better sol!\n";
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
       _allNode[i]->updateOpt();
 }

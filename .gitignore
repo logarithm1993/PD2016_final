@@ -32,7 +32,8 @@ bin/*
 *.swp
 
 # log files
-evaluate/*
+evaluate/*Eval*
+*.fp
 log/*
 preplace/*
 *.out
