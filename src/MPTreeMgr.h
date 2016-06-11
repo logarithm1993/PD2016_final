@@ -126,7 +126,8 @@ class MPTreeMgr
 		// XXX
       // remember to define class Contour!
       bool     packMPTree          ();
-		void     packMPTree_rec      ( const Node* );
+      bool     packMPTree_rec      ( Node* const & , List*& , const bool& , const bool& );
+      bool     packcorner          ( Node* const & , List*& , const bool& , const bool& );
       
       // MP trees operation helper
       void     perturbMPTree       ( Node** , Node** , int* , int* , int );

@@ -24,6 +24,8 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <climits>
+#include <cassert>
 #include "utility.h"
 #include "Element.h"
 using namespace std;
@@ -149,7 +151,148 @@ Nz_Orient2Int( const Orient & ort )
 	if ( ort == FS )  return 6;
 	if ( ort == FE )  return 7;
 }
+/**Function*************************************************************
 
+  Synopsis    [contour list function]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+List::List(const int& outwidth)
+{
+   _begin = new ListNode(0,0,0);
+   _end   = new ListNode(outwidth,outwidth,0);
+   ListNode* newnode = new ListNode(0,outwidth,0);
+   concate(_begin,newnode);
+   concate(newnode,_end);
+}
+List::~List()
+{
+   ListNode* cur = _begin;
+   ListNode* nxt = 0;
+   while( cur != _end )
+   {
+      nxt = cur->_next;
+      delete cur;
+      cur = nxt;
+   }
+   delete cur;
+}
+
+ostream& 
+operator << (ostream& os,const ListNode& n)
+{
+   os<<"("<<n._x0<<","<<n._x1<<","<<n._y1<<") ";
+}
+ostream& 
+operator << (ostream& os,const List& l)
+{
+   ListNode* cur = l._begin->_next;
+   //cout<<"_start = "<<l._start<<endl;
+   while(cur != l._end)
+   {
+      os << *cur;
+      cur = cur->_next;
+   }
+   os << *cur;
+
+   os<<endl;
+}
+
+void
+List::concate(ListNode* const & n1,ListNode* const & n2) // concate n2 after n1
+{
+   assert(n1 != 0 && n2 != 0);
+   assert(n1 != _end);
+   assert(n1->_next == 0);
+   assert(n2->_prev == 0);
+   
+   n1->_next = n2;
+   n2->_prev = n1;
+}
+int
+List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) // [x0,x1] is safe range
+{
+   int y0max = INT_MIN;
+   if(isfromleft) {
+      // handle ptr1
+      ListNode* ptr1 = _begin->_next;
+      while(ptr1->_x1 <= x0) ptr1 = ptr1->_next;
+
+      // handle ptr2
+      ListNode* ptr2 = _end->_prev;
+      while(ptr2->_x0 >= x1) ptr2 = ptr2->_prev;
+
+      ListNode* ptr1p  = ptr1->_prev;
+      ListNode* ptr2n  = ptr2->_next;
+      int       ptr2y1 = ptr2->_y1;
+      ListNode* cur = ptr1;
+      ListNode* nxt = NULL;
+      while(cur != ptr2n) {
+         if(cur->_y1 > y0max) y0max = cur->_y1;
+         nxt = cur->_next;
+         delete cur;
+         cur = nxt;
+      }
+      ListNode* n1 = new ListNode(x0,x1,y0max+h);
+      ptr1p->_next = NULL;
+      ptr2n->_prev = NULL;
+      concate(ptr1p,n1);
+      // handle ptr2
+      if(ptr2n->_x0 > x1) {
+         ListNode* n2 = new ListNode(x1,ptr2n->_x0,ptr2y1);
+         concate(n1,n2);
+         concate(n2,ptr2n);
+      }
+      else if(ptr2n->_x0 == x1) {
+         concate(n1,ptr2n);
+      }
+      else{cout<<"[from left] ptr2n->_x0 < x1\n";}
+   }
+   else {
+      // handle ptr1
+      ListNode* ptr1 = _end->_prev;
+      while(ptr1->_x0 >= x1) ptr1 = ptr1->_prev;
+
+      // handle ptr2
+      ListNode* ptr2 = _begin->_next;
+      while(ptr2->_x1 <= x0) ptr2 = ptr2->_next;
+      
+      ListNode* ptr1p  = ptr1->_next;
+      ListNode* ptr2n  = ptr2->_prev;
+      int       ptr2y1 = ptr2->_y1;
+      ListNode* cur = ptr1;
+      ListNode* nxt = NULL;
+      while(cur != ptr2n) {
+         if(cur->_y1 > y0max) y0max = cur->_y1;
+         nxt = cur->_prev;
+         delete cur;
+         cur = nxt;
+      }
+      ListNode* n1 = new ListNode(x0,x1,y0max+h);
+      ptr1p->_prev = NULL;
+      ptr2n->_next = NULL;
+      concate(n1,ptr1p);
+      // handle ptr2
+      if(ptr2n->_x1 < x0) {
+         ListNode* n2 = new ListNode(ptr2n->_x1,x0,ptr2y1);
+         concate(n2,n1);
+         concate(ptr2n,n2);
+      }
+      else if(ptr2n->_x1 == x0) {
+         concate(ptr2n,n1);
+      }
+      else{cout<<"[from right] ptr2n->_x1 > x0\n";}
+   }
+   
+   
+   return y0max;
+}
 ////////////////////////////////////////////////////////////////////////
 ///                       END OF FILE                                ///
 ////////////////////////////////////////////////////////////////////////
