@@ -26,12 +26,19 @@
   - private helper functions 
     +   *simAnneal*
       - [ ] cost computation (50% done)
-      - [ ] set temperature
-      - [ ] perturb / undo MPT (50% done)
+        + [x] HPWL
+        + [x] Displacement
+        + [ ] Area
+        + [ ] Congestion
+      - [x] set temperature
+      - [ ] annealing schedule
+        + TBD...
+      - [x] perturb / undo MPT
         + [x] rotate
         + [x] swap
-        + [ ] change subTree
-        + [ ] delete insert node
+        + [x] change subTree
+        + [x] delete insert node
+      - [ ] packMPTree, contour
       
 2. Node ( Element.h ) 
   - macro class
@@ -74,7 +81,7 @@
 5. Term ( Element.h ) 
   - terminal class
   - public member functions
-    + x(), y() 
+    + `x(), y()`
   - private data members
     + \_name
     + \_fixXY( fixed positions )

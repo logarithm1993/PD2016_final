@@ -12,7 +12,7 @@
   
   Affiliation [NTU]
 
-  Date        [May 28, 2016]
+  Date        [Jun 11, 2016]
 
 ***********************************************************************/
 
@@ -26,12 +26,12 @@
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
-static int    chooseMove()
-       { return rand() % 4; }
-static double prob()
-       { return (double)rand() / RAND_MAX; }
-static bool   isAccepted(const double &C, const double &T)
-       { return exp(-C/T) > prob(); }
+static inline int    chooseMove()
+                     { return rand() % 4; }
+static inline double prob()
+                     { return (double)rand() / RAND_MAX; }
+static inline bool   isAccepted(const double &C, const double &T)
+                     { return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
@@ -52,9 +52,7 @@ static bool   isAccepted(const double &C, const double &T)
 void
 MPTreeMgr::simAnneal()
 {
-   // compute initial MPTree;
-   // compute initial cost func parameters
-   // do sa
+   // TBD: sa_schedule
    simAnneal_int();
 }
 
@@ -77,10 +75,12 @@ MPTreeMgr::simAnneal_int()
    
    setTemp(T_start, T_end);
    cost = computeCost();
-
+   
+   // TBD
    unsigned repeat = 20;
    double   T      = T_start;
    double   r      = 0.97;
+   
    while (T > T_end){
       for(unsigned i = 0; i < repeat; ++i){
          Node* obj1 = NULL;
@@ -115,6 +115,8 @@ MPTreeMgr::simAnneal_int()
    }
    // restore opt-info
    updateCurSol();
+
+   // TODO: output some message?
 }
 
 /**Function*************************************************************
@@ -151,9 +153,45 @@ MPTreeMgr::initCost()
 void
 MPTreeMgr::setTemp(double & T0, double & Tx)
 {
-   // TODO
-   T0 = 9999.999;
-   Tx = 0.0001;
+   // TBD
+   double initAcceptRate  = 0.999;
+   double finalAcceptRate = 0.010;
+   unsigned repeat        = 20;
+   double   deltaSum      = 0.0;
+   
+   double cost, costPrev, deltaCost;
+   cost = computeCost();
+   // greedy approach
+   for(unsigned i = 0; i < repeat; ++i){
+         Node* obj1 = NULL;
+         Node* obj2 = NULL;
+         int   arg1 = -1;
+         int   arg2 = -1;
+         int   move = chooseMove();
+         perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         while (!packMPTree()){
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+            obj1 = obj2 = NULL;
+            arg1 = arg2 = -1;
+            move = chooseMove(); // TBD: choose another?
+            perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
+         }
+         costPrev = cost;
+         cost = computeCost();
+         deltaCost = cost - costPrev;
+         deltaSum += abs(deltaCost);
+         if (deltaCost < 0){
+            if(cost < _optCost){
+               _optCost = cost;
+               updateOptSol();
+            }
+         }
+         else
+            undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+   }
+   updateCurSol();   
+   T0 = abs( deltaSum / repeat / log(initAcceptRate) );
+   Tx = abs( deltaSum / repeat / log(finalAcceptRate));
 }
 
 /**Function*************************************************************
@@ -171,11 +209,11 @@ double
 MPTreeMgr::computeCost()
 {
    // TODO: adjust vlaue of alpha, beta, gamma
-   double c1 = computeArea();
-   double c2 = computeWL();
-   double c3 = computeDisp();
-
-   return c1 + c2 + c3;
+   double c1 = 1.0 * computeArea();
+   double c2 = 1.0 * computeWL();
+   double c3 = 1.0 * computeDisp();
+   double c4 = 1.0 * computeCongest();
+   return c1 + c2 + c3 + c4;
 }
 
 /**Function*************************************************************
@@ -205,9 +243,8 @@ double
 MPTreeMgr::computeWL() const
 {
    double sum = 0.0;
-   for(unsigned i = 0, n = _allNet.size(); i < n; ++i){
+   for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
       sum += _allNet[i]->HPWL();
-   }
    return sum / _initWL;
 }
 
@@ -215,12 +252,17 @@ double
 MPTreeMgr::computeDisp() const
 {
    double sum = 0.0;
-   for(unsigned i = 0, n = _allNode.size(); i < n; ++i){
+   for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
       sum += _allNode[i]->displacement();
-   }
    return sum / _initDisp;
 }
 
+double
+MPTreeMgr::computeCongest() const
+{
+   // TODO: not sure how to measure
+   return 0.0;
+}
 /**Function*************************************************************
 
   Synopsis    [update Node info]
