@@ -155,7 +155,111 @@ MPTreeMgr::delInsNode( Node ** pNd1 , int * right1 ,
 void
 MPTreeMgr::swapNode( Node ** pNd1 , Node ** pNd2 )
 {
-   // TODO
+	int index1 , index2;
+	if ( *pNd1 && *pNd2 ) swapNode_int( *pNd1 , *pNd2 ); // undo
+	else { // swap two nodes
+	   getTwoRandNum( _allNode.size() , &index1 , &index2 );
+		*pNd1 = _allNode[index1];
+		*pNd2 = _allNode[index2];
+		swapNode_int( *pNd1 , *pNd2 );
+	}
+
+}
+
+void
+MPTreeMgr::swapNode_int( Node * pNd1 , Node * pNd2 )
+{
+	//cout << " >  swapping " << pNd1->_name << " and " << pNd2->_name << endl;
+   if ( checkParentChild( pNd1 , pNd2 ) )  swapParentChild( pNd1 , pNd2 );
+   else if ( checkSibling( pNd1 , pNd2 ) ) swapSibling( pNd1 , pNd2 );
+   else {
+		changeNbrPtr( pNd1 , pNd2 );
+		changeNbrPtr( pNd2 , pNd1 );
+	   (pNd1->_curPtr).swapTriPtr( pNd2->_curPtr );
+	}
+}
+
+void
+MPTreeMgr::changeNbrPtr( Node * pNd1 , Node * pNd2 )
+{
+	// point pNd1`s _p , _left , _right to pNd2
+   Node * pParent , * pLeft , * pRight;
+   
+	pParent = pNd1->_curPtr._p;
+   pLeft   = pNd1->_curPtr._left;
+   pRight  = pNd1->_curPtr._right;
+
+	if ( pParent ) pParent->setChild( pNd2 , pLRChild( pNd1 ) );
+	if ( pLeft   ) pLeft ->setParent( pNd2 );
+	if ( pRight  ) pRight->setParent( pNd2 );
+}
+
+bool
+MPTreeMgr::pLRChild( const Node * pNd ) const
+{
+   if ( (((pNd->_curPtr)._p)->_curPtr)._left  == pNd ) return 0;
+   if ( (((pNd->_curPtr)._p)->_curPtr)._right == pNd ) return 1;
+	cout << "[Error] fail to find child!\n";
+	assert(0);
+	return 1;
+}
+
+bool
+MPTreeMgr::checkParentChild( const Node * pNd1 , const Node * pNd2 ) const
+{
+	if ( (pNd1->_curPtr)._p == pNd2 ) return true;
+	if ( (pNd2->_curPtr)._p == pNd1 ) return true;
+	return false;
+}
+
+void
+MPTreeMgr::swapParentChild( Node * pNd1 , Node * pNd2 )
+{
+	Node * pParent , * pChild , * pGrandParent;
+
+	if ( pNd1->_curPtr._p == pNd2 ) {
+	   pParent = pNd2;
+		pChild  = pNd1;
+	}
+	else {
+	   pParent = pNd1;
+		pChild  = pNd2;
+	}
+	pGrandParent  = pParent->_curPtr._p;
+
+	changeNbrPtr( pChild  , pParent );
+	changeNbrPtr( pParent , pChild  );
+	pParent->_curPtr.swapTriPtr( pChild->_curPtr );
+	pParent->setParent( pChild );
+	pChild ->setParent( pGrandParent );
+}
+
+bool
+MPTreeMgr::checkSibling( const Node * pNd1 , const Node * pNd2 ) const
+{
+	return ( (pNd1->_curPtr)._p == (pNd2->_curPtr)._p );
+}
+
+void
+MPTreeMgr::swapSibling( Node * pNd1 , Node * pNd2 )
+{
+   Node * pParent;
+   bool right;
+
+   pParent = pNd1->_curPtr._p;
+   right   = pLRChild( pNd1 );
+
+   changeNbrPtr( pNd1 , pNd2 );
+	changeNbrPtr( pNd2 , pNd1 );
+	if ( right ) {
+      pParent->_curPtr._left  = pNd1;
+      pParent->_curPtr._right = pNd2;
+   }
+   else {
+      pParent->_curPtr._left  = pNd2;
+      pParent->_curPtr._right = pNd1;
+   }
+   (pNd1->_curPtr).swapTriPtr( pNd2->_curPtr );
 }
 
 /**Function*************************************************************

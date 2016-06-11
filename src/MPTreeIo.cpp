@@ -701,11 +701,19 @@ MPTreeMgr::printMPTree_rec( const Node * pNode , int d ) const
 	if ( (pNode->_curPtr)._left ) {
 	   indent(d);
 	   cout << "Left child:\n";
+      if ( (pNode->_curPtr._left)->_curPtr._p != pNode ) {
+         cout << "[Error] wrong parent child!\n";
+         assert(0);
+      }
 		printMPTree_rec( (pNode->_curPtr)._left , d+1 );
 	}
 	if ( (pNode->_curPtr)._right ) {
 	   indent(d);
 	   cout << "Right child:\n";
+      if ( (pNode->_curPtr._right)->_curPtr._p != pNode ) {
+         cout << "[Error] wrong parent child!\n";
+         assert(0);
+      }
 		printMPTree_rec( (pNode->_curPtr)._right , d+1 );
 	}
 }

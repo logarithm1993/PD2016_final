@@ -130,27 +130,29 @@ class MPTreeMgr
       // MP trees operation helper
       void     perturbMPTree       ( Node** , Node** , int* , int* , int );
       void     undoMPTree          ( Node** , Node** , int* , int* , int );
+      // op1 : rotate
       void     rotateNode          ( Node** , int* );
+      // op2 : delete and insert
       void     delInsNode          ( Node** , int* , Node** , int* );
+      // op3 : swap nodes
       void     swapNode            ( Node** , Node** );
+      void     swapNode_int        ( Node*  , Node* );
+      void     changeNbrPtr        ( Node*  , Node* );
+      bool     pLRChild            ( const Node* ) const;
+      bool     checkParentChild    ( const Node* , const Node* ) const;
+      void     swapParentChild     ( Node* , Node* );
+      bool     checkSibling        ( const Node* , const Node* ) const;
+      void     swapSibling         ( Node* , Node* );
+      // op4 : swap subtrees
       void     swapSubTree         ( int* , int* );
       void     swapSubTree_int     ( int  , int  );
       Node*    getSubTreeRoot      ( int );
-      // XXX
-      // op1: rotate, flip <8 types>
-      // op2: swap node
-      // op3: delete insert node
-      // op4: swap subTrees
       
       /*
       void     rotateBlock         ( Block** );
       void     swapBlock           ( Block** , Block** );
       void     swapBlock_int       ( Block* , Block* );
-      void     changeNbrPtr        ( Block* , Block* );
       void     getTwoRandId        ( int& , int& ) const;
-      bool     pLRChild            ( const Block* ) const;
-      bool     checkParentChild    ( const Block* , const Block* ) const;
-      void     swapParentChild     ( Block* , Block* );
       void     delInsBlock         ( Block** , bool& , Block** , bool& );
       void     getDelInsPair       ( int& , int& ) const;
       void     delInsBlock_int     ( Block* , bool , Block* , bool );

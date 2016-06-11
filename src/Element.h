@@ -116,15 +116,23 @@ class Node
 	public:
 		Node() : _name("") , _width(0) , _height(0) {};
 		Node( string name , int width , int height ) :  _name(name) , _width(width) , _height(height) {}
-		int centerX()      const;
-		int centerY()      const;
-		int right()        const;
-		int top()          const;
-		int width()        const;
-		int height()       const;
-      int displacement() const;
-      void updateOpt();
-      void updateCur();
+		
+      // set methods
+      void   setParent ( Node * pNd ) { _curPtr._p = pNd; }
+      void   setChild  ( Node * pNd , bool right ) { 
+         if ( right ) _curPtr._right = pNd; 
+         else         _curPtr._left  = pNd;
+      }
+      // get methods
+      int    centerX()      const;
+		int    centerY()      const;
+		int    right()        const;
+		int    top()          const;
+		int    width()        const;
+		int    height()       const;
+      int    displacement() const;
+      void   updateOpt();
+      void   updateCur();
 	private:
 		string      _name;
 		int         _width;
