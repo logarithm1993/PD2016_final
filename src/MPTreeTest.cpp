@@ -51,7 +51,7 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-#if 1
+#if 0
    cout << " >  testing MPTree operations: \n";
    Node * pNd1 , * pNd2 , * pNd3;
    int move , arg1 , arg2 , i , n;
@@ -68,6 +68,8 @@ MPTreeMgr::test()
       arg1 = arg2 = -1;
    }
    printMPTree();
+#else
+   printMPTree(); 
 #endif
 }
 

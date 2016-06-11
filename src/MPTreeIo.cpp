@@ -54,8 +54,8 @@ MPTreeMgr::readInput( const char * node , const char * pl , const char * net )
 	if ( !readPosition ( pl   )   )      return false;
 	if ( !readNet      ( net  )   )      return false;
    buildInitMPTree();
-   // packingMPTree();
-   // initCost();
+   packMPTree();
+   initCost();
 	return true;
 }
 
@@ -444,12 +444,12 @@ MPTreeMgr::writeNodePosition( ostream & out ) const
 	for ( i = 0 , n = _allNode.size() ; i < n ; ++i ) {
 	   pNode = _allNode[i];
 		out << pNode->_name << "  " 
-			 //<< pNode->_optCord._x << "  "
-			 //<< pNode->_optCord._y << "  : "
-			 //<< Nz_Orient2Str( pNode->_optOrt ) << " /FIXED"
-			 << pNode->_initCord._x << "  "
-			 << pNode->_initCord._y << "  : "
-			 << Nz_Orient2Str( pNode->_initOrt ) << " /FIXED"
+			 << pNode->_optCord._x << "  "
+			 << pNode->_optCord._y << "  : "
+			 << Nz_Orient2Str( pNode->_optOrt ) << " /FIXED"
+			 //<< pNode->_initCord._x << "  "
+			 //<< pNode->_initCord._y << "  : "
+			 //<< Nz_Orient2Str( pNode->_initOrt ) << " /FIXED"
 			 << endl;
 	}
 }

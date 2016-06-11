@@ -33,6 +33,7 @@ bin/*
 
 # log files
 evaluate/*Eval*
+*.fp
 log/*
 preplace/*
 *.out
