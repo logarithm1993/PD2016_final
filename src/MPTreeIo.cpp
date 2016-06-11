@@ -638,8 +638,10 @@ MPTreeMgr::initMPTreeRoot()
    _treeRoot[0]->_name = "root-0";
    _treeRoot[1]->_name = "root-1";
    _treeRoot[2]->_name = "root-2";
-   for ( i = 0 , n = _treeRoot.size()-1 ; i < n ; ++i )
+   for ( i = 0 , n = _treeRoot.size()-1 ; i < n ; ++i ) {
       _treeRoot[i]->_curPtr._right = _treeRoot[i+1];
+      _treeRoot[i+1]->_curPtr._p   = _treeRoot[i];
+   }
 }
 
 bool

@@ -26,6 +26,8 @@
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 
+static void getTwoRandNum( int , int * , int * );
+
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
 ////////////////////////////////////////////////////////////////////////
@@ -174,9 +176,10 @@ MPTreeMgr::swapSubTree( int * sub1 , int * sub2 )
    if ( *sub1 != -1 && *sub2 != -1 ) // undo
       swapSubTree_int( *sub1 , *sub2 );
    else { // swap two subtrees
-      *sub1 = rand() % 4;
-      *sub2 = rand() % 4;
-      while ( *sub1 == *sub2 ) *sub2 = rand() % 4;
+      //*sub1 = rand() % 4;
+      //*sub2 = rand() % 4;
+      //while ( *sub1 == *sub2 ) *sub2 = rand() % 4;
+      getTwoRandNum( 4 , sub1 , sub2 ); // choose from 4 subtrees
       swapSubTree_int( *sub1 , *sub2 );
    }
 }
@@ -231,6 +234,26 @@ MPTreeMgr::getSubTreeRoot( int sub )
    if ( sub == 1 ) return _treeRoot[1]->_curPtr._left;
    if ( sub == 2 ) return _treeRoot[2]->_curPtr._left;
    if ( sub == 3 ) return _treeRoot[2]->_curPtr._right;
+}
+
+/**Function*************************************************************
+
+  Synopsis    [Local functions for this file]
+
+  Description [get 2 different rand numbers]
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+void
+getTwoRandNum( int range , int * num1 , int * num2 )
+{
+   *num1 = rand() % range;
+   *num2 = rand() % range;
+   while ( *num1 == *num2 ) *num2 = rand() % range;
 }
 
 ////////////////////////////////////////////////////////////////////////
