@@ -54,7 +54,8 @@ main( int argc , char ** argv )
    char input1[1024] = "benchmark/adaptec0_MMS/adaptec0.nodes";
    char input2[1024] = "benchmark/adaptec0_MMS/adaptec0.ntup.pl";
    char input3[1024] = "benchmark/adaptec0_MMS/adaptec0.nets";
-   char input4[1024] = "adaptec0.fp.matlab";
+   char input4[1024] = "adaptec1.fp.matlab";
+   char input5[1024] = "adaptec0.fp";
 
 	MPTreeMgr pd16;
 #if 0
@@ -70,13 +71,14 @@ main( int argc , char ** argv )
 #endif
 	srand( time(0) );
 	//pd16.test();
-	//pd16.writeOutput( argv[4] );
 	pd16.simAnneal();
    //cout << " >  End SA" << endl;
    //cout.flush();
 	//pd16.test();
-	//pd16.writeOutput( argv[4] );
-  //pd16.writeMatlabOutput( input4 );
+   pd16.writeMatlabOutput( input4 );
+	pd16.writeOutput( argv[4] );
+	//pd16.writeOutput( input5 );
+   cout << " >  MP trees macro packing finished." << endl;
 	return 0;
 }
 

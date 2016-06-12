@@ -179,7 +179,6 @@ MPTreeMgr::delInsNode( Node ** pNd1 , int * right1 ,
 	   getDelInsPair( index1 , index2 );
 		pNd     = _allNode[index1];
 		*pNd1   = pNd->_curPtr._p;
-	   //*right1 = (int)pLRChild( pNd );
 	   *right1 = (int)pNd->pLRChild();
 		*pNd2   = _allNode[index2];
 		if ( !((*pNd2)->_curPtr._left) ) *right2 = 0;
@@ -277,22 +276,10 @@ MPTreeMgr::changeNbrPtr( Node * pNd1 , Node * pNd2 )
    pLeft   = pNd1->_curPtr._left;
    pRight  = pNd1->_curPtr._right;
 
-	//if ( pParent ) pParent->setChild( pNd2 , pLRChild( pNd1 ) );
 	if ( pParent ) pParent->setChild( pNd2 , pNd1->pLRChild() );
 	if ( pLeft   ) pLeft ->setParent( pNd2 );
 	if ( pRight  ) pRight->setParent( pNd2 );
 }
-
-/*
-bool
-MPTreeMgr::pLRChild( const Node * pNd ) const
-{
-   if ( (((pNd->_curPtr)._p)->_curPtr)._left  == pNd ) return 0;
-   if ( (((pNd->_curPtr)._p)->_curPtr)._right == pNd ) return 1;
-	cout << "[Error] fail to find child!\n";
-	assert(0);
-	return 1;
-}*/
 
 bool
 MPTreeMgr::checkParentChild( const Node * pNd1 , const Node * pNd2 ) const
@@ -337,7 +324,6 @@ MPTreeMgr::swapSibling( Node * pNd1 , Node * pNd2 )
    bool right;
 
    pParent = pNd1->_curPtr._p;
-   //right   = pLRChild( pNd1 );
    right   = pNd1->pLRChild();
 
    changeNbrPtr( pNd1 , pNd2 );
@@ -397,9 +383,6 @@ MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
    // NOTE : pNd1 , pNd2 could be NULL after some perturbation!!!
    pNd1 = getSubTreeRoot( sub1 );
    pNd2 = getSubTreeRoot( sub2 );
- 
-   //printNode( cout , pNd1 );
-   //printNode( cout , pNd2 );
 
    // swap children of treeRoot
    if ( sub1 == 3 ) {
@@ -419,16 +402,8 @@ MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
    }
    
    // swap parents of pNd
-   if ( pNd1 ) 
-      pNd1->_curPtr._p = (sub2 == 3) ? _treeRoot[2] : _treeRoot[sub2];
-   if ( pNd2 )
-      pNd2->_curPtr._p = (sub1 == 3) ? _treeRoot[2] : _treeRoot[sub1];
-   //printNode( cout , _treeRoot[2] );
-   //printNode( cout , pNd1 );
-   //printNode( cout , pNd2 );
-   //pTemp            = pNd1->_curPtr._p;
-   //pNd1->_curPtr._p = pNd2->_curPtr._p;
-   //pNd2->_curPtr._p = pTemp;
+   if ( pNd1 ) pNd1->_curPtr._p = (sub2 == 3) ? _treeRoot[2] : _treeRoot[sub2];
+   if ( pNd2 ) pNd2->_curPtr._p = (sub1 == 3) ? _treeRoot[2] : _treeRoot[sub1];
 }
 
 Node*

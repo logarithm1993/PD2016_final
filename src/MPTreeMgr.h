@@ -143,7 +143,6 @@ class MPTreeMgr
       void     swapNode            ( Node** , Node** );
       void     swapNode_int        ( Node*  , Node* );
       void     changeNbrPtr        ( Node*  , Node* );
-      //bool     pLRChild            ( const Node* ) const;
       bool     checkParentChild    ( const Node* , const Node* ) const;
       void     swapParentChild     ( Node* , Node* );
       bool     checkSibling        ( const Node* , const Node* ) const;
