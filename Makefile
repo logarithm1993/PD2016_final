@@ -1,6 +1,6 @@
 # PD Final Project MakeFile
 CXX      := g++
-CPPFLAGS := -c -os
+CPPFLAGS := -c -os -g
 
 SOURCES  := $(addprefix src/,                   \
            main.cpp                             \

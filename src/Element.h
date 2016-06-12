@@ -134,6 +134,8 @@ class Node
       int    displacement() const;
       void   updateOpt();
       void   updateCur();
+      bool   pLRChild()     const;
+      bool   checkNode()    const;
 	private:
 		string      _name;
 		int         _width;

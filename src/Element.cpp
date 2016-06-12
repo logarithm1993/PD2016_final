@@ -23,6 +23,7 @@
 #include "MPTreeMgr.h"
 #include "Element.h"
 #include "utility.h"
+#include <cassert>
 #include <cfloat>
 #include <cmath>
 
@@ -139,6 +140,69 @@ Node::updateCur()
    _curOrt  = _optOrt;
    _curPtr  = _optPtr;
 }
+
+bool
+Node::pLRChild() const
+{
+   if ( ((_curPtr._p)->_curPtr)._left  == this ) return 0;
+   if ( ((_curPtr._p)->_curPtr)._right == this ) return 1;
+	cout << "[Error] fail to find child!\n";
+	assert(0);
+	return 1;
+}
+
+bool
+Node::checkNode() const
+{
+   Node * pParent , * pLeft , * pRight;
+   
+   pParent = _curPtr._p;
+   pLeft   = _curPtr._left;
+   pRight  = _curPtr._right;
+
+   //cout << "check node " << _name << endl;
+   // check parent
+   if ( !pParent ) {
+      if ( _name != "root-0" ) {
+         cout << "[Error] checkNode() : dangling node (name = " << _name << ")\n";
+         return false;
+      }
+   }
+   else {
+      if ( pParent == this ) {
+         cout << "[Error] checkNode() : self parent node (name = " << _name << ")\n";
+         return false;
+      }
+      if ( this != (pLRChild() ? pParent->_curPtr._right : pParent->_curPtr._left) ) {
+         cout << "[Error] checkNode() : wrong parent child node (name = " << _name << ")\n";
+         return false;
+      }
+   }
+   // check left
+   if ( pLeft ) {
+      if ( pLeft == this ) {
+         cout << "[Error] checkNode() : self left node (name = " << _name << ")\n";
+         return false;
+      }
+      if ( pLeft->_curPtr._p != this ) {
+         cout << "[Error] checkNode() : wrong parent left child node (name = " << _name << ")\n";
+         return false;
+      }
+   }
+   // check right
+   if ( pRight ) {
+      if ( pRight == this ) {
+         cout << "[Error] checkNode() : self right node (name = " << _name << ")\n";
+         return false;
+      }
+      if ( pRight->_curPtr._p != this ) {
+         cout << "[Error] checkNode() : wrong parent right child node (name = " << _name << ")\n";
+         return false;
+      }
+   }
+   return true;
+}
+
 /**Pin Function*********************************************************
  
   Synopsis    []

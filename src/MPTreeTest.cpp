@@ -60,7 +60,7 @@ MPTreeMgr::test()
    arg1 = arg2 = -1;
 
    printMPTree();
-   for ( i = 0 , n = 100000 ; i < n ; ++i ) {
+   for ( i = 0 , n = 1000 ; i < n ; ++i ) {
       move = rand() % 4;
       perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
       undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );

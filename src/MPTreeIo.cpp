@@ -626,6 +626,10 @@ MPTreeMgr::buildInitMPTree()
          _treeRoot[i]->_curPtr._left = node[i][0];
       }
    }
+   if ( !checkMPTree() ) {
+      cout << "[Error] build initial MP trees fail  has failed.\n";
+      assert(0);
+   }
 }
 
 void

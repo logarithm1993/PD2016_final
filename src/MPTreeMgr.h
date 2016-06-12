@@ -142,7 +142,7 @@ class MPTreeMgr
       void     swapNode            ( Node** , Node** );
       void     swapNode_int        ( Node*  , Node* );
       void     changeNbrPtr        ( Node*  , Node* );
-      bool     pLRChild            ( const Node* ) const;
+      //bool     pLRChild            ( const Node* ) const;
       bool     checkParentChild    ( const Node* , const Node* ) const;
       void     swapParentChild     ( Node* , Node* );
       bool     checkSibling        ( const Node* , const Node* ) const;
@@ -151,6 +151,8 @@ class MPTreeMgr
       void     swapSubTree         ( int* , int* );
       void     swapSubTree_int     ( int  , int  );
       Node*    getSubTreeRoot      ( int );
+      // MP tree checker
+      bool     checkMPTree         () const;
 		
 		// simulated annealing helper	
       //  uncomment these function when needed

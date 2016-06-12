@@ -34,6 +34,32 @@ static void getTwoRandNum( int , int * , int * );
 
 /**Function*************************************************************
 
+  Synopsis    [check MP trees]
+
+  Description []
+               
+  SideEffects []
+
+  SeeAlso     []
+
+***********************************************************************/
+
+bool
+MPTreeMgr::checkMPTree() const
+{
+   int i , n;
+
+   for ( i = 0 , n = _treeRoot.size() ; i < n ; ++i )
+      if ( !_treeRoot[i]->checkNode() ) return false;
+   
+   for ( i = 0 , n = _allNode.size() ; i < n ; ++i )
+      if ( !_allNode[i]->checkNode() ) return false;
+   
+   return true;
+}
+
+/**Function*************************************************************
+
   Synopsis    [perturb/undo MP tree : SA interface]
 
   Description []
@@ -64,6 +90,10 @@ MPTreeMgr::perturbMPTree( Node ** pNd1 , Node ** pNd2 ,
          swapSubTree( arg1 , arg2 );
          break;
    }
+   if ( !checkMPTree() ) {
+      cout << "[Error] perturbation (op = " << type << ") has failed.\n";
+      assert(0);
+   }
 }
 
 void
@@ -85,6 +115,10 @@ MPTreeMgr::undoMPTree( Node ** pNd1 , Node ** pNd2 ,
       case 3:
          swapSubTree( arg1 , arg2 );
          break;
+   }
+   if ( !checkMPTree() ) {
+      cout << "[Error] undo (op = " << type << ") has failed.\n";
+      assert(0);
    }
 }
 
@@ -145,7 +179,8 @@ MPTreeMgr::delInsNode( Node ** pNd1 , int * right1 ,
 	   getDelInsPair( index1 , index2 );
 		pNd     = _allNode[index1];
 		*pNd1   = pNd->_curPtr._p;
-	   *right1 = (int)pLRChild( pNd );
+	   //*right1 = (int)pLRChild( pNd );
+	   *right1 = (int)pNd->pLRChild();
 		*pNd2   = _allNode[index2];
 		if ( !((*pNd2)->_curPtr._left) ) *right2 = 0;
 		else *right2 = 1;
@@ -184,10 +219,10 @@ MPTreeMgr::delInsNode_int( Node * pNd1 , int right1 ,
 
 	pNd = ( !right1 ) ? pNd1->_curPtr._left : pNd1->_curPtr._right;
 	
-	/*cout << "Delete " << pBk1->_name << ( right1 ? " right " : " left " )
-		  << pBk->_name << " insert to " << pBk2->_name 
+	cout << "Delete " << pNd1->_name << ( right1 ? " right " : " left " )
+		  << pNd->_name << " insert to " << pNd2->_name 
 		  << ( right2 ? " right " : " left " ) << endl;
-	*/
+
 	pNd1->setChild  ( NULL , right1 );
 	pNd ->setParent ( pNd2 );
 	pNd2->setChild  ( pNd  , right2 );
@@ -222,7 +257,7 @@ MPTreeMgr::swapNode( Node ** pNd1 , Node ** pNd2 )
 void
 MPTreeMgr::swapNode_int( Node * pNd1 , Node * pNd2 )
 {
-	//cout << " >  swapping " << pNd1->_name << " and " << pNd2->_name << endl;
+	cout << " >  swapping " << pNd1->_name << " and " << pNd2->_name << endl;
    if ( checkParentChild( pNd1 , pNd2 ) )  swapParentChild( pNd1 , pNd2 );
    else if ( checkSibling( pNd1 , pNd2 ) ) swapSibling( pNd1 , pNd2 );
    else {
@@ -242,11 +277,13 @@ MPTreeMgr::changeNbrPtr( Node * pNd1 , Node * pNd2 )
    pLeft   = pNd1->_curPtr._left;
    pRight  = pNd1->_curPtr._right;
 
-	if ( pParent ) pParent->setChild( pNd2 , pLRChild( pNd1 ) );
+	//if ( pParent ) pParent->setChild( pNd2 , pLRChild( pNd1 ) );
+	if ( pParent ) pParent->setChild( pNd2 , pNd1->pLRChild() );
 	if ( pLeft   ) pLeft ->setParent( pNd2 );
 	if ( pRight  ) pRight->setParent( pNd2 );
 }
 
+/*
 bool
 MPTreeMgr::pLRChild( const Node * pNd ) const
 {
@@ -255,7 +292,7 @@ MPTreeMgr::pLRChild( const Node * pNd ) const
 	cout << "[Error] fail to find child!\n";
 	assert(0);
 	return 1;
-}
+}*/
 
 bool
 MPTreeMgr::checkParentChild( const Node * pNd1 , const Node * pNd2 ) const
@@ -300,7 +337,8 @@ MPTreeMgr::swapSibling( Node * pNd1 , Node * pNd2 )
    bool right;
 
    pParent = pNd1->_curPtr._p;
-   right   = pLRChild( pNd1 );
+   //right   = pLRChild( pNd1 );
+   right   = pNd1->pLRChild();
 
    changeNbrPtr( pNd1 , pNd2 );
 	changeNbrPtr( pNd2 , pNd1 );
