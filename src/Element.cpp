@@ -120,7 +120,7 @@ Node::displacement() const
    int dx = _curCord._x - _initCord._x;
    int dy = _curCord._y - _initCord._y;
    
-   return abs(dx) + abs(dy);
+   return (abs(dx) + abs(dy))*(abs(dx) + abs(dy));
 }
 
 void

@@ -23,6 +23,8 @@
 #include <cmath>
 #include <cfloat>
 #include <cstdlib>
+#include <algorithm>
+
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
@@ -31,7 +33,8 @@ static inline int    chooseMove()
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
 static inline bool   isAccepted(const double &C, const double &T)
-                     { return exp(-C/T) > prob(); }
+                     { printf("C = %f, T = %f, prob = %f\n", C, T, exp(-C/T));
+                        return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
@@ -73,16 +76,17 @@ MPTreeMgr::simAnneal_int()
    double cost, costPrev, deltaCost;
    double T_start, T_end;
   
-   printMPTree();
    setTemp(T_start, T_end);
-   printMPTree();
    cost = computeCost();
    
    // TBD
    unsigned repeat = 20;
    double   T      = T_start;
-   double   r      = 0.97;
-   
+   double   r      = 0.98;
+  
+   unsigned uphillCnt   = 0;
+   unsigned downhillCnt = 0;
+   unsigned totalCnt    = 0;
    while (T > T_end){
       for(unsigned i = 0; i < repeat; ++i){
          Node* obj1 = NULL;
@@ -101,15 +105,19 @@ MPTreeMgr::simAnneal_int()
          costPrev = cost;
          cost = computeCost();
          deltaCost = cost - costPrev;
+         totalCnt ++;
          if (deltaCost < 0){
             if(cost < _optCost){
                _optCost = cost;
                updateOptSol();
             }
+            ++downhillCnt;
             continue;
          }
-         else if(isAccepted(deltaCost, T))
+         else if(deltaCost > 0 && isAccepted(deltaCost, T)){
+            ++uphillCnt;
             continue;
+         }
          else
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
       }
@@ -119,6 +127,8 @@ MPTreeMgr::simAnneal_int()
    updateCurSol();
 
    // TODO: output some message?
+   cout<<" simAnneal_int(): done, _optCost = " << _optCost <<endl;
+   cout<<"> total perturbation: "<< totalCnt <<" uphill: "<< uphillCnt <<" downhill: "<< downhillCnt << endl;
 }
 
 /**Function*************************************************************
@@ -158,11 +168,14 @@ void
 MPTreeMgr::setTemp(double & T0, double & Tx)
 {
    // TBD
-   double initAcceptRate  = 0.999;
-   double finalAcceptRate = 0.010;
-   unsigned repeat        = 20;
-   double   deltaSum      = 0.0;
-   
+   double initAcceptRate  = 0.95;
+   double finalAcceptRate = 0.01;
+   unsigned repeat        = 1000;
+   //unsigned uphillCnt     = 0;
+
+   //double   deltaSum      = 0;
+   vector<double> vCost;
+   vCost.reserve(repeat);
    double cost, costPrev, deltaCost;
    cost = computeCost();
    // greedy approach
@@ -183,19 +196,34 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          costPrev = cost;
          cost = computeCost();
          deltaCost = cost - costPrev;
-         deltaSum += abs(deltaCost);
-         if (deltaCost < 0){
+         //deltaSum += abs(deltaCost);
+         if (deltaCost <= 0){
             if(cost < _optCost){
                _optCost = cost;
                updateOptSol();
             }
          }
-         else
+         else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
+            //deltaSum += deltaCost;
+            vCost.push_back(deltaCost);
+            //++uphillCnt;
+         }
    }
    updateCurSol();   
-   T0 = abs( deltaSum / repeat / log(initAcceptRate) );
-   Tx = abs( deltaSum / repeat / log(finalAcceptRate));
+   
+   sort(vCost.begin(),vCost.end());
+   double avg = 0;
+   for(unsigned i = 0, n = vCost.size()*0.8; i < n; ++i){
+      avg += vCost[i];
+   }
+   avg /= (int)vCost.size()*0.8;
+   
+   T0 = abs( avg / log(initAcceptRate) );
+   Tx = abs( avg / log(finalAcceptRate));
+   
+   printf("avgDcost:%f T0:%f, Tx:%f\n", avg ,T0,Tx);
+   //printf("avgDcost:%f T0:%f, Tx:%f\n", pow(deltaSum, 1/uphillCnt) ,T0,Tx);
 }
 
 /**Function*************************************************************
@@ -213,17 +241,26 @@ double
 MPTreeMgr::computeCost() const
 {
    // TODO: adjust vlaue of alpha, beta, gamma
-   double c1 = 1.0 * computeArea();
-   double c2 = 1.0 * computeWL();
-   double c3 = 1.0 * computeDisp();
-   double c4 = 1.0 * computeCongest();
-   cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
+   double a = 3;
+   double b = 2;
+   double c = 5;
+   double d = 0;
+   
+   double c1 = a/(a+b+c+d) * computeArea();
+   double c2 = b/(a+b+c+d) * computeWL();
+   double c3 = c/(a+b+c+d) * computeDisp();
+   double c4 = d/(a+b+c+d) * computeCongest();
+   //cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
+   /*
+   printf(" > computeCost() : area = %f, WL=%f, disp=%f, total=%f\n", 
+         c1/a*(a+b+c+d), c2/b*(a+b+c+d), c3/c*(a+b+c+d), c1+c2+c3);
+   */
    return c1 + c2 + c3 + c4;
 }
 
 /**Function*************************************************************
 
-  Synopsis    [cost computing function (inner)]
+  Synopsis    [c`ost computing function (inner)]
 
   Description [
                  Area: contour area(like Riemann sum)
@@ -283,6 +320,7 @@ void
 MPTreeMgr::updateOptSol()
 {
    cout << "updateOptSol() : find better sol!\n";
+   cout << ">> cost = " << _optCost << endl;
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
       _allNode[i]->updateOpt();
    for ( unsigned i = 0 , n = _treeRoot.size() ; i < n ; ++i )
