@@ -27,7 +27,7 @@
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
-                     { return rand() % 4; }
+                     { return rand() % 3; }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
 static inline bool   isAccepted(const double &C, const double &T)

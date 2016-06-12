@@ -68,9 +68,9 @@ main( int argc , char ** argv )
 	}
 #endif
 	srand( time(0) );
-	pd16.test();
+	//pd16.test();
 	//pd16.writeOutput( argv[4] );
-	//pd16.simAnneal();
+	pd16.simAnneal();
    //cout << " >  End SA" << endl;
    //cout.flush();
 	//pd16.test();

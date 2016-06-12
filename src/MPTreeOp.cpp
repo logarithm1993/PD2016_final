@@ -219,10 +219,10 @@ MPTreeMgr::delInsNode_int( Node * pNd1 , int right1 ,
 
 	pNd = ( !right1 ) ? pNd1->_curPtr._left : pNd1->_curPtr._right;
 	
-	cout << "Delete " << pNd1->_name << ( right1 ? " right " : " left " )
+	/*cout << "Delete " << pNd1->_name << ( right1 ? " right " : " left " )
 		  << pNd->_name << " insert to " << pNd2->_name 
 		  << ( right2 ? " right " : " left " ) << endl;
-
+*/
 	pNd1->setChild  ( NULL , right1 );
 	pNd ->setParent ( pNd2 );
 	pNd2->setChild  ( pNd  , right2 );
@@ -257,7 +257,7 @@ MPTreeMgr::swapNode( Node ** pNd1 , Node ** pNd2 )
 void
 MPTreeMgr::swapNode_int( Node * pNd1 , Node * pNd2 )
 {
-	cout << " >  swapping " << pNd1->_name << " and " << pNd2->_name << endl;
+	//cout << " >  swapping " << pNd1->_name << " and " << pNd2->_name << endl;
    if ( checkParentChild( pNd1 , pNd2 ) )  swapParentChild( pNd1 , pNd2 );
    else if ( checkSibling( pNd1 , pNd2 ) ) swapSibling( pNd1 , pNd2 );
    else {
@@ -391,11 +391,15 @@ MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
       cout << "[Error] swapSubTree() : wrong subtree index (sub2)!\n";
       assert(0);
    }
+   cout << "swap " << sub1 << " and " << sub2 << endl;
    Node * pNd1 , * pNd2 , * pTemp;
    
    pNd1 = getSubTreeRoot( sub1 );
    pNd2 = getSubTreeRoot( sub2 );
-   
+ 
+   printNode( cout , pNd1 );
+   printNode( cout , pNd2 );
+
    // swap children of treeRoot
    if ( sub1 == 3 ) {
       pTemp                          = _treeRoot[2]->_curPtr._right;

@@ -60,8 +60,9 @@ MPTreeMgr::test()
    arg1 = arg2 = -1;
 
    printMPTree();
-   for ( i = 0 , n = 1000 ; i < n ; ++i ) {
-      move = rand() % 4;
+   for ( i = 0 , n = 100000 ; i < n ; ++i ) {
+      cout << "  > " << i << "-th perturbation\n";
+      move = rand() % 3;
       perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
       undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
       pNd1 = pNd2 = NULL;
