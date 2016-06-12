@@ -51,9 +51,9 @@ using namespace std;
 int
 main( int argc , char ** argv )
 {
-   char input1[1024] = "adaptec0.nodes";
-   char input2[1024] = "adaptec0.ntup.pl";
-   char input3[1024] = "adaptec0.nets";
+   char input1[1024] = "benchmark/adaptec0_MMS/adaptec0.nodes";
+   char input2[1024] = "benchmark/adaptec0_MMS/adaptec0.ntup.pl";
+   char input3[1024] = "benchmark/adaptec0_MMS/adaptec0.nets";
    char input4[1024] = "adaptec0.fp.matlab";
 
 	MPTreeMgr pd16;
