@@ -143,7 +143,7 @@ MPTreeMgr::initCost()
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
      _initWL += _allNet[i]->HPWL();
    // computeArea TODO
-  
+   _initArea = _cntrArea; 
    // computeDisp
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
@@ -237,10 +237,9 @@ MPTreeMgr::computeCost()
 double
 MPTreeMgr::computeArea()
 {
-   double sum = 0.0;
    // TODO :  Riemann sum
    //return sum / _initArea;
-   return 0.0;
+   return _cntrArea / _initArea;
 }
 
 double

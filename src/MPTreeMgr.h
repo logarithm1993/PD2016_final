@@ -62,6 +62,7 @@ class MPTreeMgr
 		bool readInput     ( const char * , const char * , const char * ); // nodes , pl , nets
 		void simAnneal     ();
 		bool writeOutput   ( const char * ) const;
+    bool writeMatlabOutput ( const char *) const;
 		void test();
 	private:
 		// member functions
@@ -197,6 +198,7 @@ class MPTreeMgr
       double             _initWL;
       double             _initDisp;
       double             _optCost;
+      double             _cntrArea;
 };
 
 ////////////////////////////////////////////////////////////////////////

@@ -39,3 +39,7 @@ log/*
 preplace/*
 *.out
 *.result
+
+# matlab files
+*.m
+*.matlab*

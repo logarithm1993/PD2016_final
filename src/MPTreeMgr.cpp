@@ -53,6 +53,7 @@ MPTreeMgr::MPTreeMgr()
    
    _chipWidth  = 0;
    _chipHeight = 0;
+   _cntrArea   = 0.0;
 }
 
 /**Function*************************************************************
