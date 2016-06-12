@@ -47,6 +47,11 @@ MPTreeMgr::packMPTree()
    Node* root = 0;
    bool isbottom,isfromleft;
   
+   /*for( size_t i = 0, lsize = _allNode.size(); i < lsize; ++i) {
+      _allNode[i]->_curCord._x = -1;
+      _allNode[i]->_curCord._y = -1;
+   }*/
+
    // BL-tree
    isbottom = isfromleft = true;
    root = _treeRoot[0]->_curPtr._left;
@@ -104,9 +109,9 @@ MPTreeMgr::packcorner( Node* const & root, List*& contour, const bool& isbottom,
    if(isbottom)   y0 = y;
    else           y0 = _chipHeight - y - root->height();
 
-   packMPTree_rec(root->_curPtr._left,contour,isbottom,isfromleft);
-   packMPTree_rec(root->_curPtr._right,contour,isbottom,isfromleft);
-   //return true;
+   if(!packMPTree_rec(root->_curPtr._left,contour,isbottom,isfromleft))  return false;
+   if(!packMPTree_rec(root->_curPtr._right,contour,isbottom,isfromleft)) return false; 
+   return true;
 }
 bool
 MPTreeMgr::packMPTree_rec( Node* const &  n, List*& contour, const bool& isbottom, const bool& isfromleft)
@@ -151,8 +156,8 @@ MPTreeMgr::packMPTree_rec( Node* const &  n, List*& contour, const bool& isbotto
          if( ny0 < 0 ) return false;
       }
    }
-   packMPTree_rec(n->_curPtr._left,contour,isbottom,isfromleft);
-   packMPTree_rec(n->_curPtr._right,contour,isbottom,isfromleft);
-   //return true;
+   if(!packMPTree_rec(n->_curPtr._left,contour,isbottom,isfromleft))  return false;
+   if(!packMPTree_rec(n->_curPtr._right,contour,isbottom,isfromleft)) return false;
+   return true;
 }
 
