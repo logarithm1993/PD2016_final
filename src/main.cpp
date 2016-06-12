@@ -70,14 +70,9 @@ main( int argc , char ** argv )
 	}
 #endif
 	srand( time(0) );
-	//pd16.test();
 	pd16.simAnneal();
-   //cout << " >  End SA" << endl;
-   //cout.flush();
-	//pd16.test();
    pd16.writeMatlabOutput( input4 );
 	pd16.writeOutput( argv[4] );
-	//pd16.writeOutput( input5 );
    cout << " >  MP trees macro packing finished." << endl;
 	return 0;
 }
