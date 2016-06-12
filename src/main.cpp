@@ -54,6 +54,7 @@ main( int argc , char ** argv )
    char input1[1024] = "adaptec0.nodes";
    char input2[1024] = "adaptec0.ntup.pl";
    char input3[1024] = "adaptec0.nets";
+   char input4[1024] = "adaptec0.fp.matlab";
 
 	MPTreeMgr pd16;
 #if 1
@@ -75,7 +76,7 @@ main( int argc , char ** argv )
    //cout.flush();
 	//pd16.test();
 	//pd16.writeOutput( argv[4] );
-  pd16.writeMatlabOutput( argv[1] );
+  //pd16.writeMatlabOutput( input4 );
 	return 0;
 }
 

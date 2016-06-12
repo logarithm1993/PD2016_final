@@ -74,7 +74,18 @@ MPTreeMgr::packMPTree()
       else it1 = it1->_next;
    }
    assert(it1 == bcontour->_end && it2 == tcontour->_end);
-
+   double sum = 0;
+   it1 = bcontour->_begin->_next;
+   while( it1 != bcontour->_end ) {
+      sum += (it1->_x1 - it1->_x0) * it1->_y1;
+      it1 = it1->_next;
+   }
+   it1 = tcontour->_begin->_next;
+   while( it1 != tcontour->_end ) {
+      sum += (it1->_x1 - it1->_x0) * it1->_y1;
+      it1 = it1->_next;
+   }
+   _cntrArea = sum;
    delete bcontour;
    delete tcontour;
    return true;
