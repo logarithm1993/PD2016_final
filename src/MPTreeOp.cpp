@@ -77,9 +77,6 @@ MPTreeMgr::perturbMPTree( Node ** pNd1 , Node ** pNd2 ,
 {
    switch ( type )
    {
-      case 0:
-         rotateNode( pNd1 , arg1 );
-         break;
       case 1:
          delInsNode( pNd1 , arg1 , pNd2 , arg2 );
          break;
@@ -103,9 +100,6 @@ MPTreeMgr::undoMPTree( Node ** pNd1 , Node ** pNd2 ,
 {
    switch ( type )
    {
-      case 0:
-         rotateNode( pNd1 , arg1 );
-         break;
       case 1:
          delInsNode( pNd2 , arg2 , pNd1 , arg1 );
          break;
