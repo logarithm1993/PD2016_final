@@ -473,7 +473,13 @@ MPTreeMgr::writeMatlabOutput( const char * file) const
       }
          
    }
-   if(!isoverlap) cout<<" >  no overlaps\n";
+   if(!isoverlap) cout << " >  no overlaps\n";
+   cout << " >  total area : " << (double)(_chipWidth*_chipHeight) << endl;
+   cout << " >  dead space : " << _deadArea << endl
+        << " >  BLArea     : " << _BLArea << endl
+        << " >  BRArea     : " << _BRArea << endl
+        << " >  TLArea     : " << _TLArea << endl
+        << " >  TRArea     : " << _TRArea << endl;
    out.close();
    return true;
 }

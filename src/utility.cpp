@@ -33,7 +33,6 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
 ////////////////////////////////////////////////////////////////////////
@@ -203,7 +202,17 @@ operator << (ostream& os,const List& l)
 
    os<<endl;
 }
-
+double
+List::area()
+{
+   double sum = 0;
+   ListNode* ptr = _begin->_next;
+   while(ptr != _end) {
+      sum += (ptr->_x1 - ptr->_x0) * ptr->_y1;
+      ptr = ptr->_next;
+   }
+   return sum;
+}
 void
 List::concate(ListNode* const & n1,ListNode* const & n2) // concate n2 after n1
 {
@@ -216,7 +225,7 @@ List::concate(ListNode* const & n1,ListNode* const & n2) // concate n2 after n1
    n2->_prev = n1;
 }
 int
-List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) // [x0,x1] is safe range
+List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft,double& deadArea) // [x0,x1] is safe range
 {
    int y0max = INT_MIN;
    if(isfromleft) {
@@ -228,6 +237,7 @@ List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) //
       ListNode* ptr2 = _end->_prev;
       while(ptr2->_x0 >= x1) ptr2 = ptr2->_prev;
 
+      // calculate y0max
       ListNode* ptr1p  = ptr1->_prev;
       ListNode* ptr2n  = ptr2->_next;
       int       ptr2y1 = ptr2->_y1;
@@ -235,10 +245,25 @@ List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) //
       ListNode* nxt = NULL;
       while(cur != ptr2n) {
          if(cur->_y1 > y0max) y0max = cur->_y1;
+         cur = cur->_next;
+      }
+      // delete internal nodes , compute _deadArea
+      cur = ptr1;
+      nxt = NULL;
+      while(cur != ptr2) {
+         deadArea += (cur->_x1 - cur->_x0) * (y0max - cur->_y1);
          nxt = cur->_next;
          delete cur;
          cur = nxt;
       }
+      assert(cur == ptr2);
+      assert(ptr2->_x1 >= x1);
+      if(cur->_x1 == x1)
+         deadArea += (cur->_x1 - cur->_x0) * (y0max - cur->_y1);
+      else
+         deadArea += (x1 - cur->_x0) * (y0max - cur->_y1);
+      delete ptr2;
+
       ListNode* n1 = new ListNode(x0,x1,y0max+h);
       ptr1p->_next = NULL;
       ptr2n->_prev = NULL;
@@ -263,6 +288,7 @@ List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) //
       ListNode* ptr2 = _begin->_next;
       while(ptr2->_x1 <= x0) ptr2 = ptr2->_next;
       
+      // calculate y0max
       ListNode* ptr1p  = ptr1->_next;
       ListNode* ptr2n  = ptr2->_prev;
       int       ptr2y1 = ptr2->_y1;
@@ -270,10 +296,25 @@ List::update(const int& x0,const int& x1,const int& h,const bool& isfromleft) //
       ListNode* nxt = NULL;
       while(cur != ptr2n) {
          if(cur->_y1 > y0max) y0max = cur->_y1;
+         cur = cur->_prev;
+      }
+      // delete internal nodes , compute _deadArea
+      cur = ptr1;
+      nxt = NULL;
+      while(cur != ptr2) {
+         deadArea += (cur->_x1 - cur->_x0) * (y0max - cur->_y1);
          nxt = cur->_prev;
          delete cur;
          cur = nxt;
       }
+      assert(cur == ptr2);
+      assert(ptr2->_x0 <= x0);
+      if(ptr2->_x0 == x0)
+         deadArea += (ptr2->_x1 - ptr2->_x0) * (y0max - ptr2->_y1);
+      else
+         deadArea += (ptr2->_x1 - x0) * (y0max - ptr2->_y1);
+      delete ptr2;
+     
       ListNode* n1 = new ListNode(x0,x1,y0max+h);
       ptr1p->_prev = NULL;
       ptr2n->_next = NULL;

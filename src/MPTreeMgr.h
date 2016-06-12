@@ -198,6 +198,11 @@ class MPTreeMgr
       double             _initDisp;
       double             _optCost;
       double             _cntrArea;
+      double             _deadArea;
+      double             _BLArea;
+      double             _BRArea;
+      double             _TLArea;
+      double             _TRArea;
 };
 
 ////////////////////////////////////////////////////////////////////////

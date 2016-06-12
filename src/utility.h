@@ -48,6 +48,8 @@ extern string  Nz_Orient2Str     ( const Orient & );
 extern Orient  Nz_Int2Orient     ( const int & );
 extern int     Nz_Orient2Int     ( const Orient & );
 
+class MPTreeMgr;
+
 ////////////////////////////////////////////////////////////////////////
 ///                         BASIC TYPES                              ///
 ////////////////////////////////////////////////////////////////////////
@@ -73,8 +75,9 @@ public:
    List(const int& outwidth);
    ~List();
    
-   int  update(const int&,const int&,const int&,const bool&);
+   int  update(const int&,const int&,const int&,const bool&,double&);
    void concate(ListNode* const &,ListNode* const &);
+   double area();
    friend ostream& operator << (ostream& ,const List&);
    
 private:

@@ -75,10 +75,10 @@ main( int argc , char ** argv )
    //cout << " >  End SA" << endl;
    //cout.flush();
 	//pd16.test();
-   pd16.writeMatlabOutput( input4 );
+  pd16.writeMatlabOutput( input4 );
 	pd16.writeOutput( argv[4] );
 	//pd16.writeOutput( input5 );
-   cout << " >  MP trees macro packing finished." << endl;
+  cout << " >  MP trees macro packing finished." << endl;
 	return 0;
 }
 
