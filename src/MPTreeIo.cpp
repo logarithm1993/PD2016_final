@@ -432,8 +432,8 @@ MPTreeMgr::nodeFindPin( Node * pNode , double offsetX , double offsetY )
 bool
 MPTreeMgr::writeMatlabOutput( const char * file) const
 {
-   cout << " >  writeMatlabOutput() : opening output file : " << file << endl;
-  ofstream out( file );
+   cout << " >  writeMatlabOutput() : opening output file " << file << endl;
+   ofstream out( file );
    if ( !out.is_open() ) {
       cout << "[Error] writeMatlabOutput() : opening output file " << file << " has failed\n";
       return false;
@@ -446,6 +446,7 @@ MPTreeMgr::writeMatlabOutput( const char * file) const
           << x0 << " " << y0 << " "
           << x0 + _allNode[i]->width() << " " << y0 + _allNode[i]->height() << endl;
    }
+   //printMPTree();
    // check overlap
    bool isoverlap = false;
    for ( size_t i = 0, lsize = _allNode.size(); i < lsize-1; ++i ) {
@@ -464,7 +465,7 @@ MPTreeMgr::writeMatlabOutput( const char * file) const
               (x20 > x10 && x20 < x11 && y21 > y10 && y21 < y11) || 
               (x21 > x10 && x21 < x11 && y20 > y10 && y20 < y11) || 
               (x21 > x10 && x21 < x11 && y21 > y10 && y21 < y11)  ) {
-            cout << "overlap at\n"
+            cout << " >  overlap at\n"
                  << n1->_name << "   (" << x10 << "," << y10 << ")   (" << x11 << "," << y11 << ")\n"
                  << n2->_name << "   (" << x20 << "," << y20 << ")   (" << x21 << "," << y21 << ")\n";
             isoverlap = true;
@@ -472,7 +473,13 @@ MPTreeMgr::writeMatlabOutput( const char * file) const
       }
          
    }
-   if(!isoverlap) cout<<"no overlaps\n";
+   if(!isoverlap) cout << " >  no overlaps\n";
+   cout << " >  total area : " << (double)(_chipWidth*_chipHeight) << endl;
+   cout << " >  dead space : " << _deadArea << endl
+        << " >  BLArea     : " << _BLArea << endl
+        << " >  BRArea     : " << _BRArea << endl
+        << " >  TLArea     : " << _TLArea << endl
+        << " >  TRArea     : " << _TRArea << endl;
    out.close();
    return true;
 }
