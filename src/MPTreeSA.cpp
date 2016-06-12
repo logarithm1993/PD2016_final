@@ -139,14 +139,16 @@ MPTreeMgr::initCost()
    _initArea = 0.0;
    _initDisp = 0.0;
    _optCost  = DBL_MAX;
+   
    // computeWL
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
      _initWL += _allNet[i]->HPWL();
-   // computeArea TODO
+   // computeArea
    _initArea = _cntrArea; 
    // computeDisp
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
+   // computeCongest TODO
 
    _optCost = computeCost();
    updateOptSol();
@@ -208,7 +210,7 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
 
 ***********************************************************************/
 double
-MPTreeMgr::computeCost()
+MPTreeMgr::computeCost() const
 {
    // TODO: adjust vlaue of alpha, beta, gamma
    double c1 = 1.0 * computeArea();
@@ -227,6 +229,7 @@ MPTreeMgr::computeCost()
                  Area: contour area(like Riemann sum)
                  WL  : HPWL
                  Disp: Node displacement
+                 Congest: TBD
               ]
                
   SideEffects []
@@ -235,10 +238,8 @@ MPTreeMgr::computeCost()
 
 ***********************************************************************/
 double
-MPTreeMgr::computeArea()
+MPTreeMgr::computeArea() const
 {
-   // TODO :  Riemann sum
-   //return sum / _initArea;
    return _cntrArea / _initArea;
 }
 

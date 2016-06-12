@@ -113,8 +113,8 @@ class MPTreeMgr
 		// cost computation helper
       
 		void     initCost            ();
-      double   computeCost         ();
-      double   computeArea         ();
+      double   computeCost         () const;
+      double   computeArea         () const;
       double   computeWL           () const;
       double   computeDisp         () const;
       double   computeCongest      () const;
