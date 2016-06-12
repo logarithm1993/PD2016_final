@@ -51,7 +51,6 @@ using namespace std;
 void
 MPTreeMgr::test()
 {
-#if 1
    cout << " >  testing MPTree operations: \n";
    Node * pNd1 , * pNd2 , * pNd3;
    int move , arg1 , arg2 , i , n;
@@ -60,16 +59,20 @@ MPTreeMgr::test()
    arg1 = arg2 = -1;
 
    printMPTree();
+#if 1
    for ( i = 0 , n = 100000 ; i < n ; ++i ) {
-      cout << "  > " << i << "-th perturbation\n";
-      move = rand() % 3;
+      //cout << "  > " << i << "-th perturbation\n";
+      move = rand() % 4;
       perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
-      undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
+      //undoMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
       pNd1 = pNd2 = NULL;
       arg1 = arg2 = -1;
    }
    printMPTree();
 #else
+   arg1 = 2;
+   arg2 = 3;
+   perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , 3 );
    printMPTree(); 
 #endif
 }

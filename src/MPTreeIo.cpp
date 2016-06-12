@@ -468,6 +468,10 @@ MPTreeMgr::writeAllNode( ostream & out ) const
 void
 MPTreeMgr::printNode( ostream & out , Node * pNode ) const
 {
+   if ( !pNode ) {
+      out << "[Warning] empty node!\n";
+      return;
+   }
    out << "   >  Name   = "  << pNode->_name << " ;";
    printNodePtr( out , pNode );
 		 //<< " width = "  << pNode->_width  << " ;"

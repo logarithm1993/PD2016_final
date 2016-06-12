@@ -56,7 +56,7 @@ main( int argc , char ** argv )
    char input3[1024] = "adaptec0.nets";
 
 	MPTreeMgr pd16;
-#if 1
+#if 0
 	if ( !pd16.readInput( input1 , input2 , input3 ) ) {
       cout << " >  reading input has failed\n";
 		return 1;
@@ -74,7 +74,8 @@ main( int argc , char ** argv )
    //cout << " >  End SA" << endl;
    //cout.flush();
 	//pd16.test();
-	//pd16.writeOutput( argv[4] );
+	cout << " >  MP tree macro packing finished.\n";
+   pd16.writeOutput( argv[4] );
 	return 0;
 }
 

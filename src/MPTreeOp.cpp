@@ -391,14 +391,15 @@ MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
       cout << "[Error] swapSubTree() : wrong subtree index (sub2)!\n";
       assert(0);
    }
-   cout << "swap " << sub1 << " and " << sub2 << endl;
+   //cout << "swap " << sub1 << " and " << sub2 << endl;
    Node * pNd1 , * pNd2 , * pTemp;
    
+   // NOTE : pNd1 , pNd2 could be NULL after some perturbation!!!
    pNd1 = getSubTreeRoot( sub1 );
    pNd2 = getSubTreeRoot( sub2 );
  
-   printNode( cout , pNd1 );
-   printNode( cout , pNd2 );
+   //printNode( cout , pNd1 );
+   //printNode( cout , pNd2 );
 
    // swap children of treeRoot
    if ( sub1 == 3 ) {
@@ -418,9 +419,16 @@ MPTreeMgr::swapSubTree_int( int sub1 , int sub2 )
    }
    
    // swap parents of pNd
-   pTemp            = pNd1->_curPtr._p;
-   pNd1->_curPtr._p = pNd2->_curPtr._p;
-   pNd2->_curPtr._p = pTemp;
+   if ( pNd1 ) 
+      pNd1->_curPtr._p = (sub2 == 3) ? _treeRoot[2] : _treeRoot[sub2];
+   if ( pNd2 )
+      pNd2->_curPtr._p = (sub1 == 3) ? _treeRoot[2] : _treeRoot[sub1];
+   //printNode( cout , _treeRoot[2] );
+   //printNode( cout , pNd1 );
+   //printNode( cout , pNd2 );
+   //pTemp            = pNd1->_curPtr._p;
+   //pNd1->_curPtr._p = pNd2->_curPtr._p;
+   //pNd2->_curPtr._p = pTemp;
 }
 
 Node*
