@@ -44,25 +44,25 @@ MPTreeMgr::packMPTree()
 {
    List* bcontour = new List(_chipWidth);
    List* tcontour = new List(_chipWidth);
-   Node* root = NULL;
+   Node* root = 0;
    bool isbottom,isfromleft;
   
    // BL-tree
    isbottom = isfromleft = true;
    root = _treeRoot[0]->_curPtr._left;
-   if(!packcorner(root,bcontour,isbottom,isfromleft)) return false;
+   if(!packcorner(root,bcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
    // BR-tree
    isbottom = true; isfromleft = false;
    root = _treeRoot[1]->_curPtr._left;
-   if(!packcorner(root,bcontour,isbottom,isfromleft)) return false;
+   if(!packcorner(root,bcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
    // TL-tree
    isbottom = false; isfromleft = true;
    root = _treeRoot[2]->_curPtr._left;
-   if(!packcorner(root,tcontour,isbottom,isfromleft)) return false;
+   if(!packcorner(root,tcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
    // TR-tree
    isbottom = isfromleft = false;
    root = _treeRoot[2]->_curPtr._right;
-   if(!packcorner(root,tcontour,isbottom,isfromleft)) return false;
+   if(!packcorner(root,tcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
 
    // check contour overlaps
    ListNode* it1 = bcontour->_begin->_next;
@@ -82,28 +82,29 @@ MPTreeMgr::packMPTree()
 bool
 MPTreeMgr::packcorner( Node* const & root, List*& contour, const bool& isbottom, const bool& isfromleft)
 {
+   if(root == 0) return true; 
    int& x0 = root->_curCord._x;
    int& y0 = root->_curCord._y;
    if(isfromleft) x0 = 0;
-   else           x0 = _chipWidth-root->_width;
+   else           x0 = _chipWidth - root->width();
    
-   int y = contour->update(x0,x0+root->_width,root->_height,isfromleft);
+   int y = contour->update(x0,x0+root->width(),root->height(),isfromleft);
 
    if(isbottom)   y0 = y;
-   else           y0 = _chipHeight - y - root->_height;
+   else           y0 = _chipHeight - y - root->height();
 
-   if(!packMPTree_rec(root->_curPtr._left,contour,isbottom,isfromleft))  {delete contour; return false;}
-   if(!packMPTree_rec(root->_curPtr._right,contour,isbottom,isfromleft)) {delete contour; return false;}
-   return true;
+   packMPTree_rec(root->_curPtr._left,contour,isbottom,isfromleft);
+   packMPTree_rec(root->_curPtr._right,contour,isbottom,isfromleft);
+   //return true;
 }
 bool
 MPTreeMgr::packMPTree_rec( Node* const &  n, List*& contour, const bool& isbottom, const bool& isfromleft)
 {
    // left-first inorder traversal
-   if(n == NULL) return true;
+   if(n == 0) return true;
    const Node* const & p = n->_curPtr._p;
    const int& px0 = p->_curCord._x;
-   const int  px1 = px0 + p->_width;
+   const int  px1 = px0 + p->width();
    int& nx0 = n->_curCord._x;
    int& ny0 = n->_curCord._y;   
 
@@ -111,35 +112,36 @@ MPTreeMgr::packMPTree_rec( Node* const &  n, List*& contour, const bool& isbotto
       if(isfromleft) {
          if(p->_curPtr._left == n) nx0 = px1;
          else                      nx0 = px0;
-
-         ny0 = contour->update(nx0,nx0+n->_width,n->_height,isfromleft);
-         if( nx0 + n->_width > _chipWidth || ny0 + n->_height > _chipHeight ) return false;
+         if( nx0 + n->width() > _chipWidth )   return false;
+         ny0 = contour->update(nx0,nx0+n->width(),n->height(),isfromleft);
+         if( ny0 + n->height() > _chipHeight ) return false;
       }
       else {
-         if(p->_curPtr._left == n) nx0 = px0 - n->_width;
-         else                      nx0 = px1 - n->_width;
-
-         ny0 = contour->update(nx0,nx0+n->_width,n->_height,isfromleft);
-         if( nx0 < 0 || ny0 + n->_height > _chipHeight ) return false;
+         if(p->_curPtr._left == n) nx0 = px0 - n->width();
+         else                      nx0 = px1 - n->width();
+         if ( nx0 < 0 ) return false;
+         ny0 = contour->update(nx0,nx0+n->width(),n->height(),isfromleft);
+         if( ny0 + n->height() > _chipHeight ) return false;
       }
    }
    else {
       if(isfromleft) {
          if(p->_curPtr._left == n) nx0 = px1;
          else                      nx0 = px0;
-         ny0 = _chipHeight - contour->update(nx0,nx0+n->_width,n->_height,isfromleft) - n->_height;
-         if( nx0 + n->_width > _chipWidth || ny0 < 0 ) return false;
+         if( nx0 + n->width() > _chipWidth ) return false;
+         ny0 = _chipHeight - contour->update(nx0,nx0+n->width(),n->height(),isfromleft) - n->height();
+         if( ny0 < 0 ) return false;
       } 
       else {
-         if(p->_curPtr._left == n) nx0 = px0 - n->_width;
-         else                      nx0 = px1 - n->_width;
-
-         ny0 = _chipHeight - contour->update(nx0,nx0+n->_width,n->_height,isfromleft) - n->_height;
-         if( nx0 < 0 || ny0 < 0 ) return false;
+         if(p->_curPtr._left == n) nx0 = px0 - n->width();
+         else                      nx0 = px1 - n->width();
+         if( nx0 < 0 ) return false;
+         ny0 = _chipHeight - contour->update(nx0,nx0+n->width(),n->height(),isfromleft) - n->height();
+         if( ny0 < 0 ) return false;
       }
    }
    packMPTree_rec(n->_curPtr._left,contour,isbottom,isfromleft);
    packMPTree_rec(n->_curPtr._right,contour,isbottom,isfromleft);
-   return true;
+   //return true;
 }
 
