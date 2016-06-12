@@ -27,7 +27,7 @@
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
-                     { return rand() % 4; }
+                     { return rand() % 3 + 1; }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
 static inline bool   isAccepted(const double &C, const double &T)
@@ -240,6 +240,7 @@ MPTreeMgr::computeCost() const
 double
 MPTreeMgr::computeArea() const
 {
+   //cout<<"computeArea():" << _cntrArea<<" " <<_initArea<<endl;
    return _cntrArea / _initArea;
 }
 

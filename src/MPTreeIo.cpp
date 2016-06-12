@@ -49,12 +49,22 @@
 bool
 MPTreeMgr::readInput( const char * node , const char * pl , const char * net )
 {
+   Node * pNd1 , * pNd2;
+   int arg1 , arg2 , move;
+
 	cout << " >  readInput() : start reading input data\n";
 	if ( !readNode     ( node )   )      return false;
 	if ( !readPosition ( pl   )   )      return false;
 	if ( !readNet      ( net  )   )      return false;
    buildInitMPTree();
-   packMPTree();
+   
+   while ( !packMPTree() ) {
+      pNd1 = pNd2 = NULL;
+      arg1 = arg2 = -1;
+      move = rand() % 4;
+      perturbMPTree( &pNd1 , &pNd2 , &arg1 , &arg2 , move );
+   }
+   
    initCost();
 	return true;
 }
