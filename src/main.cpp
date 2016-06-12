@@ -75,6 +75,7 @@ main( int argc , char ** argv )
    //cout.flush();
 	//pd16.test();
 	//pd16.writeOutput( argv[4] );
+  pd16.writeMatlabOutput( argv[1] );
 	return 0;
 }
 

@@ -419,7 +419,47 @@ MPTreeMgr::nodeFindPin( Node * pNode , double offsetX , double offsetY )
   SeeAlso     []
 
 ***********************************************************************/
-
+bool
+MPTreeMgr::writeMatlabOutput( const char * file) const
+{
+   cout << " >  writeMatlabOutput() : opening output file " << file << endl;
+  ofstream out( file );
+   if ( !out.is_open() ) {
+      cout << "[Error] writeMatlabOutput() : opening output file " << file << " has failed\n";
+      return false;
+   }
+   out << _chipWidth << " " << _chipHeight << endl;
+   for( size_t i = 0, lsize = _allNode.size(); i < lsize; ++i) {
+      int& x0 = _allNode[i]->_optCord._x;
+      int& y0 = _allNode[i]->_optCord._y;
+      out << _allNode[i]->_name << " "
+          << x0 << " " << y0 << " "
+          << x0 + _allNode[i]->width() << " " << y0 + _allNode[i]->height() << endl;
+   }
+   // check overlap
+   for ( size_t i = 0; lsize = _allNode.size(); i < lsize-1; ++i ) {
+      Node* n1 = _allNode[i];
+      int x10 = n1->_optCord._x;
+      int x11 = x10 + n1->width();
+      int y10 = n1->_optCord._y;
+      int y11 = y10 + n1->height();
+      for ( size_t j = i+1; j < lsize; ++j ) {
+         Node* n2 = _allNode[j];
+         int x20 = n2->_optCord._x;
+         int x21 = x20 + n2->width();
+         int y20 = n2->_optCord._y;
+         int y21 = y20 + n2->height();
+         if ( (x20 >= x10 && x20 <= x11) || (y20 >= y10 && y20 <= y11) ||
+              (x21 >= x10 && x21 <= x11) || (y21 >= y10 && y21 <= y11)  )
+            cout << "overlap at\n"
+                 << n1->_name << "   (" << x10 << "," << y10 << ")   (," << x11 << "," << y11 << ")\n"
+                 << n2->_name << "   (" << x20 << "," << y20 << ")   (," << x21 << "," << y21 << ")\n";
+      }
+         
+   }
+   out.close();
+   return true;
+}
 bool
 MPTreeMgr::writeOutput( const char * file ) const
 {
