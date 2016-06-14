@@ -2,6 +2,7 @@
 CXX      := g++
 CPPFLAGS := -c -os -g
 
+
 SOURCES  := $(addprefix src/,                   \
            main.cpp                             \
            Element.cpp MPTreeSA.cpp             \
