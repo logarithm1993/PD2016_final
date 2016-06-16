@@ -172,9 +172,7 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
    double initAcceptRate  = 0.95;
    double finalAcceptRate = 0.01;
    unsigned repeat        = 1000;
-   //unsigned uphillCnt     = 0;
 
-   //double   deltaSum      = 0;
    vector<double> vCost;
    vCost.reserve(repeat);
    double cost, costPrev, deltaCost;
@@ -197,7 +195,6 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          costPrev = cost;
          cost = computeCost();
          deltaCost = cost - costPrev;
-         //deltaSum += abs(deltaCost);
          if (deltaCost <= 0){
             if(cost < _optCost){
                _optCost = cost;
@@ -206,13 +203,11 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          }
          else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
-            //deltaSum += deltaCost;
             vCost.push_back(deltaCost);
-            //++uphillCnt;
          }
    }
    updateCurSol();   
-   
+   // compute average delta cost, large deltas are discarded
    sort(vCost.begin(),vCost.end());
    double avg = 0;
    for(unsigned i = 0, n = vCost.size()*0.8; i < n; ++i){
@@ -224,7 +219,6 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
    Tx = abs( avg / log(finalAcceptRate));
    
    printf("avgDcost:%f T0:%f, Tx:%f\n", avg ,T0,Tx);
-   //printf("avgDcost:%f T0:%f, Tx:%f\n", pow(deltaSum, 1/uphillCnt) ,T0,Tx);
 }
 
 /**Function*************************************************************
@@ -261,7 +255,7 @@ MPTreeMgr::computeCost() const
 
 /**Function*************************************************************
 
-  Synopsis    [c`ost computing function (inner)]
+  Synopsis    [cost computing function (inner)]
 
   Description [
                  Area: contour area(like Riemann sum)
