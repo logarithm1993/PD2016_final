@@ -117,7 +117,7 @@ class MPTreeMgr
       double   computeArea         () const;
       double   computeWL           () const;
       double   computeDisp         () const;
-      double   computeCongest      () const;
+      double   computeBalance      () const;
 		void     updateOptSol        ();
 		void     updateCurSol        ();
       //void     updateTempSolByOpt  ();
@@ -196,6 +196,7 @@ class MPTreeMgr
       double             _initArea;
       double             _initWL;
       double             _initDisp;
+      double             _initBalance;
       double             _optCost;
       double             _cntrArea;
       double             _deadArea;

@@ -29,7 +29,12 @@
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
-                     { return rand() % 3 + 1; 
+                     { 
+                        //return rand() % 3 + 1; 
+                        double p = (double)rand()/RAND_MAX;
+                        if      (p < 0.33)   return 1;
+                        else if (p < 0.66)   return 2;
+                        else                 return 3;
                      }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
@@ -159,7 +164,16 @@ MPTreeMgr::initCost()
    // computeDisp
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
-   // computeCongest TODO
+   // computeBalance TODO
+   double max = _BLArea;
+   double min = _BLArea;
+   if( _BRArea > max ) max = _BRArea;
+   if( _BRArea < min ) min = _BRArea;
+   if( _TLArea > max ) max = _TLArea;
+   if( _TLArea < min ) min = _TLArea;
+   if( _TRArea > max ) max = _TRArea;
+   if( _TRArea < min ) min = _TRArea;
+   _initBalance = max - min;
 
    _optCost = computeCost();
    updateOptSol();
@@ -239,12 +253,12 @@ MPTreeMgr::computeCost() const
    double a = 3;
    double b = 2;
    double c = 5;
-   double d = 0;
+   double d = 2;
    
    double c1 = a/(a+b+c+d) * computeArea();
    double c2 = b/(a+b+c+d) * computeWL();
    double c3 = c/(a+b+c+d) * computeDisp();
-   double c4 = d/(a+b+c+d) * computeCongest();
+   double c4 = d/(a+b+c+d) * computeBalance();
    //cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
    /*
    printf(" > computeCost() : area = %f, WL=%f, disp=%f, total=%f\n", 
@@ -295,10 +309,18 @@ MPTreeMgr::computeDisp() const
 }
 
 double
-MPTreeMgr::computeCongest() const
+MPTreeMgr::computeBalance() const
 {
-   // TODO: not sure how to measure
-   return 0.0;
+   // (maxSubTreeArea - minSubTreeArea) / initBalance
+   double max = _BLArea;
+   double min = _BLArea;
+   if( _BRArea > max ) max = _BRArea;
+   if( _BRArea < min ) min = _BRArea;
+   if( _TLArea > max ) max = _TLArea;
+   if( _TLArea < min ) min = _TLArea;
+   if( _TRArea > max ) max = _TRArea;
+   if( _TRArea < min ) min = _TRArea;
+   return (max-min) / _initBalance;
 }
 /**Function*************************************************************
 
