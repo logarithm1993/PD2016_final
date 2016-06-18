@@ -21,6 +21,7 @@
 ////////////////////////////////////////////////////////////////////////
 #include "MPTreeMgr.h"
 #include <cmath>
+#include <cassert>
 #include <cfloat>
 #include <cstdlib>
 #include <algorithm>
@@ -83,11 +84,12 @@ MPTreeMgr::simAnneal()
 void
 MPTreeMgr::simAnneal_int()
 {
-   double cost, costPrev, deltaCost;
+   double tmpCost, costPrev, deltaCost;
    double T_start, T_end;
   
    setTemp(T_start, T_end);
-   cost = computeCost();
+   assert(packMPTree());
+   _currCost = computeCost();
    
    // TBD
    unsigned repeat = 200;
@@ -115,42 +117,49 @@ MPTreeMgr::simAnneal_int()
             move = chooseMove(); // TBD: choose another?
             perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          }
-         costPrev = cost;
-         cost = computeCost();
-         deltaCost = cost - costPrev;
+         
+         
+         costPrev  = _currCost;
+         tmpCost   = computeCost();
+         deltaCost = tmpCost - costPrev;
          #if 0
          cout<<"current #:" << ++totalCnt <<endl;
          #else
          ++totalCnt;
          #endif
-         if (deltaCost < 0){
-            if(cost < _optCost){
-               _optCost = cost;
+         if ( tmpCost < costPrev ){
+            if( tmpCost < _optCost){
+               _optCost = tmpCost;
                updateOptSol();
             }
             ++downhillCnt;
-            localCnt = 0;
+            localCnt  = 0;
+            //cout << "delta < 0: " << cost << endl;
+            //assert(cost < _currCost);
+            _currCost = tmpCost;
             continue;
          }
-         else if(deltaCost > 0 && localCnt > 3 && isAccepted(deltaCost, T)){
-            cout << ">> uphillMove : current Temp("<< T <<")\tcost: " << cost << "\toptCost: " << _optCost << "\n";
+         else if( tmpCost > costPrev && localCnt > 3 && isAccepted(deltaCost, T)){
+            //cout << ">> uphillMove : current Temp("<< T <<")\tTMPcost: " << tmpCost << "\toptCost: " << _optCost << "\n";
             ++uphillCnt;
+            _currCost = tmpCost;
             localCnt = 0;
             continue;
          }
          else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             ++localCnt;
+            //cout << "UNDO: " << cost << endl;
          }
       }
       T *= r;
-      cout <<"weather report: current Temp = " << T << endl;
+      cout <<"weather report: current Temp = " << T << "\tCost = " << _currCost << endl;
    }
    // restore opt-info
    updateCurSol();
 
    // TODO: output some message?
-   cout<<" simAnneal_int(): done, _optCost = " << _optCost <<endl;
+   cout<<"simAnneal_int(): done, _optCost = " << _optCost <<endl;
    cout<<"> total perturbation: "<< totalCnt <<" uphill: "<< uphillCnt <<" downhill: "<< downhillCnt << endl;
 }
 
@@ -192,7 +201,7 @@ MPTreeMgr::initCost()
    if( _TRArea < min ) min = _TRArea;
    _initBalance = max - min;
 
-   _optCost = computeCost();
+   _currCost = _optCost = computeCost();
    updateOptSol();
 }
 
@@ -232,6 +241,7 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
                _optCost = cost;
                updateOptSol();
             }
+            _currCost = cost;
          }
          else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
@@ -268,10 +278,10 @@ double
 MPTreeMgr::computeCost() const
 {
    // TODO: adjust vlaue of alpha, beta, gamma
-   double a = 4;
-   double b = 2;
+   double a = 3;
+   double b = 3;
    double c = 3;
-   double d = 5;
+   double d = 3;
    
    double c1 = a/(a+b+c+d) * computeArea();
    double c2 = b/(a+b+c+d) * computeWL();

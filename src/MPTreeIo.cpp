@@ -430,7 +430,7 @@ MPTreeMgr::nodeFindPin( Node * pNode , double offsetX , double offsetY )
 
 ***********************************************************************/
 bool
-MPTreeMgr::writeMatlabOutput( const char * file) const
+MPTreeMgr::writeMatlabOutput( const char * file)
 {
    cout << " >  writeMatlabOutput() : opening output file " << file << endl;
    ofstream out( file );
@@ -474,12 +474,13 @@ MPTreeMgr::writeMatlabOutput( const char * file) const
          
    }
    if(!isoverlap) cout << " >  no overlaps\n";
-   cout << " >  total area : " << (double)(_chipWidth*_chipHeight) << endl;
-   cout << " >  dead space : " << _deadArea << endl
-        << " >  BLArea     : " << _BLArea << endl
-        << " >  BRArea     : " << _BRArea << endl
-        << " >  TLArea     : " << _TLArea << endl
-        << " >  TRArea     : " << _TRArea << endl;
+   packMPTree();
+   cout << " >  chip area  : " << (double)(_chipWidth*_chipHeight) << endl;
+   cout << " >  Macro area : " << _cntrArea << endl
+        << " >  BLArea     : " << _BLArea   << endl
+        << " >  BRArea     : " << _BRArea   << endl
+        << " >  TLArea     : " << _TLArea   << endl
+        << " >  TRArea     : " << _TRArea   << endl;
    out.close();
    return true;
 }
