@@ -66,10 +66,10 @@ MPTreeMgr::simAnneal()
 {
    // TBD: sa_schedule
    cout << "simAnneal(): start\n";
-   //for(unsigned i = 0; i < 3; ++i){
-   //   cout << i+1 << "th attempt!\n\n";
+   for(unsigned i = 0; i < 3; ++i){
+      cout << i+1 << "th attempt!\n\n";
       simAnneal_int();
-   //}
+   }
 }
 
 /**function*************************************************************
