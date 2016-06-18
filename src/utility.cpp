@@ -214,6 +214,21 @@ List::area()
    return sum;
 }
 void
+List::compute_balance_area(double& Larea , double& Rarea, const int& chipwidth)
+{
+   ListNode* ptr = _begin->_next;
+   Larea = Rarea = 0;
+   while( (ptr->_x0 + ptr->_x1) / 2 < chipwidth / 2) {
+      Larea += (ptr->_x1 - ptr->_x0) * ptr->_y1;
+      ptr = ptr->_next;
+   }
+   while(ptr != _end) {
+      Rarea += (ptr->_x1 - ptr->_x0) * ptr->_y1;
+      ptr = ptr->_next;
+   }
+   
+}
+void
 List::concate(ListNode* const & n1,ListNode* const & n2) // concate n2 after n1
 {
    assert(n1 != 0 && n2 != 0);

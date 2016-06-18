@@ -56,22 +56,24 @@ MPTreeMgr::packMPTree()
    isbottom = isfromleft = true;
    root = _treeRoot[0]->_curPtr._left;
    if(!packcorner(root,bcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
-   _BLArea = bcontour->area();
+   //_BLArea = bcontour->area();
    // BR-tree
    isbottom = true; isfromleft = false;
    root = _treeRoot[1]->_curPtr._left;
    if(!packcorner(root,bcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
-   _BRArea = bcontour->area() - _BLArea;
+   //_BRArea = bcontour->area() - _BLArea;
+   bcontour->compute_balance_area(_BLArea,_BRArea,_chipWidth);
    // TL-tree
    isbottom = false; isfromleft = true;
    root = _treeRoot[2]->_curPtr._left;
    if(!packcorner(root,tcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
-   _TLArea = tcontour->area();
+   //_TLArea = tcontour->area();
    // TR-tree
    isbottom = isfromleft = false;
    root = _treeRoot[2]->_curPtr._right;
    if(!packcorner(root,tcontour,isbottom,isfromleft)) {delete bcontour; delete tcontour; return false;}
-   _TRArea = tcontour->area() - _TLArea;
+   //_TRArea = tcontour->area() - _TLArea;
+   tcontour->compute_balance_area(_TLArea,_TRArea,_chipWidth);
    // check contour overlaps
    ListNode* it1 = bcontour->_begin->_next;
    ListNode* it2 = tcontour->_begin->_next;
