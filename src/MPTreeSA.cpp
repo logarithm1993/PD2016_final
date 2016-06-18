@@ -30,6 +30,11 @@
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
                      { return rand() % 4; 
+                        //return rand() % 3 + 1; 
+                        double p = (double)rand()/RAND_MAX;
+                        if      (p < 0.33)   return 1;
+                        else if (p < 0.66)   return 2;
+                        else                 return 3;
                      }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
@@ -159,7 +164,16 @@ MPTreeMgr::initCost()
    // computeDisp
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
-   // computeCongest TODO
+   // computeBalance TODO
+   double max = _BLArea;
+   double min = _BLArea;
+   if( _BRArea > max ) max = _BRArea;
+   if( _BRArea < min ) min = _BRArea;
+   if( _TLArea > max ) max = _TLArea;
+   if( _TLArea < min ) min = _TLArea;
+   if( _TRArea > max ) max = _TRArea;
+   if( _TRArea < min ) min = _TRArea;
+   _initBalance = max - min;
 
    _optCost = computeCost();
    updateOptSol();
@@ -172,9 +186,7 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
    double initAcceptRate  = 0.95;
    double finalAcceptRate = 0.01;
    unsigned repeat        = 1000;
-   //unsigned uphillCnt     = 0;
 
-   //double   deltaSum      = 0;
    vector<double> vCost;
    vCost.reserve(repeat);
    double cost, costPrev, deltaCost;
@@ -197,7 +209,6 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          costPrev = cost;
          cost = computeCost();
          deltaCost = cost - costPrev;
-         //deltaSum += abs(deltaCost);
          if (deltaCost <= 0){
             if(cost < _optCost){
                _optCost = cost;
@@ -206,13 +217,11 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          }
          else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
-            //deltaSum += deltaCost;
             vCost.push_back(deltaCost);
-            //++uphillCnt;
          }
    }
    updateCurSol();   
-   
+   // compute average delta cost, large deltas are discarded
    sort(vCost.begin(),vCost.end());
    double avg = 0;
    for(unsigned i = 0, n = vCost.size()*0.8; i < n; ++i){
@@ -224,7 +233,6 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
    Tx = abs( avg / log(finalAcceptRate));
    
    printf("avgDcost:%f T0:%f, Tx:%f\n", avg ,T0,Tx);
-   //printf("avgDcost:%f T0:%f, Tx:%f\n", pow(deltaSum, 1/uphillCnt) ,T0,Tx);
 }
 
 /**Function*************************************************************
@@ -245,12 +253,12 @@ MPTreeMgr::computeCost() const
    double a = 3;
    double b = 2;
    double c = 5;
-   double d = 0;
+   double d = 2;
    
    double c1 = a/(a+b+c+d) * computeArea();
    double c2 = b/(a+b+c+d) * computeWL();
    double c3 = c/(a+b+c+d) * computeDisp();
-   double c4 = d/(a+b+c+d) * computeCongest();
+   double c4 = d/(a+b+c+d) * computeBalance();
    //cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
    /*
    printf(" > computeCost() : area = %f, WL=%f, disp=%f, total=%f\n", 
@@ -261,7 +269,7 @@ MPTreeMgr::computeCost() const
 
 /**Function*************************************************************
 
-  Synopsis    [c`ost computing function (inner)]
+  Synopsis    [cost computing function (inner)]
 
   Description [
                  Area: contour area(like Riemann sum)
@@ -301,10 +309,18 @@ MPTreeMgr::computeDisp() const
 }
 
 double
-MPTreeMgr::computeCongest() const
+MPTreeMgr::computeBalance() const
 {
-   // TODO: not sure how to measure
-   return 0.0;
+   // (maxSubTreeArea - minSubTreeArea) / initBalance
+   double max = _BLArea;
+   double min = _BLArea;
+   if( _BRArea > max ) max = _BRArea;
+   if( _BRArea < min ) min = _BRArea;
+   if( _TLArea > max ) max = _TLArea;
+   if( _TLArea < min ) min = _TLArea;
+   if( _TRArea > max ) max = _TRArea;
+   if( _TRArea < min ) min = _TRArea;
+   return (max-min) / _initBalance;
 }
 /**Function*************************************************************
 
