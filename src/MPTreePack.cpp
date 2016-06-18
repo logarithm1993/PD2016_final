@@ -49,7 +49,12 @@ MPTreeMgr::packMPTree()
    do {
       if(!packMPTree_int()) {
          if(isfirst) return false;
-         else        return true;
+         else        {
+            _chipWidth  = (int)(_chipWidth/factor) + 1;
+            _chipHeight = (int)(_chipHeight/factor) + 1;
+            assert( packMPTree_int() );
+            return true;
+         }
       }
       isfirst     = false;
       _chipWidth  = (int)(_chipWidth*factor);
