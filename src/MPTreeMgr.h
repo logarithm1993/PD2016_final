@@ -129,7 +129,7 @@ class MPTreeMgr
       bool     packMPTree          ();
       bool     packMPTree_rec      ( Node* const & , List*& , const bool& , const bool& );
       bool     packcorner          ( Node* const & , List*& , const bool& , const bool& );
-      
+      bool     packMPTree_int      (); 
       // MP trees operation helper
       void     perturbMPTree       ( Node** , Node** , int* , int* , int );
       void     undoMPTree          ( Node** , Node** , int* , int* , int );
@@ -191,6 +191,8 @@ class MPTreeMgr
       NodeList           _treeRoot;
       int                _chipWidth;
       int                _chipHeight;
+      int                _initchipWidth;
+      int                _initchipHeight;
 
       // SA parameters
       double             _initArea;

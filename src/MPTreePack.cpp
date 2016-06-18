@@ -40,7 +40,25 @@
 
 ***********************************************************************/
 bool
-MPTreeMgr::packMPTree() 
+MPTreeMgr::packMPTree()
+{
+   _chipWidth  = _initchipWidth;
+   _chipHeight = _initchipHeight; 
+   double factor = 0.9;
+   bool isfirst = true;
+   do {
+      if(!packMPTree_int()) {
+         if(isfirst) return false;
+         else        return true;
+      }
+      isfirst     = false;
+      _chipWidth  = (int)(_chipWidth*factor);
+      _chipHeight = (int)(_chipHeight*factor);
+   } while(1);
+   
+}
+bool
+MPTreeMgr::packMPTree_int() 
 {
    List* bcontour = new List(_chipWidth);
    List* tcontour = new List(_chipWidth);
