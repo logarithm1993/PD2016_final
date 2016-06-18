@@ -23,6 +23,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <string>
 #include "MPTreeMgr.h"
 #include "utility.h"
 
@@ -54,9 +55,9 @@ main( int argc , char ** argv )
    char input1[1024] = "benchmark/adaptec0_MMS/adaptec0.nodes";
    char input2[1024] = "benchmark/adaptec0_MMS/adaptec0.ntup.pl";
    char input3[1024] = "benchmark/adaptec0_MMS/adaptec0.nets";
-   char input4[1024] = "adaptec.fp.matlab";
    char input5[1024] = "adaptec0.fp";
-
+   
+   string mFileName = argv[4]; mFileName += ".matlab";
 	MPTreeMgr pd16;
 #if 0
 	if ( !pd16.readInput( input1 , input2 , input3 ) ) {
@@ -71,7 +72,7 @@ main( int argc , char ** argv )
 #endif
 	srand( time(0) );
 	pd16.simAnneal();
-   pd16.writeMatlabOutput( input4 );
+   pd16.writeMatlabOutput( mFileName.c_str() );
 	pd16.writeOutput( argv[4] );
    cout << " >  MP trees macro packing finished." << endl;
 	return 0;
