@@ -31,7 +31,6 @@
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
                      {  
-                        //return rand() % 4; 
                         double p = (double)rand()/RAND_MAX;
                         if      (p < 0.30)   return 0;
                         else if (p < 0.60)   return 1;
@@ -67,7 +66,10 @@ MPTreeMgr::simAnneal()
 {
    // TBD: sa_schedule
    cout << "simAnneal(): start\n";
-   simAnneal_int();
+   //for(unsigned i = 0; i < 3; ++i){
+   //   cout << i+1 << "th attempt!\n\n";
+      simAnneal_int();
+   //}
 }
 
 /**function*************************************************************
@@ -153,7 +155,7 @@ MPTreeMgr::simAnneal_int()
          }
       }
       T *= r;
-      cout <<"weather report: current Temp = " << T << "\tCost = " << _currCost << endl;
+      cout <<"weather report: current Temp = " << T << "  Cost = " << _currCost << " [sa progress... "<< 100*log(T_start/T)/log(T_start/T_end)<< "%]"<<endl;
    }
    // restore opt-info
    updateCurSol();
@@ -185,12 +187,12 @@ MPTreeMgr::initCost()
    // computeWL
    for(unsigned i = 0, n = _allNet.size(); i < n; ++i)
      _initWL += _allNet[i]->HPWL();
-   // computeArea
+   // computeContour
    _initArea = _cntrArea; 
    // computeDisp
    for(unsigned i = 0, n = _allNode.size(); i < n; ++i)
      _initDisp += _allNode[i]->displacement();
-   // computeBalance TODO
+   // computeBalance
    double max = _BLArea;
    double min = _BLArea;
    if( _BRArea > max ) max = _BRArea;
@@ -277,22 +279,24 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
 double
 MPTreeMgr::computeCost() const
 {
-   // TODO: adjust vlaue of alpha, beta, gamma
+   // TODO: adjust vlaue of abcde
    double a = 3;
    double b = 3;
    double c = 3;
    double d = 3;
-   
-   double c1 = a/(a+b+c+d) * computeArea();
-   double c2 = b/(a+b+c+d) * computeWL();
-   double c3 = c/(a+b+c+d) * computeDisp();
-   double c4 = d/(a+b+c+d) * computeBalance();
+   double e = 3;
+
+   double c1 = a/(a+b+c+d+e) * computeContour();
+   double c2 = b/(a+b+c+d+e) * computeWL();
+   double c3 = c/(a+b+c+d+e) * computeDisp();
+   double c4 = d/(a+b+c+d+e) * computeBalance();
+   double c5 = e/(a+b+c+d+e) * computeArea();
    //cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
    /*
    printf(" > computeCost() : area = %f, WL=%f, disp=%f, total=%f\n", 
          c1/a*(a+b+c+d), c2/b*(a+b+c+d), c3/c*(a+b+c+d), c1+c2+c3);
    */
-   return c1 + c2 + c3 + c4;
+   return c1 + c2 + c3 + c4 + c5;
 }
 
 /**Function*************************************************************
@@ -300,10 +304,10 @@ MPTreeMgr::computeCost() const
   Synopsis    [cost computing function (inner)]
 
   Description [
-                 Area: contour area(like Riemann sum)
-                 WL  : HPWL
-                 Disp: Node displacement
-                 Congest: TBD
+                 Area   : chip W x H
+                 Contour: contour area(like Riemann sum)
+                 WL     : HPWL
+                 Disp   : Node displacement
               ]
                
   SideEffects []
@@ -312,9 +316,8 @@ MPTreeMgr::computeCost() const
 
 ***********************************************************************/
 double
-MPTreeMgr::computeArea() const
+MPTreeMgr::computeContour() const
 {
-   //cout<<"computeArea():" << _cntrArea<<" " <<_initArea<<endl;
    return _cntrArea / _initArea;
 }
 
@@ -350,6 +353,14 @@ MPTreeMgr::computeBalance() const
    if( _TRArea < min ) min = _TRArea;
    return (max-min) / _initBalance;
 }
+
+double
+MPTreeMgr::computeArea() const
+{
+   double r = (double)_chipWidth/_initChipWidth;
+   return r*r;
+}
+
 /**Function*************************************************************
 
   Synopsis    [update Node info]

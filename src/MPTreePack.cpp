@@ -42,8 +42,8 @@
 bool
 MPTreeMgr::packMPTree()
 {
-   _chipWidth  = _initchipWidth;
-   _chipHeight = _initchipHeight; 
+   _chipWidth  = _initChipWidth;
+   _chipHeight = _initChipHeight; 
    double factor = 0.9;
    bool isfirst = true;
    do {

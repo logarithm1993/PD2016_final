@@ -118,6 +118,7 @@ class MPTreeMgr
       double   computeWL           () const;
       double   computeDisp         () const;
       double   computeBalance      () const;
+      double   computeContour      () const;
 		void     updateOptSol        ();
 		void     updateCurSol        ();
       //void     updateTempSolByOpt  ();
@@ -191,8 +192,8 @@ class MPTreeMgr
       NodeList           _treeRoot;
       int                _chipWidth;
       int                _chipHeight;
-      int                _initchipWidth;
-      int                _initchipHeight;
+      int                _initChipWidth;
+      int                _initChipHeight;
 
       // SA parameters
       double             _initArea;

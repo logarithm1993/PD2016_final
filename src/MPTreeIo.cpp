@@ -209,8 +209,8 @@ MPTreeMgr::readPosition( const char * file )
 	}
 
 	readPosList    ( input );
-  _initchipWidth  = _chipWidth;
-  _initchipHeight = _chipHeight; 
+  _initChipWidth  = _chipWidth;
+  _initChipHeight = _chipHeight; 
 	input.close();
 	cout << " >  readPosition() : reading position success!\n";
 	cout << " >  initial chip boundary : \n";
