@@ -221,13 +221,13 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
          }
    }
    updateCurSol();   
-   // compute average delta cost, large deltas are discarded
+   // compute average delta cost, small/large deltas are discarded
    sort(vCost.begin(),vCost.end());
    double avg = 0;
-   for(unsigned i = 0, n = vCost.size()*0.8; i < n; ++i){
+   for(unsigned i = vCost.size()*0.2, n = vCost.size()*0.8; i < n; ++i){
       avg += vCost[i];
    }
-   avg /= (int)vCost.size()*0.8;
+   avg /= (int)vCost.size()*0.6;
    
    T0 = abs( avg / log(initAcceptRate) );
    Tx = abs( avg / log(finalAcceptRate));
