@@ -39,8 +39,10 @@ static inline int    chooseMove()
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
 static inline bool   isAccepted(const double &C, const double &T)
-                     { printf("C = %f, T = %f, prob = %f\n", C, T, exp(-C/T));
-                        return exp(-C/T) > prob(); }
+                     { 
+                        //printf("C = %f, T = %f, prob = %f\n", C, T, exp(-C/T));
+                        return exp(-C/T) > prob(); 
+                     }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
@@ -102,6 +104,7 @@ MPTreeMgr::simAnneal_int()
          int   move = chooseMove();
          perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          while (!packMPTree()){
+            cout << "<perturb> packing failed, perturb again!\n";
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             obj1 = obj2 = NULL;
             arg1 = arg2 = -1;
@@ -111,7 +114,11 @@ MPTreeMgr::simAnneal_int()
          costPrev = cost;
          cost = computeCost();
          deltaCost = cost - costPrev;
-         totalCnt ++;
+         #if 0
+         cout<<"current #:" << ++totalCnt <<endl;
+         #else
+         ++totalCnt;
+         #endif
          if (deltaCost < 0){
             if(cost < _optCost){
                _optCost = cost;
@@ -183,8 +190,8 @@ void
 MPTreeMgr::setTemp(double & T0, double & Tx)
 {
    // TBD
-   double initAcceptRate  = 0.95;
-   double finalAcceptRate = 0.01;
+   double initAcceptRate  = 0.950;
+   double finalAcceptRate = 0.005;
    unsigned repeat        = 1000;
 
    vector<double> vCost;
