@@ -78,6 +78,7 @@ public:
    int  update(const int&,const int&,const int&,const bool&,double&);
    void concate(ListNode* const &,ListNode* const &);
    double area();
+   void compute_balance_area(double& , double&, const int&);
    friend ostream& operator << (ostream& ,const List&);
    
 private:
