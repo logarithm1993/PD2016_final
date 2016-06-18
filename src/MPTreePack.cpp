@@ -42,6 +42,7 @@
 bool
 MPTreeMgr::packMPTree()
 {
+   #if 0
    _chipWidth  = _initChipWidth;
    _chipHeight = _initChipHeight; 
    double factor = 0.9;
@@ -60,7 +61,9 @@ MPTreeMgr::packMPTree()
       _chipWidth  = (int)(_chipWidth*factor);
       _chipHeight = (int)(_chipHeight*factor);
    } while(1);
-   
+   #else
+      return packMPTree_int();
+   #endif
 }
 bool
 MPTreeMgr::packMPTree_int() 
