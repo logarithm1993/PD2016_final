@@ -47,7 +47,6 @@ using namespace std;
   SeeAlso     []
 
 ***********************************************************************/
-
 int
 main( int argc , char ** argv )
 {
