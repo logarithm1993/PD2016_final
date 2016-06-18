@@ -29,7 +29,7 @@
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove()
-                     { return rand() % 3 + 1; 
+                     { return rand() % 4; 
                      }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
