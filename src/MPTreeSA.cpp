@@ -29,13 +29,19 @@
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
-static inline int    chooseMove()
+static inline int    chooseMove(double a = 0.0)
                      {  
                         double p = (double)rand()/RAND_MAX;
-                        if      (p < 0.30)   return 0;
-                        else if (p < 0.60)   return 1;
-                        else if (p < 0.90)   return 2;
-                        else                 return 3;
+                        if (a < 0.3){
+                           if      (p < 0.20)   return 0;
+                           else if (p < 0.60)   return 1;
+                           else                 return 2;
+                        }else{
+                           if      (p < 0.20)   return 0;
+                           else if (p < 0.60)   return 1;
+                           else if (p < 0.80)   return 2;
+                           else                 return 3;
+                        }
                      }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
@@ -104,19 +110,20 @@ MPTreeMgr::simAnneal_int()
    unsigned localCnt    = 0;
    cout <<"simAnneal_int(): start to SA\n";
    while (T > T_end){
+      double progress = log(T_start/T)/log(T_start/T_end);
       for(unsigned i = 0; i < repeat; ++i){
          Node* obj1 = NULL;
          Node* obj2 = NULL;
          int   arg1 = -1;
          int   arg2 = -1;
-         int   move = chooseMove();
+         int   move = chooseMove( progress );
          perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          while (!packMPTree()){
             //cout << "<perturb> packing failed, perturb again!\n";
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             obj1 = obj2 = NULL;
             arg1 = arg2 = -1;
-            move = chooseMove(); // TBD: choose another?
+            move = chooseMove( progress ); // TBD: choose another?
             perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          }
          
@@ -155,7 +162,7 @@ MPTreeMgr::simAnneal_int()
          }
       }
       T *= r;
-      cout <<"weather report: current Temp = " << T << "  Cost = " << _currCost << " [sa progress... "<< 100*log(T_start/T)/log(T_start/T_end)<< "%]"<<endl;
+      cout <<"weather report: current Temp = " << T << "  Cost = " << _currCost << " [sa progress... "<< 100*progress << "%]"<<endl;
    }
    // restore opt-info
    updateCurSol();
@@ -280,10 +287,10 @@ double
 MPTreeMgr::computeCost() const
 {
    // TODO: adjust vlaue of abcde
-   double a = 3;
-   double b = 3;
-   double c = 3;
-   double d = 3;
+   double a = 5;
+   double b = 2;
+   double c = 2;
+   double d = 5;
    double e = 3;
 
    double c1 = a/(a+b+c+d+e) * computeContour();

@@ -47,6 +47,8 @@ static void getTwoRandNum( int , int * , int * );
 bool
 MPTreeMgr::checkMPTree() const
 {
+   // disable check
+   return true;
    int i , n;
 
    for ( i = 0 , n = _treeRoot.size() ; i < n ; ++i )

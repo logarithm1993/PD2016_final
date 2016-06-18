@@ -125,7 +125,6 @@ class MPTreeMgr
 		
 		
       // MP trees packing helper
-		// XXX
       // remember to define class Contour!
       bool     packMPTree          ();
       bool     packMPTree_rec      ( Node* const & , List*& , const bool& , const bool& );
