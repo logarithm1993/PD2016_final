@@ -476,7 +476,8 @@ MPTreeMgr::writeMatlabOutput( const char * file)
    }
    if(!isoverlap) cout << " >  no overlaps\n";
    cout << " >  chip area  : " << (double)(_optChipWidth*_optChipHeight) << endl;
-   cout << " >  Macro area : " << _cntrArea << endl
+   cout << " >  [Warning] following area info is for the lastest packing , not the opt\n"
+        << " >  Macro area : " << _cntrArea << endl
         << " >  BLArea     : " << _BLArea   << endl
         << " >  BRArea     : " << _BRArea   << endl
         << " >  TLArea     : " << _TLArea   << endl
