@@ -301,10 +301,10 @@ double
 MPTreeMgr::computeCost() const
 {
    // TODO: adjust vlaue of abcde
-   double a = 5;
-   double b = 2;
-   double c = 2;
-   double d = 5;
+   double a = 6;
+   double b = 3;
+   double c = 3;
+   double d = 6;
    double e = 2;
 
    double c1 = a/(a+b+c+d+e) * computeContour();
