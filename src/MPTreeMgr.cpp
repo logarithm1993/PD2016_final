@@ -51,9 +51,13 @@ MPTreeMgr::MPTreeMgr()
    _allTerm.reserve  ( 1024 );
    _treeRoot.reserve ( 16 );
    
-   _chipWidth  = 0;
-   _chipHeight = 0;
-   _cntrArea   = 0.0;
+   _chipWidth   = 0;
+   _chipHeight  = 0;
+   _optChipWidth   = 0;
+   _optChipHeight  = 0;
+   _initChipWidth  = 0;
+   _initChipHeight = 0;
+   _cntrArea       = 0.0;
 }
 
 /**Function*************************************************************

@@ -72,7 +72,7 @@ MPTreeMgr::simAnneal()
 {
    // TBD: sa_schedule
    cout << "simAnneal(): start\n";
-   for(unsigned i = 0; i < 3; ++i){
+   for(unsigned i = 0; i < 1; ++i){
       cout << i+1 << "th attempt!\n\n";
       simAnneal_int();
    }
@@ -388,6 +388,8 @@ MPTreeMgr::updateOptSol()
       _allNode[i]->updateOpt();
    for ( unsigned i = 0 , n = _treeRoot.size() ; i < n ; ++i )
       _treeRoot[i]->updateOpt();
+   _optChipWidth  = _chipWidth;
+   _optChipHeight = _chipHeight;
 }
 
 void

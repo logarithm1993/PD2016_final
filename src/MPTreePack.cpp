@@ -1,4 +1,4 @@
-/**CFile****************************************************************
+/*CFile****************************************************************
 
   FileName    [MPTreePack.cpp]
 
@@ -42,25 +42,26 @@
 bool
 MPTreeMgr::packMPTree()
 {
-   #if 0
+   #if 1
    _chipWidth  = _initChipWidth;
    _chipHeight = _initChipHeight; 
+   int prevChipWidth, prevChipHeight;
    double factor = 0.9;
-   bool isfirst = true;
-   do {
-      if(!packMPTree_int()) {
-         if(isfirst) return false;
-         else        {
-            _chipWidth  = (int)(_chipWidth/factor) + 1;
-            _chipHeight = (int)(_chipHeight/factor) + 1;
+   if (!packMPTree_int()) return false;
+   else {
+      while(1) {
+         prevChipWidth  = _chipWidth;
+         prevChipHeight = _chipHeight;
+         _chipWidth  = (int)(_chipWidth*factor);
+         _chipHeight = (int)(_chipHeight*factor);
+         if (!packMPTree_int()) {
+            _chipWidth  = prevChipWidth;
+            _chipHeight = prevChipHeight;
             assert( packMPTree_int() );
             return true;
          }
       }
-      isfirst     = false;
-      _chipWidth  = (int)(_chipWidth*factor);
-      _chipHeight = (int)(_chipHeight*factor);
-   } while(1);
+   }
    #else
       return packMPTree_int();
    #endif
@@ -104,13 +105,13 @@ MPTreeMgr::packMPTree_int()
    ListNode* it1 = bcontour->_begin->_next;
    ListNode* it2 = tcontour->_begin->_next;
    while( it1 != bcontour->_end && it2 != tcontour->_end ) {
-      if( it1->_y1 + it2->_y1 > _chipHeight ) return false;
+      if( it1->_y1 + it2->_y1 > _chipHeight ) {delete bcontour; delete tcontour; return false;}
       if( it1->_x1 == it2->_x1 ) { it1 = it1->_next; it2 = it2->_next; }
       else if( it1->_x1 > it2->_x1 ) it2 = it2->_next;
       else it1 = it1->_next;
    }
    assert(it1 == bcontour->_end && it2 == tcontour->_end);
-   double sum = 0;
+   /*double sum = 0;
    it1 = bcontour->_begin->_next;
    while( it1 != bcontour->_end ) {
       sum += (it1->_x1 - it1->_x0) * it1->_y1;
@@ -120,8 +121,8 @@ MPTreeMgr::packMPTree_int()
    while( it1 != tcontour->_end ) {
       sum += (it1->_x1 - it1->_x0) * it1->_y1;
       it1 = it1->_next;
-   }
-   _cntrArea = sum;
+   }*/
+   _cntrArea = _BLArea + _BRArea + _TLArea + _TRArea;
    delete bcontour;
    delete tcontour;
    return true;

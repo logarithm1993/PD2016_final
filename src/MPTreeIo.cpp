@@ -439,7 +439,7 @@ MPTreeMgr::writeMatlabOutput( const char * file)
       cout << "[Error] writeMatlabOutput() : opening output file " << file << " has failed\n";
       return false;
    }
-   out << _chipWidth << " " << _chipHeight << endl;
+   out << _optChipWidth << " " << _optChipHeight << endl;
    for( size_t i = 0, lsize = _allNode.size(); i < lsize; ++i) {
       int& x0 = _allNode[i]->_optCord._x;
       int& y0 = _allNode[i]->_optCord._y;
@@ -475,8 +475,7 @@ MPTreeMgr::writeMatlabOutput( const char * file)
          
    }
    if(!isoverlap) cout << " >  no overlaps\n";
-   packMPTree();
-   cout << " >  chip area  : " << (double)(_chipWidth*_chipHeight) << endl;
+   cout << " >  chip area  : " << (double)(_optChipWidth*_optChipHeight) << endl;
    cout << " >  Macro area : " << _cntrArea << endl
         << " >  BLArea     : " << _BLArea   << endl
         << " >  BRArea     : " << _BRArea   << endl

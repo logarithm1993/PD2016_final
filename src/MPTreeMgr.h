@@ -191,9 +191,10 @@ class MPTreeMgr
       NodeList           _treeRoot;
       int                _chipWidth;
       int                _chipHeight;
+      int                _optChipWidth;
+      int                _optChipHeight;
       int                _initChipWidth;
       int                _initChipHeight;
-
       // SA parameters
       double             _initArea;
       double             _initWL;
