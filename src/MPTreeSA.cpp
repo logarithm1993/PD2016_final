@@ -26,11 +26,24 @@
 #include <cstdlib>
 #include <algorithm>
 
+//#define ROTATE
+
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
 ////////////////////////////////////////////////////////////////////////
 static inline int    chooseMove(double a = 0.0)
                      {  
+                     #ifndef ROTATE
+                        double p = (double)rand()/RAND_MAX;
+                        if (a < 0.3){
+                           if (p < 0.50)        return 1;
+                           else                 return 2;
+                        }else{
+                                if (p < 0.40)   return 1;
+                           else if (p < 0.80)   return 2;
+                           else                 return 3;
+                        }
+                     #else
                         double p = (double)rand()/RAND_MAX;
                         if (a < 0.3){
                            if      (p < 0.20)   return 0;
@@ -42,6 +55,7 @@ static inline int    chooseMove(double a = 0.0)
                            else if (p < 0.80)   return 2;
                            else                 return 3;
                         }
+                     #endif
                      }
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
@@ -72,7 +86,7 @@ MPTreeMgr::simAnneal()
 {
    // TBD: sa_schedule
    cout << "simAnneal(): start\n";
-   for(unsigned i = 0; i < 1; ++i){
+   for(unsigned i = 0; i < 3; ++i){
       cout << i+1 << "th attempt!\n\n";
       simAnneal_int();
    }
@@ -291,7 +305,7 @@ MPTreeMgr::computeCost() const
    double b = 2;
    double c = 2;
    double d = 5;
-   double e = 3;
+   double e = 2;
 
    double c1 = a/(a+b+c+d+e) * computeContour();
    double c2 = b/(a+b+c+d+e) * computeWL();
