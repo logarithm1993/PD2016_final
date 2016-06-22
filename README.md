@@ -25,20 +25,20 @@
     + \_optCost
   - private helper functions 
     +   *simAnneal*
-      - [ ] cost computation (50% done)
+      - [x] cost computation
         + [x] HPWL
         + [x] Displacement
-        + [ ] Area
-        + [ ] Congestion
+        + [x] ChipArea
+        + [x] ContourArea
+        + [x] Balance
       - [x] set temperature
-      - [ ] annealing schedule
-        + TBD...
+      - [x] annealing schedule
       - [x] perturb / undo MPT
-        + [x] rotate
+        + [x] rotate    --> macro rotation is not allowed in this problem
         + [x] swap
         + [x] change subTree
         + [x] delete insert node
-      - [ ] packMPTree, contour
+      - [x] packMPTree, contour
       
 2. Node ( Element.h ) 
   - macro class
