@@ -25,8 +25,8 @@
 #include <cfloat>
 #include <cstdlib>
 #include <algorithm>
-
 //#define ROTATE
+// uncomment this line to enable Macro Rotation
 
 ////////////////////////////////////////////////////////////////////////
 ///                        DECLARATIONS                              ///
@@ -60,10 +60,7 @@ static inline int    chooseMove(double a = 0.0)
 static inline double prob()
                      { return (double)rand() / RAND_MAX; }
 static inline bool   isAccepted(const double &C, const double &T)
-                     { 
-                        //printf("C = %f, T = %f, prob = %f\n", C, T, exp(-C/T));
-                        return exp(-C/T) > prob(); 
-                     }
+                     { return exp(-C/T) > prob(); }
 
 ////////////////////////////////////////////////////////////////////////
 ///                     FUNCTION DEFINITIONS                         ///
@@ -84,7 +81,7 @@ static inline bool   isAccepted(const double &C, const double &T)
 void
 MPTreeMgr::simAnneal()
 {
-   // TBD: sa_schedule
+   // sa_schedule: do the complete SA process 3 times
    cout << "simAnneal(): start\n";
    for(unsigned i = 0; i < 3; ++i){
       cout << i+1 << "th attempt!\n\n";
@@ -113,8 +110,8 @@ MPTreeMgr::simAnneal_int()
    assert(packMPTree());
    _currCost = computeCost();
    
-   // TBD
-   unsigned repeat = 200;
+   // user defined vars.
+   unsigned repeat = 500;
    double   T      = T_start;
    double   r      = 0.98;
   
@@ -133,23 +130,17 @@ MPTreeMgr::simAnneal_int()
          int   move = chooseMove( progress );
          perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          while (!packMPTree()){
-            //cout << "<perturb> packing failed, perturb again!\n";
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             obj1 = obj2 = NULL;
             arg1 = arg2 = -1;
-            move = chooseMove( progress ); // TBD: choose another?
+            move = chooseMove( progress );
             perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          }
-         
          
          costPrev  = _currCost;
          tmpCost   = computeCost();
          deltaCost = tmpCost - costPrev;
-         #if 0
-         cout<<"current #:" << ++totalCnt <<endl;
-         #else
          ++totalCnt;
-         #endif
          if ( tmpCost < costPrev ){
             if( tmpCost < _optCost){
                _optCost = tmpCost;
@@ -157,13 +148,10 @@ MPTreeMgr::simAnneal_int()
             }
             ++downhillCnt;
             localCnt  = 0;
-            //cout << "delta < 0: " << cost << endl;
-            //assert(cost < _currCost);
             _currCost = tmpCost;
             continue;
          }
          else if( tmpCost > costPrev && localCnt > 3 && isAccepted(deltaCost, T)){
-            //cout << ">> uphillMove : current Temp("<< T <<")\tTMPcost: " << tmpCost << "\toptCost: " << _optCost << "\n";
             ++uphillCnt;
             _currCost = tmpCost;
             localCnt = 0;
@@ -172,7 +160,6 @@ MPTreeMgr::simAnneal_int()
          else{
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             ++localCnt;
-            //cout << "UNDO: " << cost << endl;
          }
       }
       T *= r;
@@ -181,7 +168,6 @@ MPTreeMgr::simAnneal_int()
    // restore opt-info
    updateCurSol();
 
-   // TODO: output some message?
    cout<<"simAnneal_int(): done, _optCost = " << _optCost <<endl;
    cout<<"> total perturbation: "<< totalCnt <<" uphill: "<< uphillCnt <<" downhill: "<< downhillCnt << endl;
 }
@@ -253,7 +239,7 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
             undoMPTree( &obj1, &obj2, &arg1, &arg2, move );
             obj1 = obj2 = NULL;
             arg1 = arg2 = -1;
-            move = chooseMove(); // TBD: choose another?
+            move = chooseMove();
             perturbMPTree( &obj1, &obj2, &arg1, &arg2, move );
          }
          costPrev = cost;
@@ -300,23 +286,19 @@ MPTreeMgr::setTemp(double & T0, double & Tx)
 double
 MPTreeMgr::computeCost() const
 {
-   // TODO: adjust vlaue of abcde
-   double a = 6;
-   double b = 3;
-   double c = 3;
+   // user defined vars.
+   double a = 4;
+   double b = 7;
+   double c = 1;
    double d = 6;
-   double e = 2;
+   double e = 4;
 
    double c1 = a/(a+b+c+d+e) * computeContour();
    double c2 = b/(a+b+c+d+e) * computeWL();
    double c3 = c/(a+b+c+d+e) * computeDisp();
    double c4 = d/(a+b+c+d+e) * computeBalance();
    double c5 = e/(a+b+c+d+e) * computeArea();
-   //cout << " >  computeCost() : current cost = " << c1+c2+c3+c4 << endl;
-   /*
-   printf(" > computeCost() : area = %f, WL=%f, disp=%f, total=%f\n", 
-         c1/a*(a+b+c+d), c2/b*(a+b+c+d), c3/c*(a+b+c+d), c1+c2+c3);
-   */
+   
    return c1 + c2 + c3 + c4 + c5;
 }
 

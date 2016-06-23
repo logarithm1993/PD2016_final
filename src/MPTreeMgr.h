@@ -71,7 +71,6 @@ class MPTreeMgr
 		void     freeNodePin        ( Node * );
 		void     freeNet            ();
 		void     freeTerm           ();
-		//void     resetBstMgr         ();
 		
 		// readInput() helper
 		bool     readNode           ( const char * );
@@ -102,16 +101,8 @@ class MPTreeMgr
       void     printMPTree        () const;
       void     printMPTree_rec    ( const Node* , int ) const;
       void     indent             ( int ) const;
-      // contour operating helper
-		/*
-		void     initContour         ();
-		void     deleteContour       ();
-		Contour* getLastCtr          () const;
-		int      updateContour       ( const Block* );
-		void     printContour        () const;
-		*/
-		// cost computation helper
-      
+		
+      // cost computation helper
 		void     initCost            ();
       double   computeCost         () const;
       double   computeArea         () const;
@@ -121,7 +112,6 @@ class MPTreeMgr
       double   computeContour      () const;
 		void     updateOptSol        ();
 		void     updateCurSol        ();
-      //void     updateTempSolByOpt  ();
 		
 		
       // MP trees packing helper
@@ -155,12 +145,8 @@ class MPTreeMgr
       bool     checkMPTree         () const;
 		
 		// simulated annealing helper	
-      //  uncomment these function when needed
-		//void     greedyRun           ();
 		void     simAnneal_int       ();
-	   //void     setSAPar            ();
 	   void     setTemp             (double &, double &);
-		//bool     simAnnealStop       ();
 		
 		// writeOutput() helper
 		void     writeNodePosition   ( ostream& ) const;
@@ -174,14 +160,7 @@ class MPTreeMgr
 		void     printNet            ( ostream& , Net*  ) const;
       void     printNetPin         ( ostream& , Net*  ) const;
       void     printNetTerm        ( ostream& , Net*  ) const;
-		/*
-		void     writeStat           ( ostream& ) const;
-      void     writeNetList        ( ostream& ) const;
-      void     writeCost           ( ostream& ) const;
-      void     writeCoordinate     ( ostream& ) const;
-		*/
 		// test interface helper
-		//void     printAllOpt         () const;      
 		// data members
 		NodeList           _allNode;
 		NetList            _allNet;
