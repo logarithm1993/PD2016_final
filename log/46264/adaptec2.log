@@ -1,0 +1,1026 @@
+ >  readInput() : start reading input data
+ >  readNode() : reading node file benchmark/adaptec2_MMS/adaptec2.nodes
+ >  Number of macros = 127
+ >  readNode() : reading node success!
+ >  readPosition() : reading position file benchmark/adaptec2_MMS/adaptec2.ntup.pl
+ >  readPosition() : reading position success!
+ >  initial chip boundary : 
+ >    Width  = 14361
+ >    Height = 14464
+ >  readNet() : reading net file benchmark/adaptec2_MMS/adaptec2.nets
+ >  readNet() : reading net success!
+updateOptSol() : find better sol!
+>> cost = 1
+simAnneal(): start
+1th attempt!
+
+setTemp(): start greedy search
+updateOptSol() : find better sol!
+>> cost = 0.99674
+updateOptSol() : find better sol!
+>> cost = 0.970471
+updateOptSol() : find better sol!
+>> cost = 0.920044
+updateOptSol() : find better sol!
+>> cost = 0.909074
+updateOptSol() : find better sol!
+>> cost = 0.902693
+updateOptSol() : find better sol!
+>> cost = 0.843009
+updateOptSol() : find better sol!
+>> cost = 0.839396
+updateOptSol() : find better sol!
+>> cost = 0.838801
+updateOptSol() : find better sol!
+>> cost = 0.831613
+updateOptSol() : find better sol!
+>> cost = 0.821823
+updateOptSol() : find better sol!
+>> cost = 0.820086
+updateOptSol() : find better sol!
+>> cost = 0.815523
+updateOptSol() : find better sol!
+>> cost = 0.808423
+updateOptSol() : find better sol!
+>> cost = 0.796353
+updateOptSol() : find better sol!
+>> cost = 0.796263
+updateOptSol() : find better sol!
+>> cost = 0.791609
+updateOptSol() : find better sol!
+>> cost = 0.755538
+updateOptSol() : find better sol!
+>> cost = 0.736658
+updateOptSol() : find better sol!
+>> cost = 0.729409
+updateOptSol() : find better sol!
+>> cost = 0.72649
+updateOptSol() : find better sol!
+>> cost = 0.71945
+updateOptSol() : find better sol!
+>> cost = 0.717585
+updateOptSol() : find better sol!
+>> cost = 0.713049
+updateOptSol() : find better sol!
+>> cost = 0.708985
+updateOptSol() : find better sol!
+>> cost = 0.700506
+updateOptSol() : find better sol!
+>> cost = 0.699396
+avgDcost:0.013314 T0:0.259576, Tx:0.002513
+simAnneal_int(): start to SA
+updateOptSol() : find better sol!
+>> cost = 0.690691
+weather report: current Temp = 0.254384  Cost = 0.728324 [sa progress... 0%]
+updateOptSol() : find better sol!
+>> cost = 0.690533
+updateOptSol() : find better sol!
+>> cost = 0.689784
+updateOptSol() : find better sol!
+>> cost = 0.688726
+updateOptSol() : find better sol!
+>> cost = 0.688625
+updateOptSol() : find better sol!
+>> cost = 0.688605
+updateOptSol() : find better sol!
+>> cost = 0.682894
+updateOptSol() : find better sol!
+>> cost = 0.682883
+updateOptSol() : find better sol!
+>> cost = 0.682752
+updateOptSol() : find better sol!
+>> cost = 0.681382
+weather report: current Temp = 0.249297  Cost = 0.699992 [sa progress... 0.43563%]
+weather report: current Temp = 0.244311  Cost = 0.704324 [sa progress... 0.87126%]
+weather report: current Temp = 0.239424  Cost = 0.714574 [sa progress... 1.30689%]
+weather report: current Temp = 0.234636  Cost = 0.700013 [sa progress... 1.74252%]
+updateOptSol() : find better sol!
+>> cost = 0.680254
+weather report: current Temp = 0.229943  Cost = 0.69723 [sa progress... 2.17815%]
+updateOptSol() : find better sol!
+>> cost = 0.674659
+weather report: current Temp = 0.225344  Cost = 0.695567 [sa progress... 2.61378%]
+weather report: current Temp = 0.220837  Cost = 0.727442 [sa progress... 3.04941%]
+updateOptSol() : find better sol!
+>> cost = 0.673133
+updateOptSol() : find better sol!
+>> cost = 0.672674
+updateOptSol() : find better sol!
+>> cost = 0.672213
+weather report: current Temp = 0.216421  Cost = 0.725262 [sa progress... 3.48504%]
+updateOptSol() : find better sol!
+>> cost = 0.671418
+updateOptSol() : find better sol!
+>> cost = 0.667237
+updateOptSol() : find better sol!
+>> cost = 0.667169
+weather report: current Temp = 0.212092  Cost = 0.761726 [sa progress... 3.92067%]
+weather report: current Temp = 0.20785  Cost = 0.700776 [sa progress... 4.3563%]
+weather report: current Temp = 0.203693  Cost = 0.744324 [sa progress... 4.79193%]
+weather report: current Temp = 0.19962  Cost = 0.702444 [sa progress... 5.22756%]
+weather report: current Temp = 0.195627  Cost = 0.728333 [sa progress... 5.66319%]
+weather report: current Temp = 0.191715  Cost = 0.727879 [sa progress... 6.09882%]
+weather report: current Temp = 0.18788  Cost = 0.718649 [sa progress... 6.53445%]
+weather report: current Temp = 0.184123  Cost = 0.715587 [sa progress... 6.97008%]
+weather report: current Temp = 0.18044  Cost = 0.688393 [sa progress... 7.40571%]
+updateOptSol() : find better sol!
+>> cost = 0.665395
+updateOptSol() : find better sol!
+>> cost = 0.663376
+weather report: current Temp = 0.176831  Cost = 0.672056 [sa progress... 7.84134%]
+weather report: current Temp = 0.173295  Cost = 0.686033 [sa progress... 8.27697%]
+weather report: current Temp = 0.169829  Cost = 0.770963 [sa progress... 8.7126%]
+weather report: current Temp = 0.166432  Cost = 0.683962 [sa progress... 9.14823%]
+weather report: current Temp = 0.163104  Cost = 0.707296 [sa progress... 9.58386%]
+weather report: current Temp = 0.159842  Cost = 0.736424 [sa progress... 10.0195%]
+weather report: current Temp = 0.156645  Cost = 0.694293 [sa progress... 10.4551%]
+weather report: current Temp = 0.153512  Cost = 0.686451 [sa progress... 10.8907%]
+weather report: current Temp = 0.150442  Cost = 0.726827 [sa progress... 11.3264%]
+updateOptSol() : find better sol!
+>> cost = 0.662555
+updateOptSol() : find better sol!
+>> cost = 0.661023
+updateOptSol() : find better sol!
+>> cost = 0.660253
+updateOptSol() : find better sol!
+>> cost = 0.660148
+updateOptSol() : find better sol!
+>> cost = 0.65312
+updateOptSol() : find better sol!
+>> cost = 0.652811
+updateOptSol() : find better sol!
+>> cost = 0.652557
+updateOptSol() : find better sol!
+>> cost = 0.651733
+weather report: current Temp = 0.147433  Cost = 0.686742 [sa progress... 11.762%]
+weather report: current Temp = 0.144484  Cost = 0.703336 [sa progress... 12.1976%]
+weather report: current Temp = 0.141594  Cost = 0.71545 [sa progress... 12.6333%]
+weather report: current Temp = 0.138763  Cost = 0.674499 [sa progress... 13.0689%]
+weather report: current Temp = 0.135987  Cost = 0.731304 [sa progress... 13.5045%]
+weather report: current Temp = 0.133268  Cost = 0.69316 [sa progress... 13.9402%]
+weather report: current Temp = 0.130602  Cost = 0.708466 [sa progress... 14.3758%]
+weather report: current Temp = 0.12799  Cost = 0.682788 [sa progress... 14.8114%]
+weather report: current Temp = 0.12543  Cost = 0.708823 [sa progress... 15.247%]
+weather report: current Temp = 0.122922  Cost = 0.67651 [sa progress... 15.6827%]
+weather report: current Temp = 0.120463  Cost = 0.719005 [sa progress... 16.1183%]
+weather report: current Temp = 0.118054  Cost = 0.713949 [sa progress... 16.5539%]
+weather report: current Temp = 0.115693  Cost = 0.707453 [sa progress... 16.9896%]
+weather report: current Temp = 0.113379  Cost = 0.712421 [sa progress... 17.4252%]
+weather report: current Temp = 0.111112  Cost = 0.681293 [sa progress... 17.8608%]
+weather report: current Temp = 0.108889  Cost = 0.701689 [sa progress... 18.2965%]
+weather report: current Temp = 0.106712  Cost = 0.715635 [sa progress... 18.7321%]
+weather report: current Temp = 0.104577  Cost = 0.702957 [sa progress... 19.1677%]
+weather report: current Temp = 0.102486  Cost = 0.701556 [sa progress... 19.6033%]
+weather report: current Temp = 0.100436  Cost = 0.738592 [sa progress... 20.039%]
+weather report: current Temp = 0.0984273  Cost = 0.723143 [sa progress... 20.4746%]
+weather report: current Temp = 0.0964588  Cost = 0.704338 [sa progress... 20.9102%]
+updateOptSol() : find better sol!
+>> cost = 0.649151
+updateOptSol() : find better sol!
+>> cost = 0.645927
+updateOptSol() : find better sol!
+>> cost = 0.6429
+weather report: current Temp = 0.0945296  Cost = 0.661273 [sa progress... 21.3459%]
+weather report: current Temp = 0.092639  Cost = 0.705549 [sa progress... 21.7815%]
+weather report: current Temp = 0.0907862  Cost = 0.716493 [sa progress... 22.2171%]
+weather report: current Temp = 0.0889705  Cost = 0.684143 [sa progress... 22.6528%]
+weather report: current Temp = 0.0871911  Cost = 0.687886 [sa progress... 23.0884%]
+weather report: current Temp = 0.0854473  Cost = 0.693454 [sa progress... 23.524%]
+weather report: current Temp = 0.0837383  Cost = 0.689912 [sa progress... 23.9596%]
+weather report: current Temp = 0.0820636  Cost = 0.720735 [sa progress... 24.3953%]
+weather report: current Temp = 0.0804223  Cost = 0.683922 [sa progress... 24.8309%]
+weather report: current Temp = 0.0788138  Cost = 0.684321 [sa progress... 25.2665%]
+weather report: current Temp = 0.0772376  Cost = 0.688948 [sa progress... 25.7022%]
+weather report: current Temp = 0.0756928  Cost = 0.682314 [sa progress... 26.1378%]
+weather report: current Temp = 0.074179  Cost = 0.669534 [sa progress... 26.5734%]
+weather report: current Temp = 0.0726954  Cost = 0.703849 [sa progress... 27.0091%]
+weather report: current Temp = 0.0712415  Cost = 0.720453 [sa progress... 27.4447%]
+weather report: current Temp = 0.0698166  Cost = 0.678717 [sa progress... 27.8803%]
+weather report: current Temp = 0.0684203  Cost = 0.690353 [sa progress... 28.3159%]
+weather report: current Temp = 0.0670519  Cost = 0.725045 [sa progress... 28.7516%]
+weather report: current Temp = 0.0657109  Cost = 0.687213 [sa progress... 29.1872%]
+weather report: current Temp = 0.0643967  Cost = 0.681753 [sa progress... 29.6228%]
+weather report: current Temp = 0.0631087  Cost = 0.660519 [sa progress... 30.0585%]
+weather report: current Temp = 0.0618465  Cost = 0.671805 [sa progress... 30.4941%]
+weather report: current Temp = 0.0606096  Cost = 0.682819 [sa progress... 30.9297%]
+weather report: current Temp = 0.0593974  Cost = 0.709618 [sa progress... 31.3654%]
+weather report: current Temp = 0.0582095  Cost = 0.673281 [sa progress... 31.801%]
+weather report: current Temp = 0.0570453  Cost = 0.656295 [sa progress... 32.2366%]
+updateOptSol() : find better sol!
+>> cost = 0.641459
+updateOptSol() : find better sol!
+>> cost = 0.640276
+updateOptSol() : find better sol!
+>> cost = 0.640276
+updateOptSol() : find better sol!
+>> cost = 0.638628
+updateOptSol() : find better sol!
+>> cost = 0.635407
+weather report: current Temp = 0.0559044  Cost = 0.674485 [sa progress... 32.6722%]
+updateOptSol() : find better sol!
+>> cost = 0.634471
+weather report: current Temp = 0.0547863  Cost = 0.657156 [sa progress... 33.1079%]
+updateOptSol() : find better sol!
+>> cost = 0.631867
+updateOptSol() : find better sol!
+>> cost = 0.626946
+updateOptSol() : find better sol!
+>> cost = 0.624296
+updateOptSol() : find better sol!
+>> cost = 0.624176
+updateOptSol() : find better sol!
+>> cost = 0.623385
+updateOptSol() : find better sol!
+>> cost = 0.620541
+weather report: current Temp = 0.0536906  Cost = 0.648934 [sa progress... 33.5435%]
+weather report: current Temp = 0.0526168  Cost = 0.651638 [sa progress... 33.9791%]
+weather report: current Temp = 0.0515644  Cost = 0.671855 [sa progress... 34.4148%]
+weather report: current Temp = 0.0505331  Cost = 0.664847 [sa progress... 34.8504%]
+weather report: current Temp = 0.0495225  Cost = 0.63976 [sa progress... 35.286%]
+updateOptSol() : find better sol!
+>> cost = 0.618623
+updateOptSol() : find better sol!
+>> cost = 0.618584
+updateOptSol() : find better sol!
+>> cost = 0.617355
+updateOptSol() : find better sol!
+>> cost = 0.616845
+weather report: current Temp = 0.048532  Cost = 0.652192 [sa progress... 35.7217%]
+updateOptSol() : find better sol!
+>> cost = 0.616342
+updateOptSol() : find better sol!
+>> cost = 0.615543
+updateOptSol() : find better sol!
+>> cost = 0.613735
+updateOptSol() : find better sol!
+>> cost = 0.61151
+weather report: current Temp = 0.0475614  Cost = 0.614195 [sa progress... 36.1573%]
+weather report: current Temp = 0.0466101  Cost = 0.653464 [sa progress... 36.5929%]
+weather report: current Temp = 0.0456779  Cost = 0.650574 [sa progress... 37.0285%]
+weather report: current Temp = 0.0447644  Cost = 0.647911 [sa progress... 37.4642%]
+weather report: current Temp = 0.0438691  Cost = 0.640899 [sa progress... 37.8998%]
+weather report: current Temp = 0.0429917  Cost = 0.642086 [sa progress... 38.3354%]
+weather report: current Temp = 0.0421319  Cost = 0.638422 [sa progress... 38.7711%]
+weather report: current Temp = 0.0412892  Cost = 0.655573 [sa progress... 39.2067%]
+weather report: current Temp = 0.0404635  Cost = 0.681645 [sa progress... 39.6423%]
+weather report: current Temp = 0.0396542  Cost = 0.636926 [sa progress... 40.078%]
+weather report: current Temp = 0.0388611  Cost = 0.650744 [sa progress... 40.5136%]
+weather report: current Temp = 0.0380839  Cost = 0.626742 [sa progress... 40.9492%]
+weather report: current Temp = 0.0373222  Cost = 0.645834 [sa progress... 41.3848%]
+weather report: current Temp = 0.0365758  Cost = 0.616131 [sa progress... 41.8205%]
+updateOptSol() : find better sol!
+>> cost = 0.611087
+updateOptSol() : find better sol!
+>> cost = 0.610953
+updateOptSol() : find better sol!
+>> cost = 0.608742
+updateOptSol() : find better sol!
+>> cost = 0.60857
+updateOptSol() : find better sol!
+>> cost = 0.607876
+weather report: current Temp = 0.0358442  Cost = 0.664473 [sa progress... 42.2561%]
+weather report: current Temp = 0.0351274  Cost = 0.634419 [sa progress... 42.6917%]
+weather report: current Temp = 0.0344248  Cost = 0.643874 [sa progress... 43.1274%]
+weather report: current Temp = 0.0337363  Cost = 0.712674 [sa progress... 43.563%]
+weather report: current Temp = 0.0330616  Cost = 0.686126 [sa progress... 43.9986%]
+weather report: current Temp = 0.0324004  Cost = 0.671789 [sa progress... 44.4343%]
+weather report: current Temp = 0.0317524  Cost = 0.681967 [sa progress... 44.8699%]
+weather report: current Temp = 0.0311173  Cost = 0.685238 [sa progress... 45.3055%]
+weather report: current Temp = 0.030495  Cost = 0.675752 [sa progress... 45.7411%]
+weather report: current Temp = 0.0298851  Cost = 0.694776 [sa progress... 46.1768%]
+weather report: current Temp = 0.0292874  Cost = 0.67812 [sa progress... 46.6124%]
+weather report: current Temp = 0.0287016  Cost = 0.6705 [sa progress... 47.048%]
+weather report: current Temp = 0.0281276  Cost = 0.666605 [sa progress... 47.4837%]
+weather report: current Temp = 0.027565  Cost = 0.689927 [sa progress... 47.9193%]
+weather report: current Temp = 0.0270137  Cost = 0.618134 [sa progress... 48.3549%]
+weather report: current Temp = 0.0264735  Cost = 0.649006 [sa progress... 48.7906%]
+weather report: current Temp = 0.025944  Cost = 0.679424 [sa progress... 49.2262%]
+weather report: current Temp = 0.0254251  Cost = 0.658082 [sa progress... 49.6618%]
+weather report: current Temp = 0.0249166  Cost = 0.6564 [sa progress... 50.0974%]
+weather report: current Temp = 0.0244183  Cost = 0.65677 [sa progress... 50.5331%]
+weather report: current Temp = 0.0239299  Cost = 0.650994 [sa progress... 50.9687%]
+weather report: current Temp = 0.0234513  Cost = 0.627208 [sa progress... 51.4043%]
+weather report: current Temp = 0.0229823  Cost = 0.644402 [sa progress... 51.84%]
+updateOptSol() : find better sol!
+>> cost = 0.606104
+updateOptSol() : find better sol!
+>> cost = 0.605499
+updateOptSol() : find better sol!
+>> cost = 0.605272
+updateOptSol() : find better sol!
+>> cost = 0.603128
+updateOptSol() : find better sol!
+>> cost = 0.600659
+weather report: current Temp = 0.0225226  Cost = 0.609016 [sa progress... 52.2756%]
+updateOptSol() : find better sol!
+>> cost = 0.598808
+updateOptSol() : find better sol!
+>> cost = 0.596786
+weather report: current Temp = 0.0220722  Cost = 0.632537 [sa progress... 52.7112%]
+weather report: current Temp = 0.0216307  Cost = 0.631491 [sa progress... 53.1469%]
+weather report: current Temp = 0.0211981  Cost = 0.626082 [sa progress... 53.5825%]
+weather report: current Temp = 0.0207742  Cost = 0.630196 [sa progress... 54.0181%]
+weather report: current Temp = 0.0203587  Cost = 0.62869 [sa progress... 54.4537%]
+weather report: current Temp = 0.0199515  Cost = 0.631898 [sa progress... 54.8894%]
+weather report: current Temp = 0.0195525  Cost = 0.637343 [sa progress... 55.325%]
+weather report: current Temp = 0.0191614  Cost = 0.643169 [sa progress... 55.7606%]
+weather report: current Temp = 0.0187782  Cost = 0.636839 [sa progress... 56.1963%]
+weather report: current Temp = 0.0184026  Cost = 0.666214 [sa progress... 56.6319%]
+weather report: current Temp = 0.0180346  Cost = 0.65661 [sa progress... 57.0675%]
+weather report: current Temp = 0.0176739  Cost = 0.655885 [sa progress... 57.5032%]
+weather report: current Temp = 0.0173204  Cost = 0.620207 [sa progress... 57.9388%]
+weather report: current Temp = 0.016974  Cost = 0.631876 [sa progress... 58.3744%]
+weather report: current Temp = 0.0166345  Cost = 0.636172 [sa progress... 58.81%]
+weather report: current Temp = 0.0163018  Cost = 0.63227 [sa progress... 59.2457%]
+weather report: current Temp = 0.0159758  Cost = 0.656052 [sa progress... 59.6813%]
+weather report: current Temp = 0.0156563  Cost = 0.648533 [sa progress... 60.1169%]
+weather report: current Temp = 0.0153432  Cost = 0.630859 [sa progress... 60.5526%]
+weather report: current Temp = 0.0150363  Cost = 0.650055 [sa progress... 60.9882%]
+weather report: current Temp = 0.0147356  Cost = 0.621959 [sa progress... 61.4238%]
+weather report: current Temp = 0.0144409  Cost = 0.635059 [sa progress... 61.8595%]
+weather report: current Temp = 0.014152  Cost = 0.644316 [sa progress... 62.2951%]
+weather report: current Temp = 0.013869  Cost = 0.629576 [sa progress... 62.7307%]
+weather report: current Temp = 0.0135916  Cost = 0.620315 [sa progress... 63.1663%]
+weather report: current Temp = 0.0133198  Cost = 0.630941 [sa progress... 63.602%]
+updateOptSol() : find better sol!
+>> cost = 0.595728
+updateOptSol() : find better sol!
+>> cost = 0.595532
+updateOptSol() : find better sol!
+>> cost = 0.593828
+updateOptSol() : find better sol!
+>> cost = 0.592961
+weather report: current Temp = 0.0130534  Cost = 0.599119 [sa progress... 64.0376%]
+weather report: current Temp = 0.0127923  Cost = 0.620658 [sa progress... 64.4732%]
+weather report: current Temp = 0.0125365  Cost = 0.65636 [sa progress... 64.9089%]
+weather report: current Temp = 0.0122857  Cost = 0.645209 [sa progress... 65.3445%]
+weather report: current Temp = 0.01204  Cost = 0.63502 [sa progress... 65.7801%]
+weather report: current Temp = 0.0117992  Cost = 0.649861 [sa progress... 66.2158%]
+weather report: current Temp = 0.0115632  Cost = 0.655027 [sa progress... 66.6514%]
+weather report: current Temp = 0.011332  Cost = 0.628464 [sa progress... 67.087%]
+weather report: current Temp = 0.0111053  Cost = 0.635795 [sa progress... 67.5226%]
+weather report: current Temp = 0.0108832  Cost = 0.639959 [sa progress... 67.9583%]
+weather report: current Temp = 0.0106656  Cost = 0.654326 [sa progress... 68.3939%]
+weather report: current Temp = 0.0104523  Cost = 0.625534 [sa progress... 68.8295%]
+weather report: current Temp = 0.0102432  Cost = 0.635323 [sa progress... 69.2652%]
+weather report: current Temp = 0.0100383  Cost = 0.661872 [sa progress... 69.7008%]
+weather report: current Temp = 0.00983758  Cost = 0.658691 [sa progress... 70.1364%]
+weather report: current Temp = 0.00964083  Cost = 0.640778 [sa progress... 70.5721%]
+weather report: current Temp = 0.00944801  Cost = 0.624043 [sa progress... 71.0077%]
+weather report: current Temp = 0.00925905  Cost = 0.620635 [sa progress... 71.4433%]
+weather report: current Temp = 0.00907387  Cost = 0.631422 [sa progress... 71.8789%]
+weather report: current Temp = 0.00889239  Cost = 0.615314 [sa progress... 72.3146%]
+weather report: current Temp = 0.00871455  Cost = 0.635216 [sa progress... 72.7502%]
+weather report: current Temp = 0.00854026  Cost = 0.61895 [sa progress... 73.1858%]
+weather report: current Temp = 0.00836945  Cost = 0.622529 [sa progress... 73.6215%]
+weather report: current Temp = 0.00820206  Cost = 0.603414 [sa progress... 74.0571%]
+weather report: current Temp = 0.00803802  Cost = 0.606623 [sa progress... 74.4927%]
+weather report: current Temp = 0.00787726  Cost = 0.614842 [sa progress... 74.9284%]
+weather report: current Temp = 0.00771971  Cost = 0.625497 [sa progress... 75.364%]
+weather report: current Temp = 0.00756532  Cost = 0.609999 [sa progress... 75.7996%]
+weather report: current Temp = 0.00741401  Cost = 0.623513 [sa progress... 76.2352%]
+updateOptSol() : find better sol!
+>> cost = 0.592953
+updateOptSol() : find better sol!
+>> cost = 0.592124
+weather report: current Temp = 0.00726573  Cost = 0.622159 [sa progress... 76.6709%]
+weather report: current Temp = 0.00712042  Cost = 0.619261 [sa progress... 77.1065%]
+weather report: current Temp = 0.00697801  Cost = 0.628685 [sa progress... 77.5421%]
+weather report: current Temp = 0.00683845  Cost = 0.597164 [sa progress... 77.9778%]
+weather report: current Temp = 0.00670168  Cost = 0.612604 [sa progress... 78.4134%]
+weather report: current Temp = 0.00656765  Cost = 0.621138 [sa progress... 78.849%]
+weather report: current Temp = 0.00643629  Cost = 0.627681 [sa progress... 79.2847%]
+weather report: current Temp = 0.00630757  Cost = 0.616873 [sa progress... 79.7203%]
+weather report: current Temp = 0.00618142  Cost = 0.607876 [sa progress... 80.1559%]
+weather report: current Temp = 0.00605779  Cost = 0.618869 [sa progress... 80.5915%]
+weather report: current Temp = 0.00593663  Cost = 0.622657 [sa progress... 81.0272%]
+weather report: current Temp = 0.0058179  Cost = 0.616395 [sa progress... 81.4628%]
+weather report: current Temp = 0.00570154  Cost = 0.607868 [sa progress... 81.8984%]
+weather report: current Temp = 0.00558751  Cost = 0.59959 [sa progress... 82.3341%]
+updateOptSol() : find better sol!
+>> cost = 0.591882
+updateOptSol() : find better sol!
+>> cost = 0.591612
+updateOptSol() : find better sol!
+>> cost = 0.590572
+updateOptSol() : find better sol!
+>> cost = 0.590422
+updateOptSol() : find better sol!
+>> cost = 0.589183
+updateOptSol() : find better sol!
+>> cost = 0.585794
+weather report: current Temp = 0.00547576  Cost = 0.605543 [sa progress... 82.7697%]
+updateOptSol() : find better sol!
+>> cost = 0.585351
+weather report: current Temp = 0.00536625  Cost = 0.594327 [sa progress... 83.2053%]
+updateOptSol() : find better sol!
+>> cost = 0.584482
+updateOptSol() : find better sol!
+>> cost = 0.581293
+weather report: current Temp = 0.00525892  Cost = 0.599896 [sa progress... 83.641%]
+weather report: current Temp = 0.00515374  Cost = 0.586821 [sa progress... 84.0766%]
+weather report: current Temp = 0.00505067  Cost = 0.599807 [sa progress... 84.5122%]
+weather report: current Temp = 0.00494965  Cost = 0.606575 [sa progress... 84.9478%]
+weather report: current Temp = 0.00485066  Cost = 0.588046 [sa progress... 85.3835%]
+weather report: current Temp = 0.00475365  Cost = 0.606888 [sa progress... 85.8191%]
+weather report: current Temp = 0.00465858  Cost = 0.603983 [sa progress... 86.2547%]
+weather report: current Temp = 0.0045654  Cost = 0.615116 [sa progress... 86.6904%]
+weather report: current Temp = 0.0044741  Cost = 0.612791 [sa progress... 87.126%]
+weather report: current Temp = 0.00438461  Cost = 0.605693 [sa progress... 87.5616%]
+weather report: current Temp = 0.00429692  Cost = 0.61958 [sa progress... 87.9973%]
+weather report: current Temp = 0.00421098  Cost = 0.611023 [sa progress... 88.4329%]
+weather report: current Temp = 0.00412676  Cost = 0.58646 [sa progress... 88.8685%]
+updateOptSol() : find better sol!
+>> cost = 0.579759
+updateOptSol() : find better sol!
+>> cost = 0.579048
+updateOptSol() : find better sol!
+>> cost = 0.578358
+updateOptSol() : find better sol!
+>> cost = 0.578104
+updateOptSol() : find better sol!
+>> cost = 0.57662
+updateOptSol() : find better sol!
+>> cost = 0.576404
+updateOptSol() : find better sol!
+>> cost = 0.576402
+weather report: current Temp = 0.00404423  Cost = 0.586793 [sa progress... 89.3041%]
+updateOptSol() : find better sol!
+>> cost = 0.572644
+updateOptSol() : find better sol!
+>> cost = 0.572578
+updateOptSol() : find better sol!
+>> cost = 0.570899
+updateOptSol() : find better sol!
+>> cost = 0.569325
+updateOptSol() : find better sol!
+>> cost = 0.568916
+weather report: current Temp = 0.00396334  Cost = 0.580109 [sa progress... 89.7398%]
+weather report: current Temp = 0.00388408  Cost = 0.581804 [sa progress... 90.1754%]
+weather report: current Temp = 0.0038064  Cost = 0.607371 [sa progress... 90.611%]
+weather report: current Temp = 0.00373027  Cost = 0.603181 [sa progress... 91.0467%]
+weather report: current Temp = 0.00365566  Cost = 0.588434 [sa progress... 91.4823%]
+weather report: current Temp = 0.00358255  Cost = 0.600954 [sa progress... 91.9179%]
+weather report: current Temp = 0.0035109  Cost = 0.587855 [sa progress... 92.3535%]
+weather report: current Temp = 0.00344068  Cost = 0.604478 [sa progress... 92.7892%]
+weather report: current Temp = 0.00337187  Cost = 0.590423 [sa progress... 93.2248%]
+weather report: current Temp = 0.00330443  Cost = 0.589188 [sa progress... 93.6604%]
+weather report: current Temp = 0.00323834  Cost = 0.589585 [sa progress... 94.0961%]
+weather report: current Temp = 0.00317357  Cost = 0.59636 [sa progress... 94.5317%]
+weather report: current Temp = 0.0031101  Cost = 0.580657 [sa progress... 94.9673%]
+weather report: current Temp = 0.0030479  Cost = 0.582428 [sa progress... 95.403%]
+weather report: current Temp = 0.00298694  Cost = 0.581777 [sa progress... 95.8386%]
+updateOptSol() : find better sol!
+>> cost = 0.568605
+updateOptSol() : find better sol!
+>> cost = 0.568455
+weather report: current Temp = 0.0029272  Cost = 0.568455 [sa progress... 96.2742%]
+updateOptSol() : find better sol!
+>> cost = 0.56845
+updateOptSol() : find better sol!
+>> cost = 0.568174
+updateOptSol() : find better sol!
+>> cost = 0.567269
+updateOptSol() : find better sol!
+>> cost = 0.566884
+updateOptSol() : find better sol!
+>> cost = 0.566416
+updateOptSol() : find better sol!
+>> cost = 0.565979
+updateOptSol() : find better sol!
+>> cost = 0.565821
+updateOptSol() : find better sol!
+>> cost = 0.565813
+weather report: current Temp = 0.00286866  Cost = 0.567553 [sa progress... 96.7098%]
+weather report: current Temp = 0.00281129  Cost = 0.571609 [sa progress... 97.1455%]
+weather report: current Temp = 0.00275506  Cost = 0.580281 [sa progress... 97.5811%]
+updateOptSol() : find better sol!
+>> cost = 0.56444
+weather report: current Temp = 0.00269996  Cost = 0.56444 [sa progress... 98.0167%]
+weather report: current Temp = 0.00264596  Cost = 0.573266 [sa progress... 98.4524%]
+weather report: current Temp = 0.00259304  Cost = 0.573681 [sa progress... 98.888%]
+updateOptSol() : find better sol!
+>> cost = 0.564216
+updateOptSol() : find better sol!
+>> cost = 0.563484
+updateOptSol() : find better sol!
+>> cost = 0.558571
+updateOptSol() : find better sol!
+>> cost = 0.558059
+updateOptSol() : find better sol!
+>> cost = 0.557341
+updateOptSol() : find better sol!
+>> cost = 0.557072
+updateOptSol() : find better sol!
+>> cost = 0.556659
+updateOptSol() : find better sol!
+>> cost = 0.556613
+updateOptSol() : find better sol!
+>> cost = 0.556034
+weather report: current Temp = 0.00254118  Cost = 0.560088 [sa progress... 99.3236%]
+updateOptSol() : find better sol!
+>> cost = 0.555923
+updateOptSol() : find better sol!
+>> cost = 0.555625
+weather report: current Temp = 0.00249036  Cost = 0.578203 [sa progress... 99.7593%]
+simAnneal_int(): done, _optCost = 0.555625
+> total perturbation: 115000 uphill: 8972 downhill: 22587
+2th attempt!
+
+setTemp(): start greedy search
+avgDcost:0.011464 T0:0.223502, Tx:0.002164
+simAnneal_int(): start to SA
+weather report: current Temp = 0.219032  Cost = 0.65333 [sa progress... 0%]
+weather report: current Temp = 0.214651  Cost = 0.639914 [sa progress... 0.43563%]
+weather report: current Temp = 0.210358  Cost = 0.657154 [sa progress... 0.87126%]
+weather report: current Temp = 0.206151  Cost = 0.669881 [sa progress... 1.30689%]
+weather report: current Temp = 0.202028  Cost = 0.653556 [sa progress... 1.74252%]
+weather report: current Temp = 0.197988  Cost = 0.642802 [sa progress... 2.17815%]
+weather report: current Temp = 0.194028  Cost = 0.634362 [sa progress... 2.61378%]
+weather report: current Temp = 0.190147  Cost = 0.64358 [sa progress... 3.04941%]
+weather report: current Temp = 0.186344  Cost = 0.639979 [sa progress... 3.48504%]
+weather report: current Temp = 0.182618  Cost = 0.708342 [sa progress... 3.92067%]
+weather report: current Temp = 0.178965  Cost = 0.698075 [sa progress... 4.3563%]
+weather report: current Temp = 0.175386  Cost = 0.683094 [sa progress... 4.79193%]
+weather report: current Temp = 0.171878  Cost = 0.677131 [sa progress... 5.22756%]
+weather report: current Temp = 0.168441  Cost = 0.649721 [sa progress... 5.66319%]
+weather report: current Temp = 0.165072  Cost = 0.647453 [sa progress... 6.09882%]
+weather report: current Temp = 0.16177  Cost = 0.664802 [sa progress... 6.53445%]
+weather report: current Temp = 0.158535  Cost = 0.640256 [sa progress... 6.97008%]
+weather report: current Temp = 0.155364  Cost = 0.736075 [sa progress... 7.40571%]
+weather report: current Temp = 0.152257  Cost = 0.648584 [sa progress... 7.84134%]
+weather report: current Temp = 0.149212  Cost = 0.633131 [sa progress... 8.27697%]
+weather report: current Temp = 0.146228  Cost = 0.637559 [sa progress... 8.7126%]
+weather report: current Temp = 0.143303  Cost = 0.643884 [sa progress... 9.14823%]
+weather report: current Temp = 0.140437  Cost = 0.642376 [sa progress... 9.58386%]
+weather report: current Temp = 0.137628  Cost = 0.618855 [sa progress... 10.0195%]
+weather report: current Temp = 0.134876  Cost = 0.634139 [sa progress... 10.4551%]
+weather report: current Temp = 0.132178  Cost = 0.632711 [sa progress... 10.8907%]
+weather report: current Temp = 0.129535  Cost = 0.661868 [sa progress... 11.3264%]
+weather report: current Temp = 0.126944  Cost = 0.635137 [sa progress... 11.762%]
+weather report: current Temp = 0.124405  Cost = 0.643289 [sa progress... 12.1976%]
+weather report: current Temp = 0.121917  Cost = 0.64307 [sa progress... 12.6333%]
+weather report: current Temp = 0.119479  Cost = 0.632103 [sa progress... 13.0689%]
+weather report: current Temp = 0.117089  Cost = 0.644746 [sa progress... 13.5045%]
+weather report: current Temp = 0.114747  Cost = 0.629422 [sa progress... 13.9402%]
+weather report: current Temp = 0.112452  Cost = 0.62817 [sa progress... 14.3758%]
+weather report: current Temp = 0.110203  Cost = 0.728831 [sa progress... 14.8114%]
+weather report: current Temp = 0.107999  Cost = 0.659473 [sa progress... 15.247%]
+weather report: current Temp = 0.105839  Cost = 0.653421 [sa progress... 15.6827%]
+weather report: current Temp = 0.103722  Cost = 0.635941 [sa progress... 16.1183%]
+weather report: current Temp = 0.101648  Cost = 0.683276 [sa progress... 16.5539%]
+weather report: current Temp = 0.099615  Cost = 0.62645 [sa progress... 16.9896%]
+weather report: current Temp = 0.0976227  Cost = 0.63485 [sa progress... 17.4252%]
+weather report: current Temp = 0.0956703  Cost = 0.613312 [sa progress... 17.8608%]
+weather report: current Temp = 0.0937569  Cost = 0.646079 [sa progress... 18.2965%]
+weather report: current Temp = 0.0918817  Cost = 0.637284 [sa progress... 18.7321%]
+weather report: current Temp = 0.0900441  Cost = 0.635845 [sa progress... 19.1677%]
+weather report: current Temp = 0.0882432  Cost = 0.627279 [sa progress... 19.6033%]
+weather report: current Temp = 0.0864783  Cost = 0.659741 [sa progress... 20.039%]
+weather report: current Temp = 0.0847488  Cost = 0.639639 [sa progress... 20.4746%]
+weather report: current Temp = 0.0830538  Cost = 0.632569 [sa progress... 20.9102%]
+weather report: current Temp = 0.0813927  Cost = 0.643954 [sa progress... 21.3459%]
+weather report: current Temp = 0.0797649  Cost = 0.6133 [sa progress... 21.7815%]
+weather report: current Temp = 0.0781696  Cost = 0.651941 [sa progress... 22.2171%]
+weather report: current Temp = 0.0766062  Cost = 0.619134 [sa progress... 22.6528%]
+weather report: current Temp = 0.0750741  Cost = 0.644153 [sa progress... 23.0884%]
+weather report: current Temp = 0.0735726  Cost = 0.634184 [sa progress... 23.524%]
+weather report: current Temp = 0.0721011  Cost = 0.674321 [sa progress... 23.9596%]
+weather report: current Temp = 0.0706591  Cost = 0.646321 [sa progress... 24.3953%]
+weather report: current Temp = 0.0692459  Cost = 0.637644 [sa progress... 24.8309%]
+weather report: current Temp = 0.067861  Cost = 0.668924 [sa progress... 25.2665%]
+weather report: current Temp = 0.0665038  Cost = 0.663147 [sa progress... 25.7022%]
+weather report: current Temp = 0.0651737  Cost = 0.663329 [sa progress... 26.1378%]
+weather report: current Temp = 0.0638702  Cost = 0.679891 [sa progress... 26.5734%]
+weather report: current Temp = 0.0625928  Cost = 0.64203 [sa progress... 27.0091%]
+weather report: current Temp = 0.061341  Cost = 0.624505 [sa progress... 27.4447%]
+weather report: current Temp = 0.0601141  Cost = 0.771969 [sa progress... 27.8803%]
+weather report: current Temp = 0.0589119  Cost = 0.683296 [sa progress... 28.3159%]
+weather report: current Temp = 0.0577336  Cost = 0.644888 [sa progress... 28.7516%]
+weather report: current Temp = 0.056579  Cost = 0.653412 [sa progress... 29.1872%]
+weather report: current Temp = 0.0554474  Cost = 0.621424 [sa progress... 29.6228%]
+weather report: current Temp = 0.0543384  Cost = 0.682815 [sa progress... 30.0585%]
+weather report: current Temp = 0.0532517  Cost = 0.64312 [sa progress... 30.4941%]
+weather report: current Temp = 0.0521866  Cost = 0.632691 [sa progress... 30.9297%]
+weather report: current Temp = 0.0511429  Cost = 0.650705 [sa progress... 31.3654%]
+weather report: current Temp = 0.05012  Cost = 0.664646 [sa progress... 31.801%]
+weather report: current Temp = 0.0491176  Cost = 0.629045 [sa progress... 32.2366%]
+weather report: current Temp = 0.0481353  Cost = 0.65914 [sa progress... 32.6722%]
+weather report: current Temp = 0.0471726  Cost = 0.623597 [sa progress... 33.1079%]
+weather report: current Temp = 0.0462291  Cost = 0.608092 [sa progress... 33.5435%]
+weather report: current Temp = 0.0453045  Cost = 0.625513 [sa progress... 33.9791%]
+weather report: current Temp = 0.0443985  Cost = 0.674813 [sa progress... 34.4148%]
+weather report: current Temp = 0.0435105  Cost = 0.639825 [sa progress... 34.8504%]
+weather report: current Temp = 0.0426403  Cost = 0.613782 [sa progress... 35.286%]
+weather report: current Temp = 0.0417875  Cost = 0.668026 [sa progress... 35.7217%]
+weather report: current Temp = 0.0409517  Cost = 0.702187 [sa progress... 36.1573%]
+weather report: current Temp = 0.0401327  Cost = 0.650289 [sa progress... 36.5929%]
+weather report: current Temp = 0.03933  Cost = 0.640604 [sa progress... 37.0285%]
+weather report: current Temp = 0.0385434  Cost = 0.638733 [sa progress... 37.4642%]
+weather report: current Temp = 0.0377726  Cost = 0.633823 [sa progress... 37.8998%]
+weather report: current Temp = 0.0370171  Cost = 0.708029 [sa progress... 38.3354%]
+weather report: current Temp = 0.0362768  Cost = 0.650415 [sa progress... 38.7711%]
+weather report: current Temp = 0.0355512  Cost = 0.693891 [sa progress... 39.2067%]
+weather report: current Temp = 0.0348402  Cost = 0.658509 [sa progress... 39.6423%]
+weather report: current Temp = 0.0341434  Cost = 0.671161 [sa progress... 40.078%]
+weather report: current Temp = 0.0334605  Cost = 0.669333 [sa progress... 40.5136%]
+weather report: current Temp = 0.0327913  Cost = 0.687561 [sa progress... 40.9492%]
+weather report: current Temp = 0.0321355  Cost = 0.67611 [sa progress... 41.3848%]
+weather report: current Temp = 0.0314928  Cost = 0.634475 [sa progress... 41.8205%]
+weather report: current Temp = 0.0308629  Cost = 0.695206 [sa progress... 42.2561%]
+weather report: current Temp = 0.0302457  Cost = 0.670155 [sa progress... 42.6917%]
+weather report: current Temp = 0.0296408  Cost = 0.636378 [sa progress... 43.1274%]
+weather report: current Temp = 0.0290479  Cost = 0.653938 [sa progress... 43.563%]
+weather report: current Temp = 0.028467  Cost = 0.645768 [sa progress... 43.9986%]
+weather report: current Temp = 0.0278976  Cost = 0.66095 [sa progress... 44.4343%]
+weather report: current Temp = 0.0273397  Cost = 0.654006 [sa progress... 44.8699%]
+weather report: current Temp = 0.0267929  Cost = 0.656381 [sa progress... 45.3055%]
+weather report: current Temp = 0.026257  Cost = 0.63315 [sa progress... 45.7411%]
+weather report: current Temp = 0.0257319  Cost = 0.658499 [sa progress... 46.1768%]
+weather report: current Temp = 0.0252173  Cost = 0.657896 [sa progress... 46.6124%]
+weather report: current Temp = 0.0247129  Cost = 0.667049 [sa progress... 47.048%]
+weather report: current Temp = 0.0242187  Cost = 0.670483 [sa progress... 47.4837%]
+weather report: current Temp = 0.0237343  Cost = 0.67 [sa progress... 47.9193%]
+weather report: current Temp = 0.0232596  Cost = 0.668483 [sa progress... 48.3549%]
+weather report: current Temp = 0.0227944  Cost = 0.644273 [sa progress... 48.7906%]
+weather report: current Temp = 0.0223385  Cost = 0.645459 [sa progress... 49.2262%]
+weather report: current Temp = 0.0218918  Cost = 0.659839 [sa progress... 49.6618%]
+weather report: current Temp = 0.0214539  Cost = 0.618866 [sa progress... 50.0974%]
+weather report: current Temp = 0.0210248  Cost = 0.619227 [sa progress... 50.5331%]
+weather report: current Temp = 0.0206043  Cost = 0.6326 [sa progress... 50.9687%]
+weather report: current Temp = 0.0201923  Cost = 0.637758 [sa progress... 51.4043%]
+weather report: current Temp = 0.0197884  Cost = 0.639189 [sa progress... 51.84%]
+weather report: current Temp = 0.0193926  Cost = 0.629141 [sa progress... 52.2756%]
+weather report: current Temp = 0.0190048  Cost = 0.621636 [sa progress... 52.7112%]
+weather report: current Temp = 0.0186247  Cost = 0.620705 [sa progress... 53.1469%]
+weather report: current Temp = 0.0182522  Cost = 0.644021 [sa progress... 53.5825%]
+weather report: current Temp = 0.0178872  Cost = 0.64391 [sa progress... 54.0181%]
+weather report: current Temp = 0.0175294  Cost = 0.626749 [sa progress... 54.4537%]
+weather report: current Temp = 0.0171788  Cost = 0.651336 [sa progress... 54.8894%]
+weather report: current Temp = 0.0168352  Cost = 0.626906 [sa progress... 55.325%]
+weather report: current Temp = 0.0164985  Cost = 0.610998 [sa progress... 55.7606%]
+weather report: current Temp = 0.0161686  Cost = 0.631965 [sa progress... 56.1963%]
+weather report: current Temp = 0.0158452  Cost = 0.661458 [sa progress... 56.6319%]
+weather report: current Temp = 0.0155283  Cost = 0.624339 [sa progress... 57.0675%]
+weather report: current Temp = 0.0152177  Cost = 0.611145 [sa progress... 57.5032%]
+weather report: current Temp = 0.0149134  Cost = 0.62342 [sa progress... 57.9388%]
+weather report: current Temp = 0.0146151  Cost = 0.659398 [sa progress... 58.3744%]
+weather report: current Temp = 0.0143228  Cost = 0.625638 [sa progress... 58.81%]
+weather report: current Temp = 0.0140363  Cost = 0.633773 [sa progress... 59.2457%]
+weather report: current Temp = 0.0137556  Cost = 0.66075 [sa progress... 59.6813%]
+weather report: current Temp = 0.0134805  Cost = 0.637815 [sa progress... 60.1169%]
+weather report: current Temp = 0.0132109  Cost = 0.638233 [sa progress... 60.5526%]
+weather report: current Temp = 0.0129467  Cost = 0.664949 [sa progress... 60.9882%]
+weather report: current Temp = 0.0126877  Cost = 0.634645 [sa progress... 61.4238%]
+weather report: current Temp = 0.012434  Cost = 0.622373 [sa progress... 61.8595%]
+weather report: current Temp = 0.0121853  Cost = 0.643993 [sa progress... 62.2951%]
+weather report: current Temp = 0.0119416  Cost = 0.617454 [sa progress... 62.7307%]
+weather report: current Temp = 0.0117028  Cost = 0.59225 [sa progress... 63.1663%]
+weather report: current Temp = 0.0114687  Cost = 0.619055 [sa progress... 63.602%]
+weather report: current Temp = 0.0112393  Cost = 0.631388 [sa progress... 64.0376%]
+weather report: current Temp = 0.0110146  Cost = 0.620431 [sa progress... 64.4732%]
+weather report: current Temp = 0.0107943  Cost = 0.614091 [sa progress... 64.9089%]
+weather report: current Temp = 0.0105784  Cost = 0.650483 [sa progress... 65.3445%]
+weather report: current Temp = 0.0103668  Cost = 0.625864 [sa progress... 65.7801%]
+weather report: current Temp = 0.0101595  Cost = 0.603667 [sa progress... 66.2158%]
+weather report: current Temp = 0.00995629  Cost = 0.627415 [sa progress... 66.6514%]
+weather report: current Temp = 0.00975716  Cost = 0.623777 [sa progress... 67.087%]
+weather report: current Temp = 0.00956202  Cost = 0.603752 [sa progress... 67.5226%]
+weather report: current Temp = 0.00937078  Cost = 0.61753 [sa progress... 67.9583%]
+weather report: current Temp = 0.00918336  Cost = 0.625625 [sa progress... 68.3939%]
+weather report: current Temp = 0.0089997  Cost = 0.62948 [sa progress... 68.8295%]
+weather report: current Temp = 0.0088197  Cost = 0.602354 [sa progress... 69.2652%]
+weather report: current Temp = 0.00864331  Cost = 0.605339 [sa progress... 69.7008%]
+weather report: current Temp = 0.00847044  Cost = 0.620743 [sa progress... 70.1364%]
+weather report: current Temp = 0.00830103  Cost = 0.65181 [sa progress... 70.5721%]
+weather report: current Temp = 0.00813501  Cost = 0.615124 [sa progress... 71.0077%]
+weather report: current Temp = 0.00797231  Cost = 0.615493 [sa progress... 71.4433%]
+weather report: current Temp = 0.00781287  Cost = 0.628455 [sa progress... 71.8789%]
+weather report: current Temp = 0.00765661  Cost = 0.61426 [sa progress... 72.3146%]
+weather report: current Temp = 0.00750348  Cost = 0.613679 [sa progress... 72.7502%]
+weather report: current Temp = 0.00735341  Cost = 0.62641 [sa progress... 73.1858%]
+weather report: current Temp = 0.00720634  Cost = 0.621927 [sa progress... 73.6215%]
+weather report: current Temp = 0.00706221  Cost = 0.602826 [sa progress... 74.0571%]
+weather report: current Temp = 0.00692097  Cost = 0.61166 [sa progress... 74.4927%]
+weather report: current Temp = 0.00678255  Cost = 0.619854 [sa progress... 74.9284%]
+weather report: current Temp = 0.0066469  Cost = 0.617461 [sa progress... 75.364%]
+weather report: current Temp = 0.00651396  Cost = 0.599068 [sa progress... 75.7996%]
+weather report: current Temp = 0.00638368  Cost = 0.591287 [sa progress... 76.2352%]
+weather report: current Temp = 0.00625601  Cost = 0.613171 [sa progress... 76.6709%]
+weather report: current Temp = 0.00613089  Cost = 0.601736 [sa progress... 77.1065%]
+weather report: current Temp = 0.00600827  Cost = 0.595268 [sa progress... 77.5421%]
+weather report: current Temp = 0.0058881  Cost = 0.592201 [sa progress... 77.9778%]
+weather report: current Temp = 0.00577034  Cost = 0.588111 [sa progress... 78.4134%]
+weather report: current Temp = 0.00565493  Cost = 0.595268 [sa progress... 78.849%]
+weather report: current Temp = 0.00554184  Cost = 0.594485 [sa progress... 79.2847%]
+weather report: current Temp = 0.005431  Cost = 0.594292 [sa progress... 79.7203%]
+weather report: current Temp = 0.00532238  Cost = 0.596521 [sa progress... 80.1559%]
+weather report: current Temp = 0.00521593  Cost = 0.615874 [sa progress... 80.5915%]
+weather report: current Temp = 0.00511161  Cost = 0.584497 [sa progress... 81.0272%]
+weather report: current Temp = 0.00500938  Cost = 0.583099 [sa progress... 81.4628%]
+weather report: current Temp = 0.00490919  Cost = 0.597434 [sa progress... 81.8984%]
+weather report: current Temp = 0.00481101  Cost = 0.593933 [sa progress... 82.3341%]
+weather report: current Temp = 0.00471479  Cost = 0.599396 [sa progress... 82.7697%]
+weather report: current Temp = 0.00462049  Cost = 0.600972 [sa progress... 83.2053%]
+weather report: current Temp = 0.00452808  Cost = 0.607608 [sa progress... 83.641%]
+weather report: current Temp = 0.00443752  Cost = 0.611066 [sa progress... 84.0766%]
+weather report: current Temp = 0.00434877  Cost = 0.60403 [sa progress... 84.5122%]
+weather report: current Temp = 0.0042618  Cost = 0.609836 [sa progress... 84.9478%]
+weather report: current Temp = 0.00417656  Cost = 0.621934 [sa progress... 85.3835%]
+weather report: current Temp = 0.00409303  Cost = 0.600054 [sa progress... 85.8191%]
+weather report: current Temp = 0.00401117  Cost = 0.597383 [sa progress... 86.2547%]
+weather report: current Temp = 0.00393094  Cost = 0.596706 [sa progress... 86.6904%]
+weather report: current Temp = 0.00385233  Cost = 0.601736 [sa progress... 87.126%]
+weather report: current Temp = 0.00377528  Cost = 0.589207 [sa progress... 87.5616%]
+weather report: current Temp = 0.00369977  Cost = 0.590025 [sa progress... 87.9973%]
+weather report: current Temp = 0.00362578  Cost = 0.596513 [sa progress... 88.4329%]
+weather report: current Temp = 0.00355326  Cost = 0.612726 [sa progress... 88.8685%]
+weather report: current Temp = 0.0034822  Cost = 0.602897 [sa progress... 89.3041%]
+weather report: current Temp = 0.00341255  Cost = 0.602592 [sa progress... 89.7398%]
+weather report: current Temp = 0.0033443  Cost = 0.591702 [sa progress... 90.1754%]
+weather report: current Temp = 0.00327742  Cost = 0.594409 [sa progress... 90.611%]
+weather report: current Temp = 0.00321187  Cost = 0.586844 [sa progress... 91.0467%]
+weather report: current Temp = 0.00314763  Cost = 0.606935 [sa progress... 91.4823%]
+weather report: current Temp = 0.00308468  Cost = 0.600559 [sa progress... 91.9179%]
+weather report: current Temp = 0.00302298  Cost = 0.615016 [sa progress... 92.3535%]
+weather report: current Temp = 0.00296252  Cost = 0.612544 [sa progress... 92.7892%]
+weather report: current Temp = 0.00290327  Cost = 0.592314 [sa progress... 93.2248%]
+weather report: current Temp = 0.00284521  Cost = 0.597152 [sa progress... 93.6604%]
+weather report: current Temp = 0.0027883  Cost = 0.586147 [sa progress... 94.0961%]
+weather report: current Temp = 0.00273254  Cost = 0.582841 [sa progress... 94.5317%]
+weather report: current Temp = 0.00267789  Cost = 0.590883 [sa progress... 94.9673%]
+weather report: current Temp = 0.00262433  Cost = 0.581011 [sa progress... 95.403%]
+weather report: current Temp = 0.00257184  Cost = 0.581098 [sa progress... 95.8386%]
+weather report: current Temp = 0.00252041  Cost = 0.583542 [sa progress... 96.2742%]
+weather report: current Temp = 0.00247  Cost = 0.578415 [sa progress... 96.7098%]
+weather report: current Temp = 0.0024206  Cost = 0.575938 [sa progress... 97.1455%]
+weather report: current Temp = 0.00237219  Cost = 0.56375 [sa progress... 97.5811%]
+weather report: current Temp = 0.00232474  Cost = 0.575169 [sa progress... 98.0167%]
+weather report: current Temp = 0.00227825  Cost = 0.576989 [sa progress... 98.4524%]
+weather report: current Temp = 0.00223268  Cost = 0.575398 [sa progress... 98.888%]
+weather report: current Temp = 0.00218803  Cost = 0.568961 [sa progress... 99.3236%]
+weather report: current Temp = 0.00214427  Cost = 0.565263 [sa progress... 99.7593%]
+simAnneal_int(): done, _optCost = 0.555625
+> total perturbation: 115000 uphill: 8962 downhill: 21884
+3th attempt!
+
+setTemp(): start greedy search
+avgDcost:0.009576 T0:0.186697, Tx:0.001807
+simAnneal_int(): start to SA
+weather report: current Temp = 0.182963  Cost = 0.598926 [sa progress... 0%]
+weather report: current Temp = 0.179304  Cost = 0.651835 [sa progress... 0.43563%]
+weather report: current Temp = 0.175718  Cost = 0.616176 [sa progress... 0.87126%]
+weather report: current Temp = 0.172204  Cost = 0.685642 [sa progress... 1.30689%]
+weather report: current Temp = 0.16876  Cost = 0.628525 [sa progress... 1.74252%]
+weather report: current Temp = 0.165384  Cost = 0.642703 [sa progress... 2.17815%]
+weather report: current Temp = 0.162077  Cost = 0.645962 [sa progress... 2.61378%]
+weather report: current Temp = 0.158835  Cost = 0.682882 [sa progress... 3.04941%]
+weather report: current Temp = 0.155658  Cost = 0.657025 [sa progress... 3.48504%]
+weather report: current Temp = 0.152545  Cost = 0.684625 [sa progress... 3.92067%]
+weather report: current Temp = 0.149494  Cost = 0.698796 [sa progress... 4.3563%]
+weather report: current Temp = 0.146504  Cost = 0.67322 [sa progress... 4.79193%]
+weather report: current Temp = 0.143574  Cost = 0.625008 [sa progress... 5.22756%]
+weather report: current Temp = 0.140703  Cost = 0.629856 [sa progress... 5.66319%]
+weather report: current Temp = 0.137889  Cost = 0.640257 [sa progress... 6.09882%]
+weather report: current Temp = 0.135131  Cost = 0.648213 [sa progress... 6.53445%]
+weather report: current Temp = 0.132428  Cost = 0.634705 [sa progress... 6.97008%]
+weather report: current Temp = 0.12978  Cost = 0.660018 [sa progress... 7.40571%]
+weather report: current Temp = 0.127184  Cost = 0.75783 [sa progress... 7.84134%]
+weather report: current Temp = 0.124641  Cost = 0.630495 [sa progress... 8.27697%]
+weather report: current Temp = 0.122148  Cost = 0.659398 [sa progress... 8.7126%]
+weather report: current Temp = 0.119705  Cost = 0.650154 [sa progress... 9.14823%]
+weather report: current Temp = 0.117311  Cost = 0.682056 [sa progress... 9.58386%]
+weather report: current Temp = 0.114965  Cost = 0.655803 [sa progress... 10.0195%]
+weather report: current Temp = 0.112665  Cost = 0.706558 [sa progress... 10.4551%]
+weather report: current Temp = 0.110412  Cost = 0.631889 [sa progress... 10.8907%]
+weather report: current Temp = 0.108204  Cost = 0.652726 [sa progress... 11.3264%]
+weather report: current Temp = 0.10604  Cost = 0.655015 [sa progress... 11.762%]
+weather report: current Temp = 0.103919  Cost = 0.642664 [sa progress... 12.1976%]
+weather report: current Temp = 0.10184  Cost = 0.647483 [sa progress... 12.6333%]
+weather report: current Temp = 0.0998036  Cost = 0.657663 [sa progress... 13.0689%]
+weather report: current Temp = 0.0978076  Cost = 0.685636 [sa progress... 13.5045%]
+weather report: current Temp = 0.0958514  Cost = 0.648713 [sa progress... 13.9402%]
+weather report: current Temp = 0.0939344  Cost = 0.624209 [sa progress... 14.3758%]
+weather report: current Temp = 0.0920557  Cost = 0.672939 [sa progress... 14.8114%]
+weather report: current Temp = 0.0902146  Cost = 0.673596 [sa progress... 15.247%]
+weather report: current Temp = 0.0884103  Cost = 0.633318 [sa progress... 15.6827%]
+weather report: current Temp = 0.0866421  Cost = 0.636895 [sa progress... 16.1183%]
+weather report: current Temp = 0.0849092  Cost = 0.634546 [sa progress... 16.5539%]
+weather report: current Temp = 0.0832111  Cost = 0.645138 [sa progress... 16.9896%]
+weather report: current Temp = 0.0815468  Cost = 0.648467 [sa progress... 17.4252%]
+weather report: current Temp = 0.0799159  Cost = 0.648436 [sa progress... 17.8608%]
+weather report: current Temp = 0.0783176  Cost = 0.635234 [sa progress... 18.2965%]
+weather report: current Temp = 0.0767512  Cost = 0.658727 [sa progress... 18.7321%]
+weather report: current Temp = 0.0752162  Cost = 0.690608 [sa progress... 19.1677%]
+weather report: current Temp = 0.0737119  Cost = 0.670314 [sa progress... 19.6033%]
+weather report: current Temp = 0.0722376  Cost = 0.653408 [sa progress... 20.039%]
+weather report: current Temp = 0.0707929  Cost = 0.666634 [sa progress... 20.4746%]
+weather report: current Temp = 0.069377  Cost = 0.66646 [sa progress... 20.9102%]
+weather report: current Temp = 0.0679895  Cost = 0.661088 [sa progress... 21.3459%]
+weather report: current Temp = 0.0666297  Cost = 0.680364 [sa progress... 21.7815%]
+weather report: current Temp = 0.0652971  Cost = 0.651588 [sa progress... 22.2171%]
+weather report: current Temp = 0.0639912  Cost = 0.656343 [sa progress... 22.6528%]
+weather report: current Temp = 0.0627113  Cost = 0.666824 [sa progress... 23.0884%]
+weather report: current Temp = 0.0614571  Cost = 0.734766 [sa progress... 23.524%]
+weather report: current Temp = 0.060228  Cost = 0.644765 [sa progress... 23.9596%]
+weather report: current Temp = 0.0590234  Cost = 0.651153 [sa progress... 24.3953%]
+weather report: current Temp = 0.0578429  Cost = 0.657804 [sa progress... 24.8309%]
+weather report: current Temp = 0.0566861  Cost = 0.673909 [sa progress... 25.2665%]
+weather report: current Temp = 0.0555524  Cost = 0.636024 [sa progress... 25.7022%]
+weather report: current Temp = 0.0544413  Cost = 0.601867 [sa progress... 26.1378%]
+weather report: current Temp = 0.0533525  Cost = 0.608937 [sa progress... 26.5734%]
+weather report: current Temp = 0.0522854  Cost = 0.627408 [sa progress... 27.0091%]
+weather report: current Temp = 0.0512397  Cost = 0.623566 [sa progress... 27.4447%]
+weather report: current Temp = 0.0502149  Cost = 0.624828 [sa progress... 27.8803%]
+weather report: current Temp = 0.0492106  Cost = 0.638333 [sa progress... 28.3159%]
+weather report: current Temp = 0.0482264  Cost = 0.612188 [sa progress... 28.7516%]
+weather report: current Temp = 0.0472619  Cost = 0.632085 [sa progress... 29.1872%]
+weather report: current Temp = 0.0463167  Cost = 0.657394 [sa progress... 29.6228%]
+weather report: current Temp = 0.0453903  Cost = 0.648866 [sa progress... 30.0585%]
+weather report: current Temp = 0.0444825  Cost = 0.629687 [sa progress... 30.4941%]
+weather report: current Temp = 0.0435929  Cost = 0.632994 [sa progress... 30.9297%]
+weather report: current Temp = 0.042721  Cost = 0.636989 [sa progress... 31.3654%]
+weather report: current Temp = 0.0418666  Cost = 0.655016 [sa progress... 31.801%]
+weather report: current Temp = 0.0410293  Cost = 0.650901 [sa progress... 32.2366%]
+weather report: current Temp = 0.0402087  Cost = 0.641737 [sa progress... 32.6722%]
+weather report: current Temp = 0.0394045  Cost = 0.632881 [sa progress... 33.1079%]
+weather report: current Temp = 0.0386164  Cost = 0.652794 [sa progress... 33.5435%]
+weather report: current Temp = 0.0378441  Cost = 0.633376 [sa progress... 33.9791%]
+weather report: current Temp = 0.0370872  Cost = 0.624035 [sa progress... 34.4148%]
+weather report: current Temp = 0.0363455  Cost = 0.652375 [sa progress... 34.8504%]
+weather report: current Temp = 0.0356185  Cost = 0.649375 [sa progress... 35.286%]
+weather report: current Temp = 0.0349062  Cost = 0.640652 [sa progress... 35.7217%]
+weather report: current Temp = 0.0342081  Cost = 0.635885 [sa progress... 36.1573%]
+weather report: current Temp = 0.0335239  Cost = 0.663475 [sa progress... 36.5929%]
+weather report: current Temp = 0.0328534  Cost = 0.680708 [sa progress... 37.0285%]
+weather report: current Temp = 0.0321963  Cost = 0.652582 [sa progress... 37.4642%]
+weather report: current Temp = 0.0315524  Cost = 0.654701 [sa progress... 37.8998%]
+weather report: current Temp = 0.0309214  Cost = 0.654118 [sa progress... 38.3354%]
+weather report: current Temp = 0.0303029  Cost = 0.645551 [sa progress... 38.7711%]
+weather report: current Temp = 0.0296969  Cost = 0.63244 [sa progress... 39.2067%]
+weather report: current Temp = 0.0291029  Cost = 0.632878 [sa progress... 39.6423%]
+weather report: current Temp = 0.0285209  Cost = 0.613209 [sa progress... 40.078%]
+weather report: current Temp = 0.0279505  Cost = 0.669859 [sa progress... 40.5136%]
+weather report: current Temp = 0.0273915  Cost = 0.640421 [sa progress... 40.9492%]
+weather report: current Temp = 0.0268436  Cost = 0.652215 [sa progress... 41.3848%]
+weather report: current Temp = 0.0263068  Cost = 0.652302 [sa progress... 41.8205%]
+weather report: current Temp = 0.0257806  Cost = 0.655191 [sa progress... 42.2561%]
+weather report: current Temp = 0.025265  Cost = 0.6538 [sa progress... 42.6917%]
+weather report: current Temp = 0.0247597  Cost = 0.689446 [sa progress... 43.1274%]
+weather report: current Temp = 0.0242645  Cost = 0.662903 [sa progress... 43.563%]
+weather report: current Temp = 0.0237792  Cost = 0.623019 [sa progress... 43.9986%]
+weather report: current Temp = 0.0233036  Cost = 0.650742 [sa progress... 44.4343%]
+weather report: current Temp = 0.0228376  Cost = 0.6325 [sa progress... 44.8699%]
+weather report: current Temp = 0.0223808  Cost = 0.632463 [sa progress... 45.3055%]
+weather report: current Temp = 0.0219332  Cost = 0.615932 [sa progress... 45.7411%]
+weather report: current Temp = 0.0214945  Cost = 0.635293 [sa progress... 46.1768%]
+weather report: current Temp = 0.0210646  Cost = 0.641062 [sa progress... 46.6124%]
+weather report: current Temp = 0.0206434  Cost = 0.666557 [sa progress... 47.048%]
+weather report: current Temp = 0.0202305  Cost = 0.623258 [sa progress... 47.4837%]
+weather report: current Temp = 0.0198259  Cost = 0.615748 [sa progress... 47.9193%]
+weather report: current Temp = 0.0194294  Cost = 0.658347 [sa progress... 48.3549%]
+weather report: current Temp = 0.0190408  Cost = 0.625307 [sa progress... 48.7906%]
+weather report: current Temp = 0.01866  Cost = 0.63386 [sa progress... 49.2262%]
+weather report: current Temp = 0.0182868  Cost = 0.642209 [sa progress... 49.6618%]
+weather report: current Temp = 0.017921  Cost = 0.636923 [sa progress... 50.0974%]
+weather report: current Temp = 0.0175626  Cost = 0.627979 [sa progress... 50.5331%]
+weather report: current Temp = 0.0172113  Cost = 0.656138 [sa progress... 50.9687%]
+weather report: current Temp = 0.0168671  Cost = 0.625397 [sa progress... 51.4043%]
+weather report: current Temp = 0.0165298  Cost = 0.618808 [sa progress... 51.84%]
+weather report: current Temp = 0.0161992  Cost = 0.633191 [sa progress... 52.2756%]
+weather report: current Temp = 0.0158752  Cost = 0.637494 [sa progress... 52.7112%]
+weather report: current Temp = 0.0155577  Cost = 0.641014 [sa progress... 53.1469%]
+weather report: current Temp = 0.0152465  Cost = 0.643436 [sa progress... 53.5825%]
+weather report: current Temp = 0.0149416  Cost = 0.655137 [sa progress... 54.0181%]
+weather report: current Temp = 0.0146428  Cost = 0.650294 [sa progress... 54.4537%]
+weather report: current Temp = 0.0143499  Cost = 0.645647 [sa progress... 54.8894%]
+weather report: current Temp = 0.0140629  Cost = 0.66759 [sa progress... 55.325%]
+weather report: current Temp = 0.0137817  Cost = 0.640049 [sa progress... 55.7606%]
+weather report: current Temp = 0.013506  Cost = 0.639544 [sa progress... 56.1963%]
+weather report: current Temp = 0.0132359  Cost = 0.659667 [sa progress... 56.6319%]
+weather report: current Temp = 0.0129712  Cost = 0.650501 [sa progress... 57.0675%]
+weather report: current Temp = 0.0127118  Cost = 0.640852 [sa progress... 57.5032%]
+weather report: current Temp = 0.0124575  Cost = 0.63754 [sa progress... 57.9388%]
+weather report: current Temp = 0.0122084  Cost = 0.653598 [sa progress... 58.3744%]
+weather report: current Temp = 0.0119642  Cost = 0.661687 [sa progress... 58.81%]
+weather report: current Temp = 0.0117249  Cost = 0.642263 [sa progress... 59.2457%]
+weather report: current Temp = 0.0114904  Cost = 0.655365 [sa progress... 59.6813%]
+weather report: current Temp = 0.0112606  Cost = 0.641972 [sa progress... 60.1169%]
+weather report: current Temp = 0.0110354  Cost = 0.631957 [sa progress... 60.5526%]
+weather report: current Temp = 0.0108147  Cost = 0.629012 [sa progress... 60.9882%]
+weather report: current Temp = 0.0105984  Cost = 0.635855 [sa progress... 61.4238%]
+weather report: current Temp = 0.0103864  Cost = 0.627753 [sa progress... 61.8595%]
+weather report: current Temp = 0.0101787  Cost = 0.598696 [sa progress... 62.2951%]
+weather report: current Temp = 0.00997514  Cost = 0.606543 [sa progress... 62.7307%]
+weather report: current Temp = 0.00977564  Cost = 0.631207 [sa progress... 63.1663%]
+weather report: current Temp = 0.00958012  Cost = 0.64723 [sa progress... 63.602%]
+weather report: current Temp = 0.00938852  Cost = 0.59742 [sa progress... 64.0376%]
+weather report: current Temp = 0.00920075  Cost = 0.601372 [sa progress... 64.4732%]
+weather report: current Temp = 0.00901674  Cost = 0.609911 [sa progress... 64.9089%]
+weather report: current Temp = 0.0088364  Cost = 0.619076 [sa progress... 65.3445%]
+weather report: current Temp = 0.00865967  Cost = 0.614437 [sa progress... 65.7801%]
+weather report: current Temp = 0.00848648  Cost = 0.611336 [sa progress... 66.2158%]
+weather report: current Temp = 0.00831675  Cost = 0.58983 [sa progress... 66.6514%]
+weather report: current Temp = 0.00815041  Cost = 0.604063 [sa progress... 67.087%]
+weather report: current Temp = 0.00798741  Cost = 0.624955 [sa progress... 67.5226%]
+weather report: current Temp = 0.00782766  Cost = 0.638799 [sa progress... 67.9583%]
+weather report: current Temp = 0.00767111  Cost = 0.615118 [sa progress... 68.3939%]
+weather report: current Temp = 0.00751768  Cost = 0.610405 [sa progress... 68.8295%]
+weather report: current Temp = 0.00736733  Cost = 0.613172 [sa progress... 69.2652%]
+weather report: current Temp = 0.00721998  Cost = 0.61235 [sa progress... 69.7008%]
+weather report: current Temp = 0.00707558  Cost = 0.604706 [sa progress... 70.1364%]
+weather report: current Temp = 0.00693407  Cost = 0.594991 [sa progress... 70.5721%]
+weather report: current Temp = 0.00679539  Cost = 0.592715 [sa progress... 71.0077%]
+weather report: current Temp = 0.00665948  Cost = 0.604084 [sa progress... 71.4433%]
+weather report: current Temp = 0.00652629  Cost = 0.593494 [sa progress... 71.8789%]
+weather report: current Temp = 0.00639577  Cost = 0.605146 [sa progress... 72.3146%]
+weather report: current Temp = 0.00626785  Cost = 0.602953 [sa progress... 72.7502%]
+weather report: current Temp = 0.00614249  Cost = 0.596957 [sa progress... 73.1858%]
+weather report: current Temp = 0.00601964  Cost = 0.604799 [sa progress... 73.6215%]
+weather report: current Temp = 0.00589925  Cost = 0.607003 [sa progress... 74.0571%]
+weather report: current Temp = 0.00578127  Cost = 0.594979 [sa progress... 74.4927%]
+weather report: current Temp = 0.00566564  Cost = 0.609758 [sa progress... 74.9284%]
+weather report: current Temp = 0.00555233  Cost = 0.597715 [sa progress... 75.364%]
+weather report: current Temp = 0.00544128  Cost = 0.611983 [sa progress... 75.7996%]
+weather report: current Temp = 0.00533246  Cost = 0.610385 [sa progress... 76.2352%]
+weather report: current Temp = 0.00522581  Cost = 0.59677 [sa progress... 76.6709%]
+weather report: current Temp = 0.00512129  Cost = 0.594277 [sa progress... 77.1065%]
+weather report: current Temp = 0.00501887  Cost = 0.593428 [sa progress... 77.5421%]
+weather report: current Temp = 0.00491849  Cost = 0.590328 [sa progress... 77.9778%]
+weather report: current Temp = 0.00482012  Cost = 0.581753 [sa progress... 78.4134%]
+weather report: current Temp = 0.00472372  Cost = 0.597872 [sa progress... 78.849%]
+weather report: current Temp = 0.00462924  Cost = 0.595769 [sa progress... 79.2847%]
+weather report: current Temp = 0.00453666  Cost = 0.583601 [sa progress... 79.7203%]
+weather report: current Temp = 0.00444592  Cost = 0.591304 [sa progress... 80.1559%]
+weather report: current Temp = 0.00435701  Cost = 0.587378 [sa progress... 80.5915%]
+weather report: current Temp = 0.00426986  Cost = 0.584621 [sa progress... 81.0272%]
+weather report: current Temp = 0.00418447  Cost = 0.607719 [sa progress... 81.4628%]
+weather report: current Temp = 0.00410078  Cost = 0.598942 [sa progress... 81.8984%]
+weather report: current Temp = 0.00401876  Cost = 0.598494 [sa progress... 82.3341%]
+weather report: current Temp = 0.00393839  Cost = 0.604888 [sa progress... 82.7697%]
+weather report: current Temp = 0.00385962  Cost = 0.580429 [sa progress... 83.2053%]
+weather report: current Temp = 0.00378243  Cost = 0.576436 [sa progress... 83.641%]
+weather report: current Temp = 0.00370678  Cost = 0.576347 [sa progress... 84.0766%]
+weather report: current Temp = 0.00363264  Cost = 0.565344 [sa progress... 84.5122%]
+weather report: current Temp = 0.00355999  Cost = 0.57135 [sa progress... 84.9478%]
+weather report: current Temp = 0.00348879  Cost = 0.575495 [sa progress... 85.3835%]
+weather report: current Temp = 0.00341901  Cost = 0.572811 [sa progress... 85.8191%]
+weather report: current Temp = 0.00335063  Cost = 0.581418 [sa progress... 86.2547%]
+weather report: current Temp = 0.00328362  Cost = 0.577647 [sa progress... 86.6904%]
+weather report: current Temp = 0.00321795  Cost = 0.57246 [sa progress... 87.126%]
+weather report: current Temp = 0.00315359  Cost = 0.586099 [sa progress... 87.5616%]
+weather report: current Temp = 0.00309052  Cost = 0.572999 [sa progress... 87.9973%]
+updateOptSol() : find better sol!
+>> cost = 0.553874
+updateOptSol() : find better sol!
+>> cost = 0.552357
+weather report: current Temp = 0.00302871  Cost = 0.552784 [sa progress... 88.4329%]
+updateOptSol() : find better sol!
+>> cost = 0.550678
+updateOptSol() : find better sol!
+>> cost = 0.550605
+updateOptSol() : find better sol!
+>> cost = 0.550417
+updateOptSol() : find better sol!
+>> cost = 0.54957
+updateOptSol() : find better sol!
+>> cost = 0.548761
+weather report: current Temp = 0.00296813  Cost = 0.573748 [sa progress... 88.8685%]
+weather report: current Temp = 0.00290877  Cost = 0.581263 [sa progress... 89.3041%]
+weather report: current Temp = 0.0028506  Cost = 0.581795 [sa progress... 89.7398%]
+weather report: current Temp = 0.00279358  Cost = 0.590621 [sa progress... 90.1754%]
+weather report: current Temp = 0.00273771  Cost = 0.584971 [sa progress... 90.611%]
+weather report: current Temp = 0.00268296  Cost = 0.588535 [sa progress... 91.0467%]
+weather report: current Temp = 0.0026293  Cost = 0.587889 [sa progress... 91.4823%]
+weather report: current Temp = 0.00257671  Cost = 0.596523 [sa progress... 91.9179%]
+weather report: current Temp = 0.00252518  Cost = 0.587226 [sa progress... 92.3535%]
+weather report: current Temp = 0.00247468  Cost = 0.57572 [sa progress... 92.7892%]
+weather report: current Temp = 0.00242518  Cost = 0.577628 [sa progress... 93.2248%]
+weather report: current Temp = 0.00237668  Cost = 0.582546 [sa progress... 93.6604%]
+weather report: current Temp = 0.00232914  Cost = 0.587333 [sa progress... 94.0961%]
+weather report: current Temp = 0.00228256  Cost = 0.585213 [sa progress... 94.5317%]
+weather report: current Temp = 0.00223691  Cost = 0.567701 [sa progress... 94.9673%]
+weather report: current Temp = 0.00219217  Cost = 0.570911 [sa progress... 95.403%]
+weather report: current Temp = 0.00214833  Cost = 0.576951 [sa progress... 95.8386%]
+weather report: current Temp = 0.00210536  Cost = 0.570624 [sa progress... 96.2742%]
+weather report: current Temp = 0.00206325  Cost = 0.566784 [sa progress... 96.7098%]
+weather report: current Temp = 0.00202199  Cost = 0.579846 [sa progress... 97.1455%]
+weather report: current Temp = 0.00198155  Cost = 0.576622 [sa progress... 97.5811%]
+weather report: current Temp = 0.00194192  Cost = 0.585384 [sa progress... 98.0167%]
+weather report: current Temp = 0.00190308  Cost = 0.578373 [sa progress... 98.4524%]
+weather report: current Temp = 0.00186502  Cost = 0.571251 [sa progress... 98.888%]
+weather report: current Temp = 0.00182772  Cost = 0.571079 [sa progress... 99.3236%]
+weather report: current Temp = 0.00179116  Cost = 0.566178 [sa progress... 99.7593%]
+simAnneal_int(): done, _optCost = 0.548761
+> total perturbation: 115000 uphill: 8806 downhill: 21089
+ >  writeMatlabOutput() : opening output file log/adaptec2.fp.matlab
+ >  no overlaps
+ >  chip area  : 2.07718e+08
+ >  [Warning] following area info is for the lastest packing , not the opt
+ >  Macro area : 1.4216e+08
+ >  BLArea     : 3.60702e+07
+ >  BRArea     : 3.56187e+07
+ >  TLArea     : 3.56324e+07
+ >  TRArea     : 3.48388e+07
+ >  writeOutput() : opening output file log/adaptec2.fp
+ >  MP trees macro packing finished.
